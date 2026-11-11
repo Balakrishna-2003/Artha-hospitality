@@ -27,7 +27,7 @@
             --gold-hover: #C59B27;
             --text: #1E2328;         
             --muted: #6B7280;        
-            --cream: #F9F8F6; /* Highly aesthetic warm background */
+            --cream: #F9F8F6; 
         
             --font-heading: 'GFS Didot', serif;
             --font-body: 'Lato', sans-serif;
@@ -244,21 +244,36 @@
         .d-4 { animation-delay: 0.75s; }
 
         /* =========================================================
-           ARCHITECTURAL EDITORIAL ABOUT SECTION
+           STUNNING ROUNDED-SQUARE ABOUT SECTION
         ========================================================= */
-        .editorial-about-section {
+        .premium-about-section {
             background-color: var(--cream);
-            padding: 160px 0 140px;
+            padding: 140px 0;
             position: relative;
             overflow: hidden;
         }
 
-        /* The Huge Overlapping Header */
-        .editorial-header {
+        /* Subtle background shape */
+        .premium-about-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(249, 248, 246, 0) 70%);
+            z-index: 0;
+        }
+
+        .about-container {
             position: relative;
-            z-index: 5;
-            margin-bottom: -40px; /* Pulls the image up under the text */
-            pointer-events: none; /* Let clicks pass through */
+            z-index: 2;
+        }
+
+        /* Header */
+        .about-header {
+            margin-bottom: 60px;
         }
 
         .about-kicker {
@@ -269,13 +284,22 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 20px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .about-kicker::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
         }
 
         .about-title {
             font-family: var(--font-hero);
-            font-size: clamp(3rem, 6vw, 6rem);
-            line-height: 1.05;
+            font-size: clamp(3rem, 4.5vw, 4.5rem);
+            line-height: 1.1;
             color: var(--navy);
             margin: 0;
             font-weight: 700;
@@ -287,114 +311,144 @@
             color: var(--gold);
         }
 
-        /* Image Composition */
-        .editorial-image-wrapper {
+        /* Image Area - Rounded Square */
+        .about-image-wrapper {
             position: relative;
-            z-index: 2;
-            padding-right: 40px;
-            padding-bottom: 40px;
+            padding-right: 30px;
+            padding-bottom: 30px;
         }
 
-        .editorial-image {
+        .about-image {
             width: 100%;
-            height: 700px;
+            height: 750px;
             object-fit: cover;
+            border-radius: 24px; /* Rounded Square */
             box-shadow: 0 30px 60px rgba(10, 28, 58, 0.12);
             position: relative;
             z-index: 2;
         }
 
-        /* Thin Gold Offset Frame */
-        .editorial-image-wrapper::before {
+        /* Gold Frame Offset for Rounded Square */
+        .about-image-wrapper::before {
             content: '';
             position: absolute;
-            top: 40px;
-            left: 40px;
+            top: 30px;
+            left: 30px;
             width: 100%;
             height: 100%;
-            border: 1px solid var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 24px;
             z-index: 1;
+            opacity: 0.7;
         }
 
-        /* The Text Content Area */
-        .editorial-content {
+        /* Floating Experience Badge */
+        .experience-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--navy);
+            color: var(--gold);
+            padding: 30px 40px;
+            text-align: center;
+            z-index: 3;
+            box-shadow: 0 20px 40px rgba(10, 28, 58, 0.25);
+            border-top-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            border-left: 2px solid var(--gold);
+            border-top: 2px solid var(--gold);
+        }
+
+        .experience-badge .number {
+            font-family: var(--font-hero);
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .experience-badge .text {
+            font-family: var(--font-body);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #FFFFFF;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        /* Content Area */
+        .about-content {
             padding-left: 40px;
-            padding-top: 60px; /* Pushes text down to align with image nicely */
-            position: relative;
-            z-index: 5;
         }
 
-        .editorial-desc {
-            font-size: 1.25rem;
+        .about-lead {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-family: var(--font-body);
+        }
+
+        .about-desc {
+            font-size: 1.15rem;
             line-height: 1.9;
-            color: var(--text);
+            color: var(--muted);
+            margin-bottom: 45px;
             font-weight: 400;
-            margin-bottom: 60px;
         }
 
-        /* Horizontal Minimalist Values */
-        .editorial-values-row {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .editorial-value-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(10, 28, 58, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .editorial-value-item:first-child {
+        /* Modern 2x2 Value Grid */
+        .about-values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px 30px;
+            margin-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(10, 28, 58, 0.1);
         }
 
-        .editorial-value-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.4s ease;
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .editorial-value-item:hover::before {
-            width: 100%;
-        }
-
-        .editorial-value-item:hover {
-            padding-left: 15px;
-        }
-
-        .value-num {
-            font-family: var(--font-hero);
-            font-size: 1.5rem;
-            font-weight: 700;
+        .value-icon {
+            width: 45px;
+            height: 45px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--gold);
-            line-height: 1.2;
-            flex-shrink: 0;
-            width: 40px;
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(10, 28, 58, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .value-text h4 {
+        .value-item:hover .value-icon {
+            background: var(--gold);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .value-text h5 {
             font-family: var(--font-body);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--navy);
-            margin-bottom: 8px;
-            letter-spacing: 0.02em;
+            margin-bottom: 6px;
         }
 
         .value-text p {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--muted);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
         }
 
@@ -408,15 +462,15 @@
         }
 
         .anim-fade-up {
-            transform: translateY(60px);
+            transform: translateY(50px);
         }
 
         .anim-fade-right {
-            transform: translateX(-60px);
+            transform: translateX(-50px);
         }
 
         .anim-fade-left {
-            transform: translateX(60px);
+            transform: translateX(50px);
         }
 
         .is-in-view {
@@ -462,7 +516,7 @@
             .site-header-compact .nav-link { font-size: 14px; }
             .site-header-compact .btn-cta { padding: 8px 15px; font-size: 12px; }
             
-            .editorial-image { height: 600px; }
+            .about-image { height: 650px; }
         }
 
         @media (max-width: 1200px) {
@@ -475,12 +529,13 @@
             .hero-architectural { height: calc(100vh - 85px); }
             
             /* About Layout Adjustments */
-            .editorial-about-section { padding: 100px 0; }
-            .editorial-header { margin-bottom: 40px; }
-            .editorial-image-wrapper { padding-right: 0; padding-bottom: 0; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
-            .editorial-image-wrapper::before { display: none; }
-            .editorial-image { height: 500px; }
-            .editorial-content { padding-left: 0; padding-top: 0; }
+            .premium-about-section { padding: 100px 0; }
+            .about-image-wrapper { padding-right: 0; padding-bottom: 0; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; }
+            .about-image-wrapper::before { display: none; }
+            .about-image { height: 500px; }
+            .about-content { padding-left: 0; }
+            .experience-badge { padding: 20px 30px; }
+            .experience-badge .number { font-size: 2.5rem; }
         }
 
         @media (max-width: 991.98px) {
@@ -505,9 +560,9 @@
             .btn-hero-primary, .btn-hero-secondary { padding: 16px 30px; font-size: 16px; }
             
             .about-title { font-size: 2.5rem; }
-            .editorial-image { height: 400px; }
-            .editorial-value-item { padding: 20px 0; gap: 20px; }
-            .value-num { font-size: 1.2rem; width: 30px; }
+            .about-image { height: 400px; }
+            .about-lead { font-size: 1.3rem; }
+            .about-values-grid { grid-template-columns: 1fr; gap: 25px; }
             
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
             .footer-heading::after { left: 50%; transform: translateX(-50%); }
@@ -631,60 +686,80 @@
     </section>
 
     <!-- =========================================================
-         ARCHITECTURAL EDITORIAL ABOUT SECTION
+         PREMIUM ROUNDED-SQUARE ABOUT SECTION
     ========================================================= -->
-    <section class="editorial-about-section">
-        <div class="container">
+    <section class="premium-about-section">
+        <div class="container about-container">
             
-            <!-- Huge Overlapping Header -->
-            <div class="editorial-header anim-base anim-fade-up">
+            <!-- Header -->
+            <div class="about-header anim-base anim-fade-up">
                 <div class="about-kicker">About Artha</div>
                 <h2 class="about-title">
                     Great hospitality begins<br> with <em>great service.</em>
                 </h2>
             </div>
 
-            <div class="row">
+            <div class="row align-items-center">
                 
-                <!-- Left Column: Image -->
+                <!-- Left Column: Rounded Square Image -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="editorial-image-wrapper anim-base anim-fade-right delay-1">
-                        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=80" alt="Luxury Hospitality" class="editorial-image">
+                    <div class="about-image-wrapper anim-base anim-fade-right delay-1">
+                        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=80" alt="Luxury Hospitality" class="about-image">
+                        
+                        <!-- Floating Badge -->
+                        <div class="experience-badge">
+                            <span class="number">10+</span>
+                            <span class="text">Years of<br>Excellence</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Text & Values -->
+                <!-- Right Column: Content -->
                 <div class="col-lg-6">
-                    <div class="editorial-content anim-base anim-fade-left delay-2">
+                    <div class="about-content anim-base anim-fade-left delay-2">
                         
-                        <p class="editorial-desc">
-                            At Artha, we believe that great hospitality begins with great service. Our mission is to help restaurant owners and hospitality businesses overcome their toughest service challenges, improve guest satisfaction, and grow sustainably. With a deep understanding of the industry and a commitment to excellence, we provide tailor-made solutions that create lasting value for our partners.
+                        <p class="about-lead">
+                            We don't just consult; we partner with you to build robust, resilient business models that stand the test of time.
                         </p>
                         
-                        <!-- Horizontal Minimalist Values -->
-                        <div class="editorial-values-row">
+                        <p class="about-desc">
+                            At Artha, we believe that great hospitality begins with great service. Our mission is to help restaurant owners and hospitality businesses overcome their toughest service challenges, improve guest satisfaction, and grow sustainably. With a deep understanding of the industry and a commitment to excellence, we provide tailor-made solutions that create lasting value for our partners.
+                            <br><br>
+                            From the initial spark of a concept to the daily nuances of operations, our team of seasoned experts is dedicated to elevating your brand in a competitive landscape. Every detail matters, from the ambience you curate to the smiles of your staff, and we ensure that every touchpoint reflects your unique vision of excellence.
+                        </p>
+                        
+                        <!-- Modern 2x2 Grid -->
+                        <div class="about-values-grid">
                             
-                            <div class="editorial-value-item anim-base anim-fade-up delay-3">
-                                <div class="value-num">01</div>
+                            <div class="value-item anim-base anim-fade-up delay-3">
+                                <div class="value-icon"><i class="fas fa-concierge-bell"></i></div>
                                 <div class="value-text">
-                                    <h4>Guest Satisfaction</h4>
-                                    <p>Elevating every dining and stay experience to create loyal patrons for life.</p>
+                                    <h5>Guest Satisfaction</h5>
+                                    <p>Elevating every dining and stay experience to create loyal patrons.</p>
                                 </div>
                             </div>
                             
-                            <div class="editorial-value-item anim-base anim-fade-up delay-4">
-                                <div class="value-num">02</div>
+                            <div class="value-item anim-base anim-fade-up delay-3">
+                                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
                                 <div class="value-text">
-                                    <h4>Sustainable Growth</h4>
-                                    <p>Building robust business models that thrive and adapt for years to come.</p>
+                                    <h5>Sustainable Growth</h5>
+                                    <p>Building robust business models that thrive for years to come.</p>
                                 </div>
                             </div>
                             
-                            <div class="editorial-value-item anim-base anim-fade-up delay-4">
-                                <div class="value-num">03</div>
+                            <div class="value-item anim-base anim-fade-up delay-4">
+                                <div class="value-icon"><i class="fas fa-gem"></i></div>
                                 <div class="value-text">
-                                    <h4>Tailor-Made Solutions</h4>
+                                    <h5>Tailor-Made Solutions</h5>
                                     <p>Customized strategies that perfectly fit your unique brand and vision.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="value-item anim-base anim-fade-up delay-4">
+                                <div class="value-icon"><i class="fas fa-award"></i></div>
+                                <div class="value-text">
+                                    <h5>Industry Expertise</h5>
+                                    <p>Deep-rooted knowledge and a proven track record of operational success.</p>
                                 </div>
                             </div>
 
