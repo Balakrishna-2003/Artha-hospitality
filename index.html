@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artha Hospitality Management</title>
+    
+    <!-- Google Fonts: GFS Didot, Lato & Playfair Display (Latest API) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================================
+           ROOT VARIABLES
+        ========================================================= */
+        :root {
+            --bg: #FDFCF8;           
+            --navy: #0A1C3A;         
+            --gold: #D4AF37;         
+            --gold-hover: #C59B27;
+            --text: #1E2328;         
+            --muted: #6B7280;        
+            --cream: #F9F8F6; /* Highly aesthetic warm background */
+        
+            --font-heading: 'GFS Didot', serif;
+            --font-body: 'Lato', sans-serif;
+            --font-hero: 'Playfair Display', serif; 
+            
+            --border-color: rgba(10, 28, 58, 0.1);
+        }
+
+        /* =========================================================
+           GLOBAL RESET
+        ========================================================= */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            font-family: var(--font-body);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--navy);
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; margin: 0; padding: 0; }
+
+        /* =========================================================
+           PROJECT RULE: IMAGE CONVENTIONS
+        ========================================================= */
+        .cr-figure { margin: 0; padding: 0; display: block; }
+        .cr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0;
+            margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+            white-space: nowrap; border: 0;
+        }
+
+        /* =========================================================
+           HEADER (ORIGINAL FULL SIZE)
+        ========================================================= */
+        .site-header-original {
+            position: relative; width: 100%; height: fit-content; background: var(--bg);
+            border-bottom: 1px solid var(--border-color); z-index: 1100; 
+        }
+        
+        .header-inner {
+            display: flex; align-items: center; height: 100%;
+            padding: 0 40px; margin: 0 auto;
+        }
+
+        .brand { display: flex; align-items: center; flex-shrink: 0; margin-right: auto; }
+        .brand img { width: 320px; height: auto; object-fit: contain; }
+
+        .main-nav { display: flex; align-items: center; gap: 35px; margin-right: 45px; }
+        
+        .nav-link {
+            display: flex; flex-direction: column; align-items: center; position: relative;
+            font-family: var(--font-body); font-size: 18px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); white-space: nowrap; 
+            padding: 10px 0; transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 50%;
+            transform: translateX(-50%) scaleX(0); width: 100%; max-width: 45px; height: 3px; 
+            background: var(--gold); transition: transform 0.3s ease; transform-origin: center;
+        }
+        .nav-link:hover { color: var(--gold); }
+        .nav-link:hover::after { transform: translateX(-50%) scaleX(1); }
+        .nav-link.active { color: var(--navy); }
+        .nav-link.active::after { transform: translateX(-50%) scaleX(1); }
+
+        .btn-wrapper { display: flex; align-items: center; flex-shrink: 0; }
+
+        .btn-cta {
+            background: var(--navy); color: var(--bg); padding: 14px 28px; border-radius: 6px; 
+            font-family: var(--font-body); font-size: 18px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--navy);
+            display: inline-flex; align-items: center; gap: 12px; white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(10, 28, 58, 0.2); transition: all 0.3s ease;
+        }
+        .btn-cta:hover {
+            background: var(--gold); border-color: var(--gold); color: var(--navy);
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--navy); cursor: pointer; align-items: center; }
+
+        /* =========================================================
+           HEADER (COMPACT FIXED)
+        ========================================================= */
+        .site-header-compact {
+            position: fixed; top: 0; left: 0; width: 100%; background: var(--bg);
+            border-bottom: 1px solid var(--border-color); z-index: 1000; 
+            transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+        
+        .site-header-compact.is-visible { transform: translateY(0); box-shadow: 0 4px 20px rgba(10, 28, 58, 0.05); }
+
+        .site-header-compact .header-inner { position: relative; justify-content: space-between; height: 95px; }
+        .site-header-compact .brand { margin-right: 0; }
+        .site-header-compact .brand img { width: 240px; }
+        .site-header-compact .main-nav { position: absolute; left: 50%; transform: translateX(-50%); margin-right: 0; gap: 25px; }
+        .site-header-compact .nav-link { font-size: 18px; }
+        .site-header-compact .btn-wrapper { margin-left: auto; }
+        .site-header-compact .btn-cta { padding: 10px 20px; font-size: 18px; }
+
+        /* =========================================================
+           HERO SECTION (100VH & FIXED ALIGNMENT)
+        ========================================================= */
+        .hero-architectural {
+            position: relative; width: 100%; height: calc(100vh - 100px); 
+            min-height: 600px; background-color: var(--navy); overflow: hidden;
+        }
+
+        .hero-slider { position: absolute; inset: 0; z-index: 1; height: 100%; }
+        .hero-slider .carousel-inner, .hero-slider .carousel-item, .hero-slider .cr-figure, .hero-slider img { width: 100%; height: 100%; }
+
+        .hero-slider img {
+            object-fit: cover; object-position: center;
+            transform: scale(1.05); transition: transform 10s ease-out;
+        }
+        .hero-slider .carousel-item.active img { transform: scale(1); }
+
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: 2;
+            background: linear-gradient(90deg, rgba(10, 28, 58, 0.95) 0%, rgba(10, 28, 58, 0.85) 40%, rgba(10, 28, 58, 0.3) 75%, rgba(10, 28, 58, 0) 100%);
+        }
+
+        .hero-wave-decoration {
+            position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px;
+            border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.2); z-index: 3; pointer-events: none;
+        }
+        .hero-wave-decoration::before { content: ''; position: absolute; inset: 35px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.15); }
+        .hero-wave-decoration::after { content: ''; position: absolute; inset: 70px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.1); }
+
+        .hero-content-layer { position: absolute; inset: 0; z-index: 4; display: flex; align-items: center; padding: 0 5vw; }
+        .hero-text-box { max-width: 750px; color: #FFFFFF; position: relative; }
+
+        .hero-golden-line {
+            position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); z-index: 10;
+            transform: scaleY(0); transform-origin: top;
+            animation: drawLine 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.2s;
+        }
+        @keyframes drawLine { to { transform: scaleY(1); } }
+
+        .hero-text-mask { overflow: hidden; padding-left: 35px; padding-right: 30px; padding-bottom: 25px; padding-top: 15px; }
+
+        .hero-kicker {
+            font-family: var(--font-body); font-size: 13px; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+            margin-bottom: 20px; display: block; position: relative; padding-top: 15px;
+        }
+        .hero-kicker::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 2px; background: var(--gold); }
+
+        .hero-title {
+            font-family: var(--font-hero); font-size: clamp(2.8rem, 4.5vw, 4.5rem); color: #FFFFFF;
+            line-height: 1.1; margin-bottom: 25px; letter-spacing: -0.01em; font-weight: 700; 
+        }
+        .hero-title em { font-family: var(--font-hero); font-style: italic; color: var(--gold); font-weight: 700; display: block; }
+
+        .hero-desc {
+            font-size: 1.4rem; font-weight: 400; line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85); max-width: 650px; margin-bottom: 35px;
+        }
+
+        .hero-btns { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+
+        .btn-hero-primary {
+            background: var(--gold); color: var(--navy); padding: 18px 42px; font-size: 17px; font-weight: 700; border-radius: 4px;
+            transition: all 0.3s ease; border: 1px solid var(--gold); display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-hero-primary:hover { background: #FFFFFF; border-color: #FFFFFF; color: var(--navy); transform: translateY(-2px); }
+
+        .btn-hero-secondary {
+            background: transparent; color: #FFFFFF; padding: 18px 42px; font-size: 17px; font-weight: 700; border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.5); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-hero-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #FFFFFF; transform: translateY(-2px); }
+
+        /* =========================================================
+           ELEGANT PAGINATION & ARROWS
+        ========================================================= */
+        .hero-bottom-controls {
+            position: absolute; bottom: 40px; right: 5vw; z-index: 5;
+            display: flex; align-items: center; gap: 30px;
+        }
+
+        .hero-arrows { display: flex; gap: 12px; }
+
+        .hero-arrow-btn {
+            width: 46px; height: 46px; border-radius: 50%; background: rgba(10, 28, 58, 0.6); border: 1px solid rgba(212, 175, 55, 0.8);
+            color: var(--gold); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .hero-arrow-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); }
+
+        .hero-pagination { display: flex; align-items: center; gap: 15px; color: #FFFFFF; font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; }
+        .hero-pagination .current { color: var(--gold); font-size: 20px; transition: all 0.3s ease; }
+        .hero-pagination .total { color: rgba(255, 255, 255, 0.4); }
+        .hero-pagination .line { width: 50px; height: 2px; background: rgba(255, 255, 255, 0.2); position: relative; overflow: hidden; }
+        .hero-pagination .line::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: var(--gold); }
+
+        .text-anim { transform: translateX(calc(-100% - 40px)); animation: slideInLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes slideInLeft { to { transform: translateX(0); } }
+        .d-1 { animation-delay: 0.3s; }
+        .d-2 { animation-delay: 0.45s; }
+        .d-3 { animation-delay: 0.6s; }
+        .d-4 { animation-delay: 0.75s; }
+
+        /* =========================================================
+           ARCHITECTURAL EDITORIAL ABOUT SECTION
+        ========================================================= */
+        .editorial-about-section {
+            background-color: var(--cream);
+            padding: 160px 0 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* The Huge Overlapping Header */
+        .editorial-header {
+            position: relative;
+            z-index: 5;
+            margin-bottom: -40px; /* Pulls the image up under the text */
+            pointer-events: none; /* Let clicks pass through */
+        }
+
+        .about-kicker {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .about-title {
+            font-family: var(--font-hero);
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1.05;
+            color: var(--navy);
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .about-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* Image Composition */
+        .editorial-image-wrapper {
+            position: relative;
+            z-index: 2;
+            padding-right: 40px;
+            padding-bottom: 40px;
+        }
+
+        .editorial-image {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(10, 28, 58, 0.12);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Thin Gold Offset Frame */
+        .editorial-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--gold);
+            z-index: 1;
+        }
+
+        /* The Text Content Area */
+        .editorial-content {
+            padding-left: 40px;
+            padding-top: 60px; /* Pushes text down to align with image nicely */
+            position: relative;
+            z-index: 5;
+        }
+
+        .editorial-desc {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+            margin-bottom: 60px;
+        }
+
+        /* Horizontal Minimalist Values */
+        .editorial-values-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .editorial-value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(10, 28, 58, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .editorial-value-item:first-child {
+            border-top: 1px solid rgba(10, 28, 58, 0.1);
+        }
+
+        .editorial-value-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .editorial-value-item:hover::before {
+            width: 100%;
+        }
+
+        .editorial-value-item:hover {
+            padding-left: 15px;
+        }
+
+        .value-num {
+            font-family: var(--font-hero);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1.2;
+            flex-shrink: 0;
+            width: 40px;
+        }
+
+        .value-text h4 {
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .value-text p {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* =========================================================
+           SCROLL ANIMATIONS (RE-TRIGGERABLE)
+        ========================================================= */
+        .anim-base {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .anim-fade-up {
+            transform: translateY(60px);
+        }
+
+        .anim-fade-right {
+            transform: translateX(-60px);
+        }
+
+        .anim-fade-left {
+            transform: translateX(60px);
+        }
+
+        .is-in-view {
+            opacity: 1;
+            transform: translate(0, 0) !important;
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+        .site-footer { background: var(--navy); color: #FFFFFF; padding: 80px 0 30px; position: relative; z-index: 10; }
+        .footer-brand img { width: 250px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .footer-desc { font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.7); margin-bottom: 25px; font-weight: 300; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; transition: all 0.3s ease; }
+        .social-icons a:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+        .footer-heading { font-family: var(--font-heading); color: #FFFFFF; font-size: 22px; margin-bottom: 25px; position: relative; }
+        .footer-heading::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 40px; height: 2px; background: var(--gold); }
+        .footer-links li { margin-bottom: 15px; }
+        .footer-links a { color: rgba(255, 255, 255, 0.7); font-size: 15px; font-weight: 300; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--gold); padding-left: 8px; }
+        .footer-contact li { display: flex; gap: 15px; margin-bottom: 20px; color: rgba(255, 255, 255, 0.7); font-size: 15px; font-weight: 300; line-height: 1.6; }
+        .footer-contact i { color: var(--gold); margin-top: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 60px; padding-top: 25px; display: flex; justify-content: space-between; font-size: 13px; font-weight: 300; color: rgba(255, 255, 255, 0.5); }
+        .footer-bottom a { color: rgba(255, 255, 255, 0.5); }
+        .footer-bottom a:hover { color: var(--gold); }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+        @media (max-width: 1400px) {
+            .brand img { width: 280px; } 
+            .main-nav { gap: 25px; margin-right: 35px; }
+            .nav-link { font-size: 15px; }
+            .btn-cta { padding: 12px 20px; font-size: 13px; }
+            .site-header-compact .brand img { width: 240px; }
+            .site-header-compact .main-nav { gap: 20px; }
+            .site-header-compact .nav-link { font-size: 14px; }
+            .site-header-compact .btn-cta { padding: 8px 15px; font-size: 12px; }
+            
+            .editorial-image { height: 600px; }
+        }
+
+        @media (max-width: 1200px) {
+            .main-nav, .btn-wrapper { display: none !important; }
+            .mobile-toggle { display: flex; }
+            .site-header-original { height: 85px; }
+            .site-header-compact { height: 65px; }
+            .brand img { width: 240px; max-height: 60px; }
+            .site-header-compact .brand img { max-height: 40px; }
+            .hero-architectural { height: calc(100vh - 85px); }
+            
+            /* About Layout Adjustments */
+            .editorial-about-section { padding: 100px 0; }
+            .editorial-header { margin-bottom: 40px; }
+            .editorial-image-wrapper { padding-right: 0; padding-bottom: 0; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+            .editorial-image-wrapper::before { display: none; }
+            .editorial-image { height: 500px; }
+            .editorial-content { padding-left: 0; padding-top: 0; }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-overlay { background: linear-gradient(0deg, rgba(10, 28, 58, 0.98) 0%, rgba(10, 28, 58, 0.85) 60%, rgba(10, 28, 58, 0.3) 100%); }
+            .hero-wave-decoration { display: none; }
+            .hero-content-layer { align-items: flex-end; text-align: center; justify-content: center; padding: 0 20px 100px 20px; }
+            .hero-golden-line { display: none; }
+            .hero-text-box { max-width: 100%; }
+            .hero-text-mask { padding-left: 0; padding-right: 0; padding-bottom: 10px; }
+            .text-anim { transform: translateX(calc(-100% - 20px)); }
+            .hero-kicker { margin: 0 auto 20px; display: inline-block; }
+            .hero-kicker::before { left: 50%; transform: translateX(-50%); }
+            .hero-desc { margin: 0 auto 30px; font-size: 1.2rem; }
+            .hero-btns { justify-content: center; flex-direction: column; width: 100%; }
+            .btn-hero-primary, .btn-hero-secondary { width: 100%; text-align: center; justify-content: center; }
+            .hero-bottom-controls { bottom: 20px; right: 50%; transform: translateX(50%); flex-direction: row; gap: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-desc { font-size: 1.1rem; }
+            .btn-hero-primary, .btn-hero-secondary { padding: 16px 30px; font-size: 16px; }
+            
+            .about-title { font-size: 2.5rem; }
+            .editorial-image { height: 400px; }
+            .editorial-value-item { padding: 20px 0; gap: 20px; }
+            .value-num { font-size: 1.2rem; width: 30px; }
+            
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .footer-heading::after { left: 50%; transform: translateX(-50%); }
+            .footer-heading { text-align: center; }
+            .footer-brand, .footer-desc, .social-icons { text-align: center; justify-content: center; }
+            .footer-links, .footer-contact { text-align: center; }
+            .footer-contact li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================================
+         ORIGINAL HEADER
+    ========================================================= -->
+    <header class="site-header-original" id="mainHeaderOriginal">
+        <div class="header-inner">
+            <a href="#" class="brand">
+                <figure class="cr-figure">
+                    <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo">
+                    <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+                </figure>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">About us</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Openings</a>
+                <a href="#" class="nav-link">Clients</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="btn-wrapper">
+                <a href="#" class="btn-cta">Get in Touch <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- =========================================================
+         ARCHITECTURAL HERO SECTION
+    ========================================================= -->
+    <section class="hero-architectural">
+        
+        <div id="heroSlider" class="carousel slide carousel-fade hero-slider" data-bs-ride="carousel" data-bs-interval="6000">
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <figure class="cr-figure">
+                        <img src="images/slider-img-1.jpg" alt="Luxury Hotel Room Interior">
+                        <figcaption class="cr-only">Luxury Hotel Room Interior</figcaption>
+                    </figure>
+                </div>
+
+                <div class="carousel-item">
+                    <figure class="cr-figure">
+                        <img src="images/slider-img-2.jpg" alt="Hospitality Slide 2">
+                        <figcaption class="cr-only">Hospitality Slide 2</figcaption>
+                    </figure>
+                </div>
+
+                <div class="carousel-item">
+                    <figure class="cr-figure">
+                        <img src="images/slider-img-3.jpg" alt="Hospitality Slide 3">
+                        <figcaption class="cr-only">Hospitality Slide 3</figcaption>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hero-overlay"></div>
+        <div class="hero-wave-decoration"></div>
+
+        <div class="hero-content-layer">
+            <div class="hero-text-box">
+                
+                <div class="hero-golden-line"></div>
+                
+                <div class="hero-text-mask">
+                    <div class="hero-kicker text-anim d-1">HOSPITALITY CONSULTING & MANAGEMENT</div>
+                    
+                    <h1 class="hero-title text-anim d-2">
+                        Transforming <br>
+                        Hospitality. <br>
+                        <em>Building Successful <br> Business.</em>
+                    </h1>
+                    
+                    <p class="hero-desc text-anim d-3">
+                        Comprehensive, end-to-end solutions for restaurants, pubs, and hotels — from concept and planning to operations and long-term growth.
+                    </p>
+                    
+                    <div class="hero-btns text-anim d-4">
+                        <a href="#" class="btn-hero-primary">Our Services <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn-hero-secondary"><i class="far fa-calendar-alt"></i> Consult With Us</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="hero-bottom-controls">
+            <div class="hero-pagination">
+                <span class="current" id="currentSlideNum">01</span>
+                <div class="line"></div>
+                <span class="total">03</span>
+            </div>
+
+            <div class="hero-arrows">
+                <button type="button" class="hero-arrow-btn" data-bs-target="#heroSlider" data-bs-slide="prev" aria-label="Previous Slide">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button type="button" class="hero-arrow-btn" data-bs-target="#heroSlider" data-bs-slide="next" aria-label="Next Slide">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- =========================================================
+         ARCHITECTURAL EDITORIAL ABOUT SECTION
+    ========================================================= -->
+    <section class="editorial-about-section">
+        <div class="container">
+            
+            <!-- Huge Overlapping Header -->
+            <div class="editorial-header anim-base anim-fade-up">
+                <div class="about-kicker">About Artha</div>
+                <h2 class="about-title">
+                    Great hospitality begins<br> with <em>great service.</em>
+                </h2>
+            </div>
+
+            <div class="row">
+                
+                <!-- Left Column: Image -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="editorial-image-wrapper anim-base anim-fade-right delay-1">
+                        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=80" alt="Luxury Hospitality" class="editorial-image">
+                    </div>
+                </div>
+
+                <!-- Right Column: Text & Values -->
+                <div class="col-lg-6">
+                    <div class="editorial-content anim-base anim-fade-left delay-2">
+                        
+                        <p class="editorial-desc">
+                            At Artha, we believe that great hospitality begins with great service. Our mission is to help restaurant owners and hospitality businesses overcome their toughest service challenges, improve guest satisfaction, and grow sustainably. With a deep understanding of the industry and a commitment to excellence, we provide tailor-made solutions that create lasting value for our partners.
+                        </p>
+                        
+                        <!-- Horizontal Minimalist Values -->
+                        <div class="editorial-values-row">
+                            
+                            <div class="editorial-value-item anim-base anim-fade-up delay-3">
+                                <div class="value-num">01</div>
+                                <div class="value-text">
+                                    <h4>Guest Satisfaction</h4>
+                                    <p>Elevating every dining and stay experience to create loyal patrons for life.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="editorial-value-item anim-base anim-fade-up delay-4">
+                                <div class="value-num">02</div>
+                                <div class="value-text">
+                                    <h4>Sustainable Growth</h4>
+                                    <p>Building robust business models that thrive and adapt for years to come.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="editorial-value-item anim-base anim-fade-up delay-4">
+                                <div class="value-num">03</div>
+                                <div class="value-text">
+                                    <h4>Tailor-Made Solutions</h4>
+                                    <p>Customized strategies that perfectly fit your unique brand and vision.</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 footer-brand">
+                    <figure class="cr-figure">
+                        <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Logo">
+                        <figcaption class="cr-only">Artha Hospitality Logo</figcaption>
+                    </figure>
+                    <p class="footer-desc">Strategic hospitality consulting and management solutions for restaurants, pubs, and hotels. We help you build experiences that last.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Openings</a></li>
+                        <li><a href="#">Clients</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading">Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Capital Investment Plan</a></li>
+                        <li><a href="#">Location Selection</a></li>
+                        <li><a href="#">Outlet & Kitchen Design</a></li>
+                        <li><a href="#">Staffing Support</a></li>
+                        <li><a href="#">Interior Work & Civil Work</a></li>
+                        <li><a href="#">Food & Service Quality</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading">Get in Touch</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i><span>T-14, 3rd Floor, Meridian Guru Plaza, Bijai, Mangalore 575004</span></li>
+                        <li><i class="fas fa-phone-alt"></i><span>+91 99804 47824</span></li>
+                        <li><i class="fas fa-envelope"></i><span>artha.hm24@gmail.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Artha Hospitality Management. All Rights Reserved.</div>
+                <div>
+                    <a href="#">Privacy Policy</a> <span class="mx-2">|</span> <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- =========================================================
+         SCRIPTS
+    ========================================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Flawless Smart Header Logic ---
+            const originalHeader = document.getElementById('mainHeaderOriginal');
+            
+            const compactHeader = originalHeader.cloneNode(true);
+            compactHeader.classList.remove('site-header-original');
+            compactHeader.classList.add('site-header-compact');
+            compactHeader.removeAttribute('id'); 
+            
+            document.body.prepend(compactHeader);
+
+            const observer = new IntersectionObserver((entries) => {
+                const entry = entries[0];
+                if (entry.isIntersecting) {
+                    compactHeader.classList.remove('is-visible');
+                } else {
+                    compactHeader.classList.add('is-visible');
+                }
+            }, { threshold: 0, rootMargin: "0px" });
+
+            observer.observe(originalHeader);
+
+
+            // --- 2. Cinematic Slider Logic ---
+            const heroSlider = document.getElementById('heroSlider');
+            const currentSlideNum = document.getElementById('currentSlideNum');
+            const textBox = document.querySelector('.hero-text-box');
+            
+            function reanimateText() {
+                const line = textBox.querySelector('.hero-golden-line');
+                if (line) {
+                    line.style.animation = 'none';
+                    line.offsetHeight; 
+                    line.style.animation = null; 
+                }
+                
+                textBox.querySelectorAll('.text-anim').forEach(el => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; 
+                    el.style.animation = null; 
+                });
+            }
+
+            heroSlider.addEventListener('slid.bs.carousel', function (event) {
+                const slideIndex = event.to + 1;
+                currentSlideNum.textContent = '0' + slideIndex;
+                reanimateText();
+            });
+
+
+            // --- 3. Re-triggerable Scroll Animations ---
+            const animElements = document.querySelectorAll('.anim-base');
+            
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-in-view');
+                    } else {
+                        entry.target.classList.remove('is-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.15, 
+                rootMargin: "0px 0px -50px 0px" 
+            });
+
+            animElements.forEach(el => {
+                scrollObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
