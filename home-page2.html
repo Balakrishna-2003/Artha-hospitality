@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f2">
+  <meta name="description" content="Artha Hospitality Management provides connected consulting and management support for restaurants, pubs, resto-bars and hotels.">
+  <title>Artha Hospitality Management | Hospitality Consulting &amp; Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --sage: #8ca994;
+      --sage-dark: #5f806a;
+      --sage-deep: #496653;
+      --sage-soft: #eaf0e8;
+      --sage-wash: #f3f6f0;
+      --apricot: #d9947d;
+      --apricot-soft: #faeee8;
+      --cream: #f8f8f2;
+      --white: #fff;
+      --ink: #29352e;
+      --muted: #68756d;
+      --line: rgba(67, 91, 73, .14);
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --container: 1220px;
+      --header-height: 88px;
+      --ease: cubic-bezier(.22,.72,.25,1);
+      --shadow-sm: 0 8px 22px rgba(54, 77, 60, .07);
+      --shadow-lg: 0 22px 54px rgba(54, 77, 60, .13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    section { position: relative; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    p:last-child { margin-bottom: 0; }
+    ::selection { color: var(--ink); background: #dce9dc; }
+
+    .container { width: min(var(--container), calc(100% - 64px)); margin-inline: auto; }
+    .section { padding: clamp(64px, 7vw, 88px) 0; }
+    .section--tight { padding: 54px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--sage-dark);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 23px; height: 2px; border-radius: 2px; background: var(--apricot); }
+    .section-title {
+      max-width: 700px;
+      margin: 13px 0 14px;
+      color: var(--ink);
+      font-size: clamp(2.15rem, 4.2vw, 3.25rem);
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .section-title em { color: var(--sage-dark); font-weight: 400; }
+    .section-copy { max-width: 610px; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 36px; margin-bottom: 30px; }
+    .section-head .section-copy { max-width: 390px; margin-bottom: 4px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      min-height: 48px;
+      padding: 0 19px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .025em;
+      transition: transform .25s var(--ease), background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--sage-dark); border-color: var(--sage-dark); box-shadow: 0 7px 16px rgba(95,128,106,.16); }
+    .btn-primary:hover { color: white; background: var(--sage-deep); border-color: var(--sage-deep); box-shadow: 0 10px 22px rgba(73,102,83,.2); }
+    .btn-secondary { color: var(--ink); background: rgba(255,255,255,.72); border-color: var(--line); }
+    .btn-secondary:hover { color: var(--sage-deep); border-color: var(--sage); background: white; }
+    .btn-white { color: var(--sage-deep); background: white; border-color: white; }
+    .btn-white:hover { background: var(--sage-soft); border-color: var(--sage-soft); }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--sage-dark); font-size: 11px; font-weight: 800; transition: gap .2s ease, color .2s ease; }
+    .text-link:hover { gap: 14px; color: var(--sage-deep); }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      height: var(--header-height);
+      background: rgba(248,248,242,.94);
+      border-bottom: 1px solid transparent;
+      transition: height .3s var(--ease), box-shadow .3s ease, border-color .3s ease, background .3s ease;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .site-header.is-scrolled { height: 74px; border-color: var(--line); box-shadow: 0 7px 24px rgba(47,68,51,.07); background: rgba(248,248,242,.97); }
+    .header-inner { width: min(1390px, calc(100% - 64px)); height: 100%; margin: auto; display: flex; align-items: center; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; flex: 0 0 auto; margin-right: auto; }
+    .brand img { width: 218px; max-height: 72px; object-fit: contain; transition: width .3s var(--ease), max-height .3s var(--ease); }
+    .site-header.is-scrolled .brand img { width: 195px; max-height: 64px; }
+    .main-nav { display: flex; align-items: center; gap: clamp(17px, 2vw, 28px); }
+    .nav-link { position: relative; display: inline-flex; align-items: center; min-height: 42px; color: #5d6c62; font-size: 12px; font-weight: 700; white-space: nowrap; transition: color .2s ease; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 5px; height: 2px; border-radius: 2px; background: var(--apricot); transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
+    .nav-link:hover, .nav-link.active { color: var(--sage-deep); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .header-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 0 17px; border-radius: 5px; color: white; background: var(--sage-dark); font-size: 10px; font-weight: 800; transition: background .2s ease, transform .2s ease; white-space: nowrap; }
+    .header-cta:hover { color: white; background: var(--sage-deep); transform: translateY(-2px); }
+    .header-cta i { font-size: 10px; transition: transform .2s ease; }
+    .header-cta:hover i { transform: translateX(3px); }
+    .mobile-toggle { display: none; width: 43px; height: 43px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 5px; background: transparent; color: var(--sage-deep); font-size: 17px; cursor: pointer; }
+
+    /* Hero */
+    .hero { overflow: hidden; background: var(--sage-wash); }
+    .hero-grid { min-height: 570px; display: grid; grid-template-columns: .91fr 1.09fr; align-items: center; gap: clamp(30px, 5vw, 66px); padding-top: 37px; padding-bottom: 37px; }
+    .hero-copy { position: relative; z-index: 2; max-width: 535px; padding: 12px 0; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--sage-dark); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .hero-kicker i { color: var(--apricot); font-size: 13px; }
+    .hero h1 { margin: 18px 0 16px; color: #405349; font-size: clamp(3.1rem, 5.25vw, 4.45rem); letter-spacing: -.055em; line-height: .99; }
+    .hero h1 em { display: block; color: var(--sage-dark); font-weight: 400; }
+    .hero-description { max-width: 470px; margin-bottom: 23px; color: #68776d; font-size: 14px; line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-visual { position: relative; min-width: 0; }
+    .hero-frame { position: relative; height: clamp(380px, 42vw, 500px); overflow: hidden; border-radius: 10px 74px 10px 10px; background: #dfe8df; box-shadow: var(--shadow-lg); }
+    .hero-frame::after { content: ""; position: absolute; inset: 12px; z-index: 2; border: 1px solid rgba(255,255,255,.62); border-radius: 5px 62px 5px 5px; pointer-events: none; }
+    .hero-slides, .hero-slide { position: absolute; inset: 0; }
+    .hero-slide { opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility .8s ease; }
+    .hero-slide.active { opacity: 1; visibility: visible; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.035); transition: transform 7s linear; }
+    .hero-slide.active img { transform: scale(1); }
+    .hero-image-caption { position: absolute; z-index: 3; left: 28px; bottom: 26px; max-width: 245px; padding: 12px 15px; border: 1px solid rgba(255,255,255,.56); border-radius: 6px; background: rgba(255,255,255,.87); box-shadow: var(--shadow-sm); backdrop-filter: blur(10px); }
+    .hero-image-caption span { display: block; color: var(--sage-dark); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .hero-image-caption strong { display: block; margin-top: 2px; color: var(--ink); font-family: var(--serif); font-size: 19px; font-weight: 400; line-height: 1.2; }
+    .hero-controls { position: absolute; z-index: 4; right: 18px; bottom: 20px; display: flex; align-items: center; gap: 7px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.6); border-radius: 30px; background: rgba(255,255,255,.9); box-shadow: var(--shadow-sm); backdrop-filter: blur(9px); }
+    .hero-count { display: inline-flex; align-items: center; gap: 6px; min-width: 52px; padding-left: 3px; color: #7a887d; font-size: 9px; font-weight: 800; white-space: nowrap; }
+    .hero-count i { color: var(--sage-dark); font-size: 11px; }
+    .hero-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 20px; background: #cbd8cc; cursor: pointer; transition: width .22s ease, background .22s ease; }
+    .hero-dot.active { width: 20px; background: var(--sage-dark); }
+    .hero-arrow { display: grid; place-items: center; width: 29px; height: 29px; margin-left: 2px; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--sage-dark); cursor: pointer; transition: color .2s ease, background .2s ease; }
+    .hero-arrow:hover { color: white; background: var(--sage-dark); }
+    .hero-stamp { position: absolute; z-index: 2; top: -18px; right: 24px; display: grid; place-items: center; width: 58px; height: 58px; border: 1px solid rgba(95,128,106,.18); border-radius: 50%; color: var(--sage-dark); background: rgba(255,255,255,.76); box-shadow: var(--shadow-sm); font-size: 20px; transform: rotate(8deg); pointer-events: none; }
+
+    /* Expertise strip */
+    .expertise-strip { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .expertise-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .expertise-item { display: flex; align-items: center; gap: 12px; min-height: 78px; padding: 13px 18px; border-right: 1px solid var(--line); }
+    .expertise-item:first-child { padding-left: 0; }
+    .expertise-item:last-child { border: 0; }
+    .expertise-icon { display: grid; place-items: center; width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; color: var(--sage-deep); background: var(--sage-soft); font-size: 14px; }
+    .expertise-item:nth-child(even) .expertise-icon { color: #ba775f; background: var(--apricot-soft); }
+    .expertise-item span { color: #56675c; font-size: 11px; font-weight: 800; line-height: 1.45; }
+
+    /* About */
+    .about-section { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: clamp(42px, 6vw, 76px); }
+    .about-visual { position: relative; min-height: 475px; padding: 0 56px 44px 0; }
+    .about-main { width: 84%; height: 430px; overflow: hidden; border-radius: 8px 58px 8px 8px; background: var(--sage-soft); }
+    .about-main img { width: 100%; height: 100%; object-fit: cover; }
+    .about-secondary { position: absolute; right: 0; bottom: 0; width: 44%; height: 190px; padding: 6px; border-radius: 8px; background: white; box-shadow: var(--shadow-lg); }
+    .about-secondary img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+    .about-note { position: absolute; z-index: 2; left: -11px; bottom: 26px; display: flex; align-items: center; gap: 10px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.8); border-radius: 5px; background: white; box-shadow: var(--shadow-sm); }
+    .about-note i { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; color: var(--sage-deep); background: var(--sage-soft); font-size: 12px; }
+    .about-note span { color: var(--ink); font-size: 10px; font-weight: 800; }
+    .about-copy .section-title { max-width: 590px; }
+    .about-lead { margin-bottom: 12px; color: #55675b; font-size: 15px; font-weight: 700; line-height: 1.7; }
+    .about-text { margin-bottom: 22px; color: var(--muted); font-size: 13px; line-height: 1.85; }
+    .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .value-item { display: flex; align-items: flex-start; gap: 10px; }
+    .value-icon { display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 50%; color: var(--sage-deep); background: var(--sage-soft); font-size: 12px; }
+    .value-item:nth-child(even) .value-icon { color: #b97861; background: var(--apricot-soft); }
+    .value-item h3 { margin: 1px 0 3px; color: var(--ink); font-family: var(--sans); font-size: 11px; font-weight: 800; }
+    .value-item p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+
+    /* Services */
+    .services-section { background: var(--sage-wash); }
+    .services-head { align-items: end; flex-wrap: wrap; gap: 14px 30px; }
+    .services-head > div { flex: 1 1 430px; min-width: 0; }
+    .services-head .section-copy { flex: 0 1 370px; max-width: 370px; margin-bottom: 3px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      align-items: stretch;
+      gap: 14px;
+    }
+    .service-card {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      min-height: 222px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 21px 21px 20px;
+      overflow: hidden;
+      border: 1px solid rgba(86,112,92,.15);
+      border-radius: 10px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 3px 12px rgba(54,77,60,.025);
+      transition: transform .28s var(--ease), box-shadow .28s ease, border-color .28s ease, background .28s ease;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 3px;
+      height: 30px;
+      border-radius: 0 4px 4px 0;
+      background: var(--sage);
+      opacity: .0;
+      transform: scaleY(.65);
+      transform-origin: center;
+      transition: opacity .25s ease, transform .25s var(--ease);
+    }
+    .service-card::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -55px;
+      width: 125px;
+      height: 125px;
+      border: 1px solid rgba(140,169,148,.19);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform .4s var(--ease), border-color .3s ease;
+    }
+    .service-card:hover {
+      z-index: 1;
+      transform: translateY(-4px);
+      border-color: rgba(95,128,106,.34);
+      background: #fff;
+      box-shadow: 0 12px 26px rgba(54,77,60,.085);
+    }
+    .service-card:hover::before { opacity: 1; transform: scaleY(1); }
+    .service-card:hover::after { transform: scale(1.12); border-color: rgba(140,169,148,.3); }
+    .service-top {
+      display: flex;
+      width: 100%;
+      min-height: 38px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .service-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #728579;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+    .service-category i { color: var(--apricot); font-size: 12px; }
+    .service-icon {
+      display: grid;
+      flex: 0 0 38px;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      color: var(--sage-deep);
+      background: var(--sage-soft);
+      font-size: 14px;
+      transition: transform .28s var(--ease), border-radius .28s ease, background .28s ease;
+    }
+    .service-card:nth-child(3n + 2) .service-icon { color: #b97861; background: var(--apricot-soft); }
+    .service-card:hover .service-icon { transform: translateY(-2px) rotate(-4deg); border-radius: 50%; }
+    .service-card h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 310px;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: clamp(20px, 1.7vw, 23px);
+      line-height: 1.16;
+      letter-spacing: -.015em;
+    }
+    .service-card p {
+      position: relative;
+      z-index: 1;
+      max-width: 390px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.68;
+    }
+    .service-category i, .industry-label i { display: inline-grid; place-items: center; }
+
+    /* Industries */
+    .industries-section { background: var(--cream); }
+    .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 27px; }
+    .industry-card { position: relative; min-height: 310px; overflow: hidden; border-radius: 8px; background: #dce6dc; }
+    .industry-card img { width: 100%; height: 100%; min-height: 310px; object-fit: cover; transition: transform .7s var(--ease); }
+    .industry-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,43,32,0) 28%, rgba(26,43,32,.72) 100%); pointer-events: none; }
+    .industry-card:hover img { transform: scale(1.055); }
+    .industry-content { position: absolute; z-index: 1; left: 21px; right: 20px; bottom: 20px; color: white; }
+    .industry-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #f3cdbd; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .industry-label i { font-size: 12px; }
+    .industry-content h3 { margin-bottom: 4px; color: white; font-size: 29px; line-height: 1.06; }
+    .industry-content p { max-width: 330px; margin: 0; color: rgba(255,255,255,.88); font-size: 12px; line-height: 1.65; }
+
+    /* Why Artha */
+    .why-section { background: white; }
+    .why-grid { display: grid; grid-template-columns: .83fr 1.17fr; gap: clamp(40px, 6vw, 78px); align-items: center; }
+    .why-intro { max-width: 460px; }
+    .why-intro .section-title { font-size: clamp(2.05rem, 3.8vw, 2.9rem); }
+    .why-intro .section-copy { margin-bottom: 20px; }
+    .why-image { position: relative; height: 355px; margin-top: 24px; overflow: hidden; border-radius: 8px 52px 8px 8px; }
+    .why-image img { width: 100%; height: 100%; object-fit: cover; }
+    .why-list { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .why-card { min-height: 160px; padding: 20px 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--cream); transition: transform .25s var(--ease), box-shadow .25s ease; }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .why-card:nth-child(2), .why-card:nth-child(3) { background: var(--sage-wash); }
+    .why-card-icon { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 13px; border-radius: 50%; color: var(--sage-deep); background: white; font-size: 13px; }
+    .why-card h3 { margin-bottom: 5px; color: var(--ink); font-family: var(--sans); font-size: 12px; font-weight: 800; }
+    .why-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+    /* Working process */
+    .process-section { background: var(--apricot-soft); }
+    .process-head { max-width: 720px; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 27px; border-top: 1px solid rgba(185,119,97,.3); }
+    .process-step { position: relative; padding: 24px 22px 8px 0; }
+    .process-step + .process-step { padding-left: 22px; border-left: 1px solid rgba(185,119,97,.23); }
+    .process-step::before { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border: 2px solid var(--apricot); border-radius: 50%; background: var(--apricot-soft); }
+    .process-step .step-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border: 1px solid rgba(185,119,97,.25); border-radius: 50%; color: #a96650; background: rgba(255,255,255,.72); font-size: 15px; transition: transform .25s var(--ease), background .25s ease, color .25s ease; }
+    .process-step:hover .step-icon { transform: translateY(-3px); color: white; background: var(--sage-dark); }
+    .process-step h3 { margin-bottom: 6px; color: var(--ink); font-size: 23px; line-height: 1.1; }
+    .process-step p { max-width: 255px; margin: 0; color: #7a6d66; font-size: 12px; line-height: 1.78; }
+    .process-footnote { display: flex; align-items: flex-start; gap: 10px; max-width: 770px; margin: 25px 0 0; color: #786c65; font-size: 12px; line-height: 1.7; }
+    .process-footnote i { margin-top: 3px; color: var(--sage-dark); }
+
+    /* CTA */
+    .cta-section { padding: 62px 0; background: var(--sage-dark); color: white; overflow: hidden; }
+    .cta-section::before, .cta-section::after { content: ""; position: absolute; width: 330px; height: 330px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; pointer-events: none; }
+    .cta-section::before { top: -240px; left: -130px; box-shadow: 0 0 0 32px rgba(255,255,255,.035), 0 0 0 64px rgba(255,255,255,.025); }
+    .cta-section::after { right: -165px; bottom: -250px; }
+    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .cta-inner .eyebrow { color: #e5efe5; }
+    .cta-inner .eyebrow::before { background: #e9b49f; }
+    .cta-inner h2 { max-width: 760px; margin: 9px 0 0; color: white; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.08; }
+    .cta-inner h2 em { color: #f2c8b7; }
+
+    /* Contact */
+    .contact-section { background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(38px, 6vw, 75px); align-items: start; }
+    .contact-copy { max-width: 455px; }
+    .contact-copy .section-title { font-size: clamp(2.15rem, 4vw, 3.1rem); }
+    .contact-copy > p { margin-bottom: 23px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .contact-details { display: grid; gap: 14px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 11px; }
+    .contact-detail > i { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; color: var(--sage-deep); background: var(--sage-soft); font-size: 13px; }
+    .contact-detail:nth-child(2) > i, .contact-detail:nth-child(3) > i { color: #b97861; background: var(--apricot-soft); }
+    .contact-detail small { display: block; margin-bottom: 2px; color: #87958a; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .contact-detail a, .contact-detail span { color: var(--ink); font-size: 12px; font-weight: 700; line-height: 1.65; }
+    .contact-form { padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: white; box-shadow: var(--shadow-sm); }
+    .contact-form h3 { margin-bottom: 4px; color: var(--ink); font-size: 29px; }
+    .contact-form > p { margin-bottom: 19px; color: var(--muted); font-size: 11px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #596b5e; font-size: 10px; font-weight: 800; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid rgba(89,112,96,.19); border-radius: 5px; outline: none; color: var(--ink); background: #fcfdfb; font-size: 12px; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--sage); background: white; box-shadow: 0 0 0 3px rgba(140,169,148,.14); }
+    .form-submit { min-height: 45px; margin-top: 16px; padding: 0 17px; border: 1px solid var(--sage-dark); border-radius: 5px; color: white; background: var(--sage-dark); font-size: 10px; font-weight: 800; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+    .form-submit:hover { transform: translateY(-2px); background: var(--sage-deep); }
+    .form-note { margin: 9px 0 0; color: #8a958c; font-size: 9px; line-height: 1.6; }
+
+    /* Footer */
+    .site-footer { padding: 54px 0 20px; background: #edf2eb; border-top: 1px solid var(--line); }
+    .footer-grid { display: grid; grid-template-columns: 1.35fr .7fr 1fr 1fr; gap: 32px; }
+    .footer-brand img { width: 195px; max-height: 65px; object-fit: contain; margin-bottom: 13px; }
+    .footer-brand p { max-width: 290px; margin-bottom: 15px; color: #718076; font-size: 11px; line-height: 1.75; }
+    .social-links { display: flex; gap: 7px; }
+    .social-links a { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid rgba(95,128,106,.24); border-radius: 50%; color: var(--sage-deep); font-size: 11px; transition: color .2s ease, background .2s ease; }
+    .social-links a:hover { color: white; background: var(--sage-dark); }
+    .footer-column h3 { margin: 3px 0 13px; color: var(--ink); font-family: var(--sans); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .footer-links, .footer-contact { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .footer-links a, .footer-contact li, .footer-contact a { color: #718076; font-size: 10px; line-height: 1.6; transition: color .2s ease; }
+    .footer-links a:hover, .footer-contact a:hover { color: var(--sage-deep); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 8px; }
+    .footer-contact i { margin-top: 3px; color: var(--sage-dark); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 33px; padding-top: 15px; border-top: 1px solid rgba(95,128,106,.18); color: #89958b; font-size: 9px; }
+
+    /* Small, performant reveal animations */
+    .reveal { opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity .65s var(--ease), transform .65s var(--ease); transition-delay: var(--delay, 0ms); }
+    .reveal.is-visible { opacity: 1; transform: translate3d(0,0,0); }
+    .reveal-left, .reveal-right { transform: translate3d(0,18px,0); }
+    .reveal-left.is-visible, .reveal-right.is-visible { transform: translate3d(0,0,0); }
+    .media-reveal { overflow: hidden; }
+    .media-reveal img { transition: transform .8s var(--ease); }
+    .media-reveal:hover img { transform: scale(1.035); }
+    :focus-visible { outline: 3px solid rgba(217,148,125,.65); outline-offset: 3px; }
+    .skip-link:focus { position: fixed !important; z-index: 2000; top: 12px; left: 12px !important; width: auto !important; height: auto !important; padding: 10px 14px; overflow: visible !important; border-radius: 5px; color: white; background: var(--sage-deep); }
+
+    /* Responsive */
+    @media (max-width: 1080px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .services-head { display: block; }
+      .services-head .section-copy { max-width: 720px; margin-top: 10px; }
+      .service-card { min-height: 212px; }
+    }
+    @media (max-width: 1120px) {
+      .header-inner { width: calc(100% - 44px); gap: 19px; }
+      .brand img { width: 195px; }
+      .main-nav { gap: 16px; }
+      .nav-link { font-size: 11px; }
+      .header-cta { padding-inline: 13px; }
+      .hero-grid { gap: 30px; }
+      .about-grid, .why-grid { gap: 42px; }
+      .footer-grid { gap: 23px; }
+    }
+    @media (max-width: 960px) {
+      .main-nav, .header-cta { display: none; }
+      .mobile-toggle { display: inline-flex; }
+      .header-inner { position: relative; }
+      .main-nav.is-open { position: absolute; top: 100%; left: -22px; right: -22px; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 9px 22px 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(248,248,242,.99); box-shadow: 0 15px 24px rgba(47,68,51,.09); }
+      .main-nav.is-open .nav-link { min-height: 46px; border-bottom: 1px solid var(--line); }
+      .main-nav.is-open .nav-link:last-child { border-bottom: 0; }
+      .main-nav.is-open .nav-link::after { bottom: 7px; right: auto; width: 28px; }
+      .site-header { height: 82px; }
+      .site-header.is-scrolled { height: 70px; }
+      .brand img { width: 190px; max-height: 66px; }
+      .site-header.is-scrolled .brand img { width: 178px; }
+      .hero-grid { min-height: auto; grid-template-columns: .9fr 1.1fr; padding-top: 34px; padding-bottom: 34px; }
+      .hero h1 { font-size: clamp(2.8rem, 5.3vw, 3.8rem); }
+      .hero-frame { height: 400px; }
+      .expertise-grid { grid-template-columns: repeat(2,1fr); }
+      .expertise-item:nth-child(2) { border-right: 0; }
+      .expertise-item:nth-child(3), .expertise-item:nth-child(4) { border-top: 1px solid var(--line); }
+      .about-grid, .why-grid { grid-template-columns: 1fr; }
+      .about-visual { width: min(630px, 100%); margin-inline: auto; }
+      .about-copy { max-width: 740px; }
+      .why-intro { display: grid; grid-template-columns: .85fr 1.15fr; column-gap: 28px; max-width: none; align-items: end; }
+      .why-intro .eyebrow { grid-column: 1 / -1; }
+      .why-intro .section-title { margin-bottom: 0; }
+      .why-intro .section-copy { margin-bottom: 2px; }
+      .why-image { display: none; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 720px) {
+      .container { width: calc(100% - 40px); }
+      .section { padding: 65px 0; }
+      .section-head { display: block; margin-bottom: 24px; }
+      .section-head .section-copy { margin-top: 10px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; padding-top: 35px; padding-bottom: 30px; }
+      .hero-copy { max-width: 620px; }
+      .hero h1 { max-width: 580px; margin-top: 14px; font-size: clamp(2.9rem, 8vw, 4rem); }
+      .hero-description { max-width: 560px; margin-bottom: 17px; font-size: 13px; }
+      .hero-frame { height: min(56vw, 340px); min-height: 235px; border-radius: 8px 46px 8px 8px; }
+      .hero-frame::after { inset: 8px; border-radius: 4px 38px 4px 4px; }
+      .hero-image-caption { left: 17px; bottom: 16px; padding: 9px 12px; }
+      .hero-image-caption strong { font-size: 16px; }
+      .hero-controls { right: 12px; bottom: 11px; gap: 5px; padding: 5px 7px; }
+      .hero-count { min-width: 48px; font-size: 8px; }
+      .hero-arrow { width: 25px; height: 25px; font-size: 9px; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .expertise-item { min-height: 64px; padding: 10px 8px; }
+      .expertise-item:first-child { padding-left: 8px; }
+      .expertise-item:nth-child(odd) { border-right: 1px solid var(--line); }
+      .expertise-item:nth-child(even) { border-right: 0; }
+      .expertise-item:nth-child(3) { border-top: 1px solid var(--line); }
+      .expertise-item:nth-child(4) { border-top: 1px solid var(--line); }
+      .expertise-icon { width: 31px; height: 31px; flex-basis: 31px; font-size: 12px; }
+      .expertise-item span { font-size: 10px; }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .service-card { min-height: 0; padding: 19px 17px; }
+      .service-top { margin-bottom: 12px; }
+      .service-card h3 { max-width: 100%; margin-bottom: 7px; font-size: 20px; }
+      .service-card p { max-width: 100%; font-size: 12px; line-height: 1.68; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .industry-card:last-child { grid-column: 1 / -1; }
+      .industry-card, .industry-card img { min-height: 285px; }
+      .industry-content { left: 15px; right: 14px; bottom: 15px; }
+      .industry-content h3 { font-size: 25px; }
+      .why-intro { display: block; }
+      .why-intro .section-title { margin-bottom: 12px; }
+      .why-list { gap: 9px; }
+      .why-card { min-height: 150px; padding: 16px 14px; }
+      .process-grid { grid-template-columns: 1fr 1fr; row-gap: 12px; }
+      .process-step { padding: 20px 13px 6px 0; }
+      .process-step + .process-step { padding-left: 13px; }
+      .process-step:nth-child(3) { border-left: 0; padding-left: 0; }
+      .cta-inner { align-items: flex-start; flex-direction: column; gap: 18px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 27px 20px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .container { width: calc(100% - 32px); }
+      .header-inner { width: calc(100% - 32px); }
+      .brand img { width: 174px; max-height: 60px; }
+      .site-header.is-scrolled .brand img { width: 165px; }
+      .site-header { height: 74px; }
+      .site-header.is-scrolled { height: 66px; }
+      .mobile-toggle { width: 40px; height: 40px; }
+      .hero-grid { padding-top: 29px; }
+      .hero h1 { font-size: clamp(2.55rem, 10.4vw, 3.2rem); }
+      .hero-description { font-size: 12px; line-height: 1.75; }
+      .hero-actions { gap: 8px; }
+      .btn { min-height: 43px; padding-inline: 13px; font-size: 10px; }
+      .hero-frame { min-height: 220px; }
+      .hero-image-caption { max-width: 185px; }
+      .hero-image-caption strong { font-size: 14px; }
+      .section-title { font-size: 2rem; }
+      .about-visual { min-height: 360px; padding: 0 33px 32px 0; }
+      .about-main { width: 88%; height: 325px; border-top-right-radius: 42px; }
+      .about-secondary { width: 47%; height: 135px; }
+      .about-note { left: -5px; bottom: 13px; padding: 8px 10px; }
+      .about-note span { font-size: 9px; }
+      .value-grid { gap: 12px 9px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 0; padding: 19px 17px; }
+      .service-card h3 { max-width: 100%; margin-bottom: 7px; font-size: 21px; }
+      .service-card p { max-width: 100%; font-size: 12.5px; line-height: 1.68; }
+      .service-top { margin-bottom: 11px; }
+      .service-category { font-size: 9px; }
+      .service-icon { flex-basis: 35px; width: 35px; height: 35px; font-size: 13px; }
+      .industries-grid { grid-template-columns: 1fr; }
+      .industry-card:last-child { grid-column: auto; }
+      .industry-card, .industry-card img { min-height: 265px; }
+      .why-list { grid-template-columns: 1fr; }
+      .why-card { min-height: auto; }
+      .process-step h3 { font-size: 20px; }
+      .process-step p { font-size: 10px; }
+      .contact-form { padding: 20px 16px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Artha Hospitality Management home">
+        <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management" width="218" height="72">
+      </a>
+      <nav class="main-nav" id="primaryNav" aria-label="Primary navigation">
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#industries">Industries</a>
+        <a class="nav-link" href="#approach">Our approach</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <a class="header-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <button class="mobile-toggle" type="button" aria-label="Open navigation" aria-controls="primaryNav" aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-kicker"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Hospitality consulting &amp; management</span>
+          <h1>Better hospitality.<em>Built together.</em></h1>
+          <p class="hero-description">From shaping a new concept to strengthening an established operation, Artha helps restaurants, pubs, resto-bars and hotels make informed decisions across planning, design, people, purchasing and service. The aim is simple: bring the moving parts of hospitality together so the business works well behind the scenes and feels welcoming to every guest.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore our services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn-secondary" href="#about">Discover Artha</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Hospitality team and guest service">
+          <span class="hero-stamp" aria-hidden="true"><i class="fa-solid fa-bell-concierge"></i></span>
+          <div class="hero-frame">
+            <div class="hero-slides" aria-live="off">
+              <div class="hero-slide active"><img src="images/slider-img-1.jpg" alt="Hospitality professionals welcoming guests" width="900" height="650" fetchpriority="high"></div>
+              <div class="hero-slide"><img src="images/slider-img-2.jpg" alt="A hospitality dining space" width="900" height="650" loading="lazy" decoding="async"></div>
+              <div class="hero-slide"><img src="images/slider-img-3.jpg" alt="A restaurant service and dining experience" width="900" height="650" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="hero-image-caption"><span>People · Place · Experience</span><strong>Every detail shapes hospitality.</strong></div>
+            <div class="hero-controls" aria-label="Hero slideshow controls">
+              <span class="hero-count"><i class="fa-regular fa-images" aria-hidden="true"></i><span>Gallery</span></span>
+              <button class="hero-dot active" type="button" data-slide="0" aria-label="Show slide 1" aria-pressed="true"></button>
+              <button class="hero-dot" type="button" data-slide="1" aria-label="Show slide 2" aria-pressed="false"></button>
+              <button class="hero-dot" type="button" data-slide="2" aria-label="Show slide 3" aria-pressed="false"></button>
+              <button class="hero-arrow" id="heroPrev" type="button" aria-label="Previous slide"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+              <button class="hero-arrow" id="heroNext" type="button" aria-label="Next slide"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core areas -->
+    <section class="expertise-strip" aria-label="Core areas of support">
+      <div class="container expertise-grid">
+        <div class="expertise-item"><i class="expertise-icon fa-solid fa-lightbulb" aria-hidden="true"></i><span>Concept development<br>&amp; investment planning</span></div>
+        <div class="expertise-item"><i class="expertise-icon fa-solid fa-compass-drafting" aria-hidden="true"></i><span>Outlet design<br>&amp; development</span></div>
+        <div class="expertise-item"><i class="expertise-icon fa-solid fa-people-group" aria-hidden="true"></i><span>Team planning<br>&amp; daily operations</span></div>
+        <div class="expertise-item"><i class="expertise-icon fa-solid fa-star" aria-hidden="true"></i><span>Guest experience<br>&amp; service quality</span></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual reveal reveal-left">
+          <div class="about-main media-reveal">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="Welcoming and thoughtfully designed restaurant interior" width="760" height="950" loading="lazy" decoding="async">
+          </div>
+          <div class="about-secondary media-reveal">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=600&amp;q=82" alt="Chef at work in a professional kitchen" width="600" height="400" loading="lazy" decoding="async">
+          </div>
+          <div class="about-note"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i><span>Practical support, connected thinking</span></div>
+        </div>
+
+        <div class="about-copy reveal reveal-right">
+          <span class="eyebrow">About Artha</span>
+          <h2 class="section-title">The details make the difference. <em>We help bring them together.</em></h2>
+          <p class="about-lead">We work alongside hospitality owners and teams to turn promising ideas into considered concepts and more confident day-to-day operations.</p>
+          <p class="about-text">A successful hospitality business depends on many things working in harmony: a clear concept, a suitable location, a functional space, a capable team, considered purchasing and consistent service. A decision in one area can affect the way another area performs, which is why it helps to look at the whole operation rather than treating every challenge in isolation.</p>
+          <p class="about-text">Artha brings these connected requirements into one conversation. Whether you are preparing to open a new outlet, reviewing an existing operation or looking for support in a specific area, the work can be shaped around your concept, priorities and stage of business.</p>
+          <div class="value-grid">
+            <div class="value-item"><span class="value-icon"><i class="fa-solid fa-bell-concierge" aria-hidden="true"></i></span><div><h3>Guest-first thinking</h3><p>Keep comfort, service consistency and the small moments of guest interaction in view when making operational decisions.</p></div></div>
+            <div class="value-item"><span class="value-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span><div><h3>Business clarity</h3><p>Consider how day-to-day choices support the wider goals, resources and direction of the business.</p></div></div>
+            <div class="value-item"><span class="value-icon"><i class="fa-solid fa-sliders" aria-hidden="true"></i></span><div><h3>Tailored support</h3><p>Adapt the scope of support to your concept, stage of development, immediate challenges and longer-term priorities.</p></div></div>
+            <div class="value-item"><span class="value-icon"><i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i></span><div><h3>Connected expertise</h3><p>Bring the physical space, the team, suppliers and service routines into a connected view of the operation.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section section" id="services">
+      <div class="container">
+        <div class="section-head services-head reveal">
+          <div><span class="eyebrow">What we help with</span><h2 class="section-title">Support for the decisions <em>behind a strong operation.</em></h2></div>
+          <p class="section-copy">A hospitality business is made up of many connected decisions. We help you examine the important details, understand what needs attention and bring the right areas of support together—from the first investment plan to the quality of the guest experience.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" style="--delay:0ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>Planning</span><i class="service-icon fa-solid fa-coins" aria-hidden="true"></i></div><h3>Capital Investment Planning</h3><p>Clarify the investment requirements behind your concept, organise priorities and consider how major setup decisions relate to the resources available for the project.</p></article>
+          <article class="service-card reveal" style="--delay:60ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-compass" aria-hidden="true"></i>Location strategy</span><i class="service-icon fa-solid fa-location-dot" aria-hidden="true"></i></div><h3>Location Selection</h3><p>Compare the suitability of potential locations by considering your concept, intended guests, access, surrounding activity and the practical requirements of running the outlet.</p></article>
+          <article class="service-card reveal" style="--delay:120ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i>Design</span><i class="service-icon fa-solid fa-ruler-combined" aria-hidden="true"></i></div><h3>Outlet &amp; Kitchen Design</h3><p>Bring guest comfort and operational flow into the same plan. Consider seating, movement, kitchen workflow and the relationship between front-of-house and back-of-house spaces.</p></article>
+          <article class="service-card reveal" style="--delay:0ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-people-group" aria-hidden="true"></i>People</span><i class="service-icon fa-solid fa-people-group" aria-hidden="true"></i></div><h3>Staffing Support</h3><p>Understand the roles and team structure your outlet requires. Plan staffing needs around the service format, operating hours and the experience you want guests to receive.</p></article>
+          <article class="service-card reveal" style="--delay:60ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-hammer" aria-hidden="true"></i>Development</span><i class="service-icon fa-solid fa-hammer" aria-hidden="true"></i></div><h3>Civil &amp; Interior Work</h3><p>Keep civil and interior decisions aligned with the concept, functional requirements and intended atmosphere, while giving attention to how the finished space will be used.</p></article>
+          <article class="service-card reveal" style="--delay:120ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>Visibility</span><i class="service-icon fa-solid fa-bullhorn" aria-hidden="true"></i></div><h3>Marketing Services</h3><p>Build a clearer presentation for your hospitality offering. Consider the message, brand expression and promotional activity that can help the right audience understand what makes the concept distinctive.</p></article>
+          <article class="service-card reveal" style="--delay:0ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i>Performance</span><i class="service-icon fa-solid fa-chart-pie" aria-hidden="true"></i></div><h3>Food &amp; Running Cost Management</h3><p>Bring greater visibility to food and day-to-day running costs. Review the factors that influence expenditure and identify practical areas where closer control may be useful.</p></article>
+          <article class="service-card reveal" style="--delay:60ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>Procurement</span><i class="service-icon fa-solid fa-boxes-stacked" aria-hidden="true"></i></div><h3>Vendor Selection &amp; Purchase Advisory</h3><p>Consider product requirements, supplier suitability and purchasing priorities before committing. A more structured approach can support consistency, value and dependable supply relationships.</p></article>
+          <article class="service-card reveal" style="--delay:120ms"><div class="service-top"><span class="service-category"><i class="fa-solid fa-award" aria-hidden="true"></i>Quality</span><i class="service-icon fa-solid fa-star" aria-hidden="true"></i></div><h3>Food &amp; Service Quality</h3><p>Give attention to the consistency of food, service and guest interactions. Clear expectations and regular review help teams understand the standards the business wants to deliver.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries-section section" id="industries">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Who we work with</span><h2 class="section-title">Different settings. <em>Shared standards.</em></h2></div>
+          <p class="section-copy">We support hospitality concepts with different audiences, spaces and operating requirements.</p>
+        </div>
+        <div class="industries-grid">
+          <article class="industry-card reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Restaurant dining room prepared for guests" width="900" height="650" loading="lazy" decoding="async"><div class="industry-content"><span class="industry-label"><i class="fa-solid fa-utensils" aria-hidden="true"></i>Dining experiences</span><h3>Restaurants</h3><p>Shape a distinctive dining concept, plan a welcoming space and consider how menu, kitchen workflow and front-of-house service come together. We help keep the guest experience and practical operating needs in view.</p></div></article>
+          <article class="industry-card reveal" style="--delay:80ms"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Contemporary bar and lounge interior" width="900" height="650" loading="lazy" decoding="async"><div class="industry-content"><span class="industry-label"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i>Social spaces</span><h3>Pubs &amp; Resto-Bars</h3><p>Create a clear identity for the venue while considering guest flow, service style, staffing and the operational details that help a pub or resto-bar deliver a consistent experience.</p></div></article>
+          <article class="industry-card reveal" style="--delay:160ms"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Hotel property with swimming pool and guest facilities" width="900" height="650" loading="lazy" decoding="async"><div class="industry-content"><span class="industry-label"><i class="fa-solid fa-hotel" aria-hidden="true"></i>Guest stays</span><h3>Hotels</h3><p>Look at the many touchpoints that shape a guest's stay, from the property concept and functional spaces to service standards, team requirements and the routines that support smooth daily operations.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Artha -->
+    <section class="why-section section" id="why-artha">
+      <div class="container why-grid">
+        <div class="why-intro reveal reveal-left">
+          <span class="eyebrow">Why Artha</span>
+          <h2 class="section-title">A broader view of <em>what makes hospitality work.</em></h2>
+          <p class="section-copy">Good decisions rarely sit in isolation. The layout affects service, staffing affects consistency, and purchasing affects running costs. We help connect the concept, the guest experience and the practical realities of operating the business, so recommendations make sense in the context of the whole operation.</p>
+          <a class="text-link" href="#approach">See how we work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <div class="why-image media-reveal"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Hospitality team preparing a restaurant for service" width="900" height="600" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="why-list">
+          <article class="why-card reveal"><span class="why-card-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span><h3>See the whole operation</h3><p>Look beyond individual tasks and understand how the concept, physical space, team, suppliers and service standards influence one another. This wider view helps keep decisions connected.</p></article>
+          <article class="why-card reveal" style="--delay:70ms"><span class="why-card-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span><h3>Keep it practical</h3><p>Keep advice grounded in the realities of your business. Recommendations should reflect your concept, available resources, operating environment and the priorities that matter most right now.</p></article>
+          <article class="why-card reveal" style="--delay:140ms"><span class="why-card-icon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span><h3>Put guests first</h3><p>Consider the experience from the guest's point of view, including the quality of food, attentiveness of service, atmosphere and consistency across each interaction.</p></article>
+          <article class="why-card reveal" style="--delay:210ms"><span class="why-card-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></span><h3>Build for improvement</h3><p>Support a culture of review and refinement, with practical attention to operating routines, service quality and the details that can make the business more consistent over time.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section section" id="approach">
+      <div class="container">
+        <div class="process-head reveal"><span class="eyebrow">Our approach</span><h2 class="section-title">A clear path from <em>idea to improvement.</em></h2><p class="section-copy">Every business has a different starting point. We take time to understand your idea, current way of working and immediate priorities, then organise the next steps into a practical sequence. The process stays focused on your requirements rather than a one-size-fits-all checklist.</p></div>
+        <div class="process-grid">
+          <article class="process-step reveal"><span class="step-icon" aria-label="Understand"><i class="fa-solid fa-comments" aria-hidden="true"></i></span><h3>Understand</h3><p>Understand your concept, intended guests, current way of working and the challenges you want to address. This creates a clearer starting point for the discussion.</p></article>
+          <article class="process-step reveal" style="--delay:80ms"><span class="step-icon" aria-label="Plan"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></span><h3>Plan</h3><p>Separate immediate needs from longer-term goals, then agree the areas to focus on and the practical sequence that makes sense for your business.</p></article>
+          <article class="process-step reveal" style="--delay:160ms"><span class="step-icon" aria-label="Implement"><i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i></span><h3>Implement</h3><p>Translate the agreed plan into manageable actions, keeping the relevant people, spaces and operating requirements connected as the work moves forward.</p></article>
+          <article class="process-step reveal" style="--delay:240ms"><span class="step-icon" aria-label="Improve"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span><h3>Improve</h3><p>Look at progress, discuss what is working well and identify where further attention or refinement could strengthen the operation.</p></article>
+        </div>
+        <p class="process-footnote"><i class="fa-solid fa-leaf" aria-hidden="true"></i> The scope and pace of support can be adapted to your business, whether you need help with one priority or several connected areas.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container cta-inner reveal"><div><span class="eyebrow">Planning something new?</span><h2>Let's make your next hospitality move <em>a thoughtful one.</em></h2></div><a class="btn btn-white" href="#contact">Start a conversation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal reveal-left">
+          <span class="eyebrow">Get in touch</span>
+          <h2 class="section-title">Tell us what you're <em>working towards.</em></h2>
+          <p>Whether you are exploring a new concept, preparing an outlet for launch or looking to strengthen an existing operation, start with a conversation. Tell us what you are working towards, which areas need attention and what kind of support you are considering. We can then understand your requirements and discuss a suitable way forward.</p>
+          <div class="contact-details">
+            <div class="contact-detail"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><small>Visit us</small><span>T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore 575004</span></div></div>
+            <div class="contact-detail"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><small>Call us</small><a href="tel:+919980447824">+91 99804 47824</a></div></div>
+            <div class="contact-detail"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email us</small><a href="mailto:artha.hm24@gmail.com">artha.hm24@gmail.com</a></div></div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal reveal-right" id="contactForm">
+          <h3>Start an enquiry</h3>
+          <p>Share a little about your business, plans and the area where you need support. The details will be added to a WhatsApp message so you can review it before sending it to our team.</p>
+          <div class="form-grid">
+            <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" placeholder="Full name" autocomplete="name" required></div>
+            <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Contact number" autocomplete="tel" required></div>
+            <div class="field full"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email"></div>
+            <div class="field full"><label for="interest">What can we help with?</label><select id="interest" name="interest" required><option value="" selected disabled>Select an area</option><option>Starting a new hospitality business</option><option>Capital investment planning</option><option>Location selection</option><option>Outlet and kitchen design</option><option>Staffing support</option><option>Civil and interior work</option><option>Marketing services</option><option>Food and running cost management</option><option>Vendor selection and purchase advisory</option><option>Food and service quality</option><option>Other enquiry</option></select></div>
+            <div class="field full"><label for="message">A little about your project</label><textarea id="message" name="message" placeholder="For example, are you planning a new outlet, reviewing an existing operation or looking for support with a specific area?"></textarea></div>
+          </div>
+          <button class="form-submit" type="submit">Continue on WhatsApp <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></button>
+          <p class="form-note">Your details are used to prepare a WhatsApp message. This form does not save submissions to a website database.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" aria-label="Artha Hospitality Management home"><img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management" width="195" height="65" loading="lazy"></a>
+          <p>Artha Hospitality Management supports restaurants, pubs, resto-bars and hotels with connected thinking across planning, development and operations. We bring the important details into focus so owners and teams can make considered decisions and create welcoming guest experiences.</p>
+          <div class="social-links" aria-label="Social links"><a href="#contact" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="#contact" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="#contact" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></div>
+        </div>
+        <div class="footer-column"><h3>Explore</h3><ul class="footer-links"><li><a href="#about">About Artha</a></li><li><a href="#services">Our services</a></li><li><a href="#industries">Industries</a></li><li><a href="#approach">Our approach</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Services</h3><ul class="footer-links"><li><a href="#services">Planning &amp; location</a></li><li><a href="#services">Design &amp; development</a></li><li><a href="#services">Staffing support</a></li><li><a href="#services">Marketing services</a></li><li><a href="#services">Costs &amp; procurement</a></li><li><a href="#services">Food &amp; service quality</a></li></ul></div>
+        <div class="footer-column"><h3>Contact</h3><ul class="footer-contact"><li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>T-14, 3rd Floor, Meridian Guru Plaza, Bijai, Mangalore 575004</span></li><li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+919980447824">+91 99804 47824</a></li><li><i class="fa-regular fa-envelope" aria-hidden="true"></i><a href="mailto:artha.hm24@gmail.com">artha.hm24@gmail.com</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="currentYear"></span> Artha Hospitality Management. All rights reserved.</span><span>Thoughtful hospitality. Stronger businesses.</span></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const header = document.getElementById('siteHeader');
+      const menuButton = document.querySelector('.mobile-toggle');
+      const nav = document.getElementById('primaryNav');
+      const body = document.body;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // A single sticky header shrinks on scroll; no duplicated header DOM.
+      let scrollTicking = false;
+      const updateHeader = () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 24);
+        scrollTicking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(updateHeader);
+          scrollTicking = true;
+        }
+      }, { passive: true });
+      updateHeader();
+
+      // Accessible mobile navigation.
+      const closeMenu = () => {
+        nav.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+        menuButton.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+        body.classList.remove('menu-open');
+      };
+      menuButton.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        menuButton.innerHTML = isOpen
+          ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+          : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+        body.classList.toggle('menu-open', isOpen);
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenu();
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 960) closeMenu();
+      }, { passive: true });
+
+      // Reveal elements once as they enter the viewport.
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !prefersReducedMotion) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -24px 0px' });
+        revealItems.forEach(item => revealObserver.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+      }
+
+      // Hero slider: pauses while hovered, focused or the tab is hidden.
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      const dots = Array.from(document.querySelectorAll('.hero-dot'));
+      const heroFrame = document.querySelector('.hero-frame');
+      const previous = document.getElementById('heroPrev');
+      const next = document.getElementById('heroNext');
+      let activeSlide = 0;
+      let slideTimer = null;
+      let sliderPaused = false;
+
+      const showSlide = index => {
+        activeSlide = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === activeSlide));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeSlide);
+          dot.setAttribute('aria-pressed', String(i === activeSlide));
+        });
+      };
+      const stopSlider = () => window.clearInterval(slideTimer);
+      const startSlider = () => {
+        stopSlider();
+        if (!prefersReducedMotion && !sliderPaused && !document.hidden) {
+          slideTimer = window.setInterval(() => showSlide(activeSlide + 1), 6500);
+        }
+      };
+      dots.forEach(dot => dot.addEventListener('click', () => {
+        showSlide(Number(dot.dataset.slide));
+        startSlider();
+      }));
+      previous.addEventListener('click', () => { showSlide(activeSlide - 1); startSlider(); });
+      next.addEventListener('click', () => { showSlide(activeSlide + 1); startSlider(); });
+      heroFrame.addEventListener('mouseenter', () => { sliderPaused = true; stopSlider(); });
+      heroFrame.addEventListener('mouseleave', () => { sliderPaused = false; startSlider(); });
+      heroFrame.addEventListener('focusin', () => { sliderPaused = true; stopSlider(); });
+      heroFrame.addEventListener('focusout', () => { sliderPaused = false; startSlider(); });
+      document.addEventListener('visibilitychange', startSlider);
+      showSlide(0);
+      startSlider();
+
+      // Active navigation state based on the section closest to the reading line.
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+          });
+        }, { rootMargin: '-38% 0px -52% 0px', threshold: 0 });
+        sections.forEach(section => sectionObserver.observe(section));
+      }
+
+      // Enquiry form creates a WhatsApp message; it does not claim to store submissions.
+      document.getElementById('contactForm').addEventListener('submit', event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const message = [
+          'Hello Artha Hospitality Management,',
+          '',
+          'I would like to make an enquiry.',
+          'Name: ' + (data.get('name') || ''),
+          'Phone: ' + (data.get('phone') || ''),
+          'Email: ' + (data.get('email') || 'Not provided'),
+          'Area of interest: ' + (data.get('interest') || ''),
+          'Message: ' + (data.get('message') || 'Not provided')
+        ].join('\n');
+        const whatsappUrl = 'https://wa.me/919980447824?text=' + encodeURIComponent(message);
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

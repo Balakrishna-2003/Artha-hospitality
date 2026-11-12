@@ -1,0 +1,4139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Artha Hospitality Management | Hospitality Consulting & Management</title>
+    <meta name="description" content="Artha Hospitality Management provides hospitality consulting and management solutions for restaurants, pubs, resto-bars and hotels.">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        /* =========================================================
+           ROOT VARIABLES
+        ========================================================= */
+
+        :root {
+            --navy: #0A1C3A;
+            --navy-light: #132C50;
+            --gold: #D4AF37;
+            --gold-dark: #B99428;
+
+            --cream: #F8F6F1;
+            --white: #FFFFFF;
+
+            --text: #242B35;
+            --muted: #707986;
+            --border: rgba(10, 28, 58, 0.10);
+
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            --section-space: 110px;
+        }
+
+
+        /* =========================================================
+           GLOBAL STYLES
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .cr-figure {
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+        .cr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .container {
+            max-width: 1240px;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold-dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .section-kicker::before {
+            content: "";
+            width: 35px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 4vw, 3.6rem);
+            font-weight: 600;
+            line-height: 1.18;
+            color: var(--navy);
+            letter-spacing: -1px;
+        }
+
+        .section-title em {
+            color: var(--gold-dark);
+            font-weight: 400;
+        }
+
+        .section-description {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .gold-line {
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: var(--gold);
+            margin: 22px 0;
+        }
+
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: .3s ease;
+        }
+
+        .secondary-btn i {
+            color: var(--gold-dark);
+            transition: transform .3s ease;
+        }
+
+        .secondary-btn:hover {
+            color: var(--gold-dark);
+        }
+
+        .secondary-btn:hover i {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================================================
+           HEADER - REFINED TYPOGRAPHY AND SPACING
+        ========================================================= */
+
+        .site-header-original {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: #FDFCF8;
+            border-bottom: 1px solid rgba(10, 28, 58, 0.1);
+            z-index: 1100;
+            font-family: var(--font-body);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 40px;
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        /* LOGO */
+
+        .brand {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            margin-right: auto;
+        }
+
+        .brand img {
+            width: 280px;
+            max-height: 75px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* DESKTOP NAVIGATION */
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 35px;
+            margin: 0 55px 0 0;
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+
+            font-family: var(--font-body);
+            font-size: 18px; 
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+
+            text-transform: uppercase;
+            color: var(--navy);
+            white-space: nowrap;
+
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link i.fa-chevron-down {
+            font-size: 10px;
+            margin-left: 6px;
+            margin-top: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            max-width: 35px;
+            height: 2px;
+            background: var(--gold);
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-dark);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav-link.active {
+            color: var(--navy);
+        }
+
+        /* DROPDOWN NAV ITEM */
+
+        .nav-item-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item-dropdown:hover .nav-link i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        .nav-item-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 25px;
+        }
+
+        /* MEGA MENU - 2 COLUMN SINGLE LINE TEXT */
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            width: 650px; /* Increased width so text doesn't wrap */
+            background: #FFFFFF;
+            box-shadow: 0 25px 50px rgba(10, 28, 58, 0.12);
+            border-top: 3px solid var(--gold);
+            border-radius: 0 0 8px 8px;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+            gap: 10px 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 1200;
+            pointer-events: none;
+        }
+
+        .nav-item-dropdown:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* MEGA ITEM */
+        .mega-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            background: #FFFFFF;
+        }
+
+        .mega-item:hover {
+            background: var(--cream);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 28, 58, 0.05);
+        }
+
+        .mega-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 18px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .mega-item:hover .mega-icon {
+            background: var(--navy);
+            color: var(--gold);
+        }
+
+        .mega-text h6 {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.4;
+            white-space: nowrap; /* Forces text to stay on one line */
+        }
+
+        /* HEADER CTA */
+
+        .btn-wrapper {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .btn-cta {
+            background: var(--navy);
+            color: #FDFCF8;
+
+            padding: 13px 22px;
+            border-radius: 3px;
+
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            line-height: 1.5;
+
+            text-transform: uppercase;
+            border: 1px solid var(--navy);
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            white-space: nowrap;
+
+            box-shadow: 0 4px 10px rgba(10, 28, 58, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta:hover i {
+            transform: translateX(4px);
+        }
+
+        /* MOBILE TOGGLE */
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--navy);
+            cursor: pointer;
+            align-items: center;
+            transition: color .3s ease;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--gold-dark);
+        }
+
+
+        /* =========================================================
+           COMPACT FIXED HEADER
+        ========================================================= */
+
+        .site-header-compact {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+
+            background: #FDFCF8;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+
+            font-family: var(--font-body);
+
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .site-header-compact.is-visible {
+            transform: translateY(0);
+            box-shadow: 0 4px 20px rgba(10, 28, 58, 0.07);
+        }
+
+        .site-header-compact .header-inner {
+            position: relative;
+            justify-content: space-between;
+            height: 75px;
+        }
+
+        .site-header-compact .brand {
+            margin-right: 25px;
+        }
+
+        .site-header-compact .brand img {
+            width: 230px;
+            max-height: 48px;
+        }
+
+        .site-header-compact .main-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            gap: 24px;
+        }
+
+        .site-header-compact .nav-link {
+            font-family: var(--font-body);
+            font-size: 18px; 
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .site-header-compact .btn-wrapper {
+            margin-left: auto;
+        }
+
+        .site-header-compact .btn-cta {
+            padding: 10px 19px;
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           HERO SECTION
+        ========================================================= */
+
+        .hero-architectural {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 100px);
+            min-height: 600px;
+            background: var(--navy);
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            height: 100%;
+        }
+
+        .hero-slider .carousel-inner,
+        .hero-slider .carousel-item,
+        .hero-slider .cr-figure,
+        .hero-slider img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slider img {
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.05);
+            transition: transform 10s ease-out;
+        }
+
+        .hero-slider .carousel-item.active img {
+            transform: scale(1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(
+                90deg,
+                rgba(10, 28, 58, 0.95) 0%,
+                rgba(10, 28, 58, 0.85) 40%,
+                rgba(10, 28, 58, 0.3) 75%,
+                rgba(10, 28, 58, 0) 100%
+            );
+        }
+
+        .hero-wave-decoration {
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-wave-decoration::before {
+            content: '';
+            position: absolute;
+            inset: 35px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-wave-decoration::after {
+            content: '';
+            position: absolute;
+            inset: 70px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .hero-content-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+        }
+
+        .hero-text-box {
+            max-width: 750px;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+        .hero-golden-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            z-index: 10;
+            transform: scaleY(0);
+            transform-origin: top;
+            animation: drawLine 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes drawLine {
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        .hero-text-mask {
+            overflow: hidden;
+            padding: 15px 30px 25px 35px;
+        }
+
+        .hero-kicker {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+            position: relative;
+            padding-top: 15px;
+        }
+
+        .hero-kicker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -0.01em;
+            font-weight: 600;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 17px 35px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero-primary:hover {
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: #FFFFFF;
+            padding: 17px 35px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .hero-bottom-controls {
+            position: absolute;
+            bottom: 40px;
+            right: 5vw;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-arrows {
+            display: flex;
+            gap: 12px;
+        }
+
+        .hero-arrow-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(10, 28, 58, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.8);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-arrow-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .hero-pagination {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-pagination .current {
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        .hero-pagination .total {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-pagination .line {
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .hero-pagination .line::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+        }
+
+        .text-anim {
+            transform: translateX(calc(-100% - 40px));
+            animation: slideInLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .d-1 { animation-delay: 0.3s; }
+        .d-2 { animation-delay: 0.45s; }
+        .d-3 { animation-delay: 0.6s; }
+        .d-4 { animation-delay: 0.75s; }
+
+
+        /* =========================================================
+           ABOUT SECTION
+        ========================================================= */
+
+        .about-section {
+            position: relative;
+            padding: 120px 0;
+            background: var(--cream);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .about-section::before {
+            content: "";
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            top: -260px;
+            right: -180px;
+            border: 1px solid rgba(212,175,55,.22);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .about-section::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            bottom: -230px;
+            left: -170px;
+            border: 1px solid rgba(10,28,58,.12);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .about-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* IMAGE COMPOSITION */
+
+        .about-gallery {
+            position: relative;
+            max-width: 570px;
+            min-height: 620px;
+            margin: 0 auto;
+            padding: 25px 35px 50px 20px;
+        }
+
+        .about-image-main {
+            position: relative;
+            width: 100%;
+            height: 535px;
+            overflow: hidden;
+            border-radius: 5px 100px 5px 5px;
+            z-index: 2;
+            box-shadow: 0 25px 65px rgba(10,28,58,.16);
+        }
+
+        .about-image-main img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 1s cubic-bezier(.2,.7,.3,1);
+        }
+
+        .about-gallery:hover .about-image-main img {
+            transform: scale(1.045);
+        }
+
+        .about-image-main::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(10,28,58,.02) 45%,
+                rgba(10,28,58,.24) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* GOLD FRAME */
+
+        .about-gallery-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 535px;
+            border: 1px solid var(--gold);
+            border-radius: 5px 100px 5px 5px;
+            transform: translate(12px, 12px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* CIRCULAR DECORATION */
+
+        .about-orbit {
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border: 1px solid rgba(212,175,55,.6);
+            border-radius: 50%;
+            right: -12px;
+            top: -35px;
+            z-index: 0;
+        }
+
+        .about-orbit::before,
+        .about-orbit::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(212,175,55,.3);
+            border-radius: 50%;
+        }
+
+        .about-orbit::before {
+            inset: 15px;
+        }
+
+        .about-orbit::after {
+            inset: 30px;
+        }
+
+        /* SECONDARY IMAGE */
+
+        .about-image-secondary {
+            position: absolute;
+            width: 205px;
+            height: 175px;
+            right: 0;
+            bottom: 15px;
+            z-index: 4;
+            padding: 7px;
+            background: #FFFFFF;
+            box-shadow: 0 15px 40px rgba(10,28,58,.2);
+            transform: rotate(3deg);
+            transition: transform .4s ease;
+        }
+
+        .about-image-secondary img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .about-gallery:hover .about-image-secondary {
+            transform: rotate(0deg) translateY(-4px);
+        }
+
+        /* EXPERIENCE BADGE */
+
+        .about-experience-card {
+            position: absolute;
+            z-index: 5;
+            left: 0;
+            bottom: 80px;
+            width: 165px;
+            padding: 22px 20px;
+            background: var(--navy);
+            color: #FFFFFF;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 14px 35px rgba(10,28,58,.2);
+        }
+
+        .about-experience-card .experience-icon {
+            color: var(--gold);
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .about-experience-card strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 40px;
+            line-height: 1;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .about-experience-card span {
+            display: block;
+            margin-top: 9px;
+            font-size: 10px;
+            line-height: 1.6;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* IMAGE LABEL */
+
+        .about-image-label {
+            position: absolute;
+            top: 75px;
+            right: -8px;
+            z-index: 5;
+            writing-mode: vertical-rl;
+            color: var(--navy);
+            background: rgba(255,255,255,.94);
+            padding: 13px 9px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(10,28,58,.08);
+        }
+
+        /* RIGHT CONTENT */
+
+        .about-content {
+            padding-left: 40px;
+        }
+
+        .about-content .section-kicker {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.6rem, 4vw, 3.8rem);
+            line-height: 1.12;
+            color: var(--navy);
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .about-title em {
+            font-style: italic;
+            color: var(--gold-dark);
+            font-weight: 400;
+        }
+
+        .about-heading-decoration {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .about-heading-decoration span:first-child {
+            width: 45px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .about-heading-decoration span:last-child {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .about-lead {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .about-desc {
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+
+        /* 2x2 VALUE GRID */
+
+        .about-values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px 28px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(10,28,58,.12);
+        }
+
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform .3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 46px;
+            height: 46px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dark);
+            font-size: 19px;
+            box-shadow: 0 8px 20px rgba(10,28,58,.06);
+            border: 1px solid rgba(212,175,55,.12);
+            transition: all .3s ease;
+        }
+
+        .value-item:hover .value-icon {
+            background: var(--navy);
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212,175,55,.2);
+        }
+
+        .value-text h5 {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 7px;
+        }
+
+        .value-text p {
+            font-family: var(--font-body);
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .about-bottom {
+            margin-top: 30px;
+        }
+
+        .about-discover-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 23px;
+            color: #FFFFFF;
+            background: var(--navy);
+            border: 1px solid var(--navy);
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .about-discover-btn i {
+            color: var(--gold);
+            transition: transform .3s ease;
+        }
+
+        .about-discover-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+        .about-discover-btn:hover i {
+            color: var(--navy);
+            transform: translateX(4px);
+        }
+
+
+        /* =========================================================
+           WHY CHOOSE ARTHA
+        ========================================================= */
+
+        .why-section {
+            padding: var(--section-space) 0;
+            background: #FFFFFF;
+        }
+
+        .why-heading {
+            max-width: 720px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .why-heading .section-kicker {
+            justify-content: center;
+        }
+
+        .why-heading .section-title {
+            margin-bottom: 20px;
+        }
+
+        .why-heading .section-description {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .why-card {
+            height: 100%;
+            padding: 35px 28px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .why-card::before {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 0;
+            left: 0;
+            top: 0;
+            background: var(--gold);
+            transition: height .35s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 45px rgba(10,28,58,.08);
+            border-color: rgba(212,175,55,.4);
+        }
+
+        .why-card:hover::before {
+            height: 100%;
+        }
+
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream);
+            color: var(--gold-dark);
+            font-size: 22px;
+            margin-bottom: 25px;
+            transition: .3s ease;
+        }
+
+        .why-card:hover .why-icon {
+            background: var(--navy);
+            color: var(--gold);
+        }
+
+        .why-card h3 {
+            font-family: var(--font-body);
+            color: var(--navy);
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 13px;
+        }
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+
+        /* =========================================================
+           SERVICES SECTION
+        ========================================================= */
+
+        .services-section {
+            padding: var(--section-space) 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        /* Centered Heading Layout */
+        .services-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .services-heading-content {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .services-heading-content .section-kicker {
+            justify-content: center;
+        }
+
+        .services-heading .section-title {
+            margin-bottom: 20px;
+        }
+
+        .services-heading .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-heading .secondary-btn {
+            margin-top: 10px;
+        }
+
+        .service-card {
+            height: 100%;
+            background: #FFFFFF;
+            padding: 40px 30px;
+            border: 1px solid rgba(10,28,58,.07);
+            position: relative;
+            transition: .35s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(10,28,58,.09);
+            border-color: rgba(212,175,55,.5);
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream);
+            color: var(--gold-dark);
+            font-size: 22px;
+            margin-bottom: 25px;
+            transition: .3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--navy);
+            color: var(--gold);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            line-height: 1.85;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .services-bottom {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(10,28,58,.12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .services-bottom p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+
+        /* =========================================================
+           INDUSTRIES SECTION
+        ========================================================= */
+
+        .industries-section {
+            padding: var(--section-space) 0;
+            background: #FFFFFF;
+        }
+
+        .industries-heading {
+            max-width: 750px;
+            margin-bottom: 55px;
+        }
+
+        .industries-heading .section-title {
+            margin-bottom: 20px;
+        }
+
+        .industry-card {
+            height: 470px;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy);
+            display: block;
+            color: #FFFFFF;
+        }
+
+        .industry-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .8s cubic-bezier(.2,.7,.3,1);
+        }
+
+        .industry-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .industry-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(10,28,58,.96) 0%,
+                rgba(10,28,58,.65) 35%,
+                rgba(10,28,58,.05) 100%
+            );
+        }
+
+        .industry-content {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 30px;
+            z-index: 2;
+        }
+
+        .industry-index {
+            display: block;
+            color: var(--gold);
+            font-family: var(--font-heading);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .industry-content h3 {
+            color: #FFFFFF;
+            font-family: var(--font-heading);
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .industry-content p {
+            color: rgba(255,255,255,.78);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            max-width: 340px;
+        }
+
+        .industry-link {
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .industry-link i {
+            transition: transform .3s ease;
+        }
+
+        .industry-card:hover .industry-link i {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================================================
+           CONSULTATION CTA
+        ========================================================= */
+
+        .consultation-section {
+            position: relative;
+            padding: 90px 0;
+            background:
+                linear-gradient(rgba(10,28,58,.94), rgba(10,28,58,.94)),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .consultation-section::before {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 1px solid rgba(212,175,55,.2);
+            border-radius: 50%;
+            top: -230px;
+            right: -100px;
+        }
+
+        .consultation-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .consultation-content .section-kicker {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .consultation-content .section-kicker::before {
+            background: var(--gold);
+        }
+
+        .consultation-content h2 {
+            color: #FFFFFF;
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .consultation-content h2 em {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .consultation-content p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,.75);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .consultation-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--gold);
+            color: var(--navy);
+            border: 1px solid var(--gold);
+            padding: 16px 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .consultation-btn:hover {
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           CONTACT SECTION
+        ========================================================= */
+
+        .contact-section {
+            padding: 85px 0;
+            background: var(--cream);
+        }
+
+        .contact-info {
+            padding-right: 45px;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .contact-info > p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+            margin-bottom: 22px;
+        }
+
+        .contact-detail-icon {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFFFFF;
+            color: var(--gold-dark);
+            font-size: 17px;
+        }
+
+        .contact-detail h4 {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .contact-detail p,
+        .contact-detail a {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .contact-detail a:hover {
+            color: var(--gold-dark);
+        }
+
+        .contact-form {
+            padding: 40px;
+            background: #FFFFFF;
+            box-shadow: 0 15px 45px rgba(10,28,58,.06);
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 27px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .contact-form > p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact-form .form-control,
+        .contact-form .form-select {
+            border: 1px solid rgba(10,28,58,.13);
+            border-radius: 0;
+            padding: 13px 14px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            background: #FDFDFC;
+            box-shadow: none;
+        }
+
+        .contact-form .form-control:focus,
+        .contact-form .form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212,175,55,.1);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--navy);
+            color: #FFFFFF;
+            border: 1px solid var(--navy);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .contact-submit:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .site-footer {
+            background: var(--navy);
+            color: #FFFFFF;
+            padding: 75px 0 25px;
+            position: relative;
+        }
+
+        .footer-brand img {
+            width: 235px;
+            margin-bottom: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-desc {
+            font-size: 13px;
+            line-height: 1.9;
+            color: rgba(255,255,255,.65);
+            margin-bottom: 25px;
+            max-width: 330px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.22);
+            color: #FFFFFF;
+            transition: .3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            font-family: var(--font-body);
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            margin-bottom: 27px;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 35px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-links li {
+            margin-bottom: 13px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.65);
+            font-size: 13px;
+            transition: .3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 17px;
+            color: rgba(255,255,255,.68);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.12);
+            margin-top: 55px;
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 12px;
+            color: rgba(255,255,255,.45);
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,.55);
+            transition: .3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--gold);
+        }
+
+
+        /* =========================================================
+           SCROLL ANIMATIONS
+        ========================================================= */
+
+        .anim-base {
+            opacity: 0;
+            transition: all 1s cubic-bezier(.16,1,.3,1);
+            will-change: transform, opacity;
+        }
+
+        .anim-fade-up {
+            transform: translateY(45px);
+        }
+
+        .anim-fade-right {
+            transform: translateX(-45px);
+        }
+
+        .anim-fade-left {
+            transform: translateX(45px);
+        }
+
+        .is-in-view {
+            opacity: 1;
+            transform: translate(0,0) !important;
+        }
+
+        .delay-1 { transition-delay: .12s; }
+        .delay-2 { transition-delay: .22s; }
+        .delay-3 { transition-delay: .32s; }
+        .delay-4 { transition-delay: .42s; }
+
+
+        /* =========================================================
+           RESPONSIVE HEADER - SMALL DESKTOP
+        ========================================================= */
+
+        @media (max-width: 1400px) {
+
+            .header-inner {
+                padding: 0 28px;
+            }
+
+            .brand img {
+                width: 245px;
+            }
+
+            .brand {
+                margin-right: auto;
+            }
+
+            .site-header-original .main-nav {
+                gap: 24px;
+                margin: 0 35px 0 0;
+            }
+
+            .site-header-original .nav-link {
+                font-size: 16px;
+                letter-spacing: 0.35px;
+            }
+
+            .site-header-original .btn-cta {
+                font-size: 11px;
+                padding: 12px 17px;
+            }
+
+            .site-header-compact .brand img {
+                width: 205px;
+            }
+
+            .site-header-compact .main-nav {
+                gap: 18px;
+            }
+
+            .site-header-compact .nav-link {
+                font-size: 16px;
+            }
+
+            .site-header-compact .btn-cta {
+                font-size: 10px;
+                padding: 10px 15px;
+            }
+
+            .mega-menu {
+                width: 580px; /* Slightly narrower for smaller screens */
+            }
+        }
+
+
+        /* =========================================================
+           TABLET HEADER
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+
+            .main-nav,
+            .btn-wrapper {
+                display: none !important;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .site-header-original {
+                height: 85px;
+            }
+
+            .site-header-compact {
+                height: 65px;
+            }
+
+            .site-header-compact .header-inner {
+                height: 65px;
+            }
+
+            .brand img {
+                width: 240px;
+                max-height: 60px;
+            }
+
+            .site-header-compact .brand img {
+                max-height: 40px;
+            }
+
+            .hero-architectural {
+                height: calc(100vh - 85px);
+            }
+        }
+
+
+        /* =========================================================
+           TABLET AND SMALLER SCREENS
+        ========================================================= */
+
+        @media (max-width: 991.98px) {
+
+            :root {
+                --section-space: 80px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    0deg,
+                    rgba(10,28,58,.98) 0%,
+                    rgba(10,28,58,.84) 60%,
+                    rgba(10,28,58,.35) 100%
+                );
+            }
+
+            .hero-wave-decoration {
+                display: none;
+            }
+
+            .hero-content-layer {
+                align-items: flex-end;
+                text-align: center;
+                justify-content: center;
+                padding: 0 20px 100px;
+            }
+
+            .hero-golden-line {
+                display: none;
+            }
+
+            .hero-text-box {
+                max-width: 100%;
+            }
+
+            .hero-text-mask {
+                padding: 0 0 10px;
+            }
+
+            .hero-kicker {
+                margin: 0 auto 20px;
+                display: inline-block;
+            }
+
+            .hero-kicker::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .hero-desc {
+                margin: 0 auto 25px;
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-bottom-controls {
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                gap: 20px;
+            }
+
+            .services-heading {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .services-heading-content {
+                align-items: flex-start;
+            }
+
+            .services-heading-content .section-kicker {
+                justify-content: flex-start;
+            }
+
+            .services-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .industry-card {
+                height: 420px;
+            }
+
+            .why-heading {
+                margin-bottom: 40px;
+            }
+
+            .about-gallery {
+                max-width: 590px;
+                margin: 0 auto 45px;
+            }
+
+            .about-image-main,
+            .about-gallery-frame {
+                height: 520px;
+            }
+
+            .about-content {
+                padding-left: 0;
+            }
+
+            .about-title {
+                max-width: 700px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 768px) {
+
+            :root {
+                --section-space: 65px;
+            }
+
+            .header-inner {
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 210px;
+            }
+
+            .hero-architectural {
+                min-height: 650px;
+            }
+
+            .hero-title {
+                font-size: 2.6rem;
+            }
+
+            .hero-desc {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .hero-bottom-controls {
+                gap: 15px;
+            }
+
+            .hero-pagination {
+                gap: 9px;
+            }
+
+            .hero-pagination .line {
+                width: 30px;
+            }
+
+            .hero-arrow-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+
+            /* ABOUT IMAGE */
+
+            .about-gallery {
+                min-height: 480px;
+                padding: 15px 25px 40px 10px;
+            }
+
+            .about-image-main {
+                height: 410px;
+            }
+
+            .about-gallery-frame {
+                height: 410px;
+            }
+
+            .about-experience-card {
+                left: -5px;
+                top: auto;
+                bottom: 45px;
+                padding: 16px 18px;
+                width: 140px;
+            }
+
+            .about-experience-card strong {
+                font-size: 33px;
+            }
+
+            .about-image-secondary {
+                width: 165px;
+                height: 135px;
+            }
+
+            .about-title {
+                font-size: 2.4rem;
+            }
+
+            .about-lead {
+                font-size: 19px;
+            }
+
+            .why-card,
+            .service-card {
+                padding: 26px 23px;
+            }
+
+            .services-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .industry-card {
+                height: 420px;
+            }
+
+            .consultation-section {
+                padding: 75px 20px;
+            }
+
+            .contact-form {
+                padding: 25px 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .footer-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-heading {
+                text-align: center;
+            }
+
+            .footer-brand,
+            .footer-desc,
+            .social-icons {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .footer-links,
+            .footer-contact {
+                text-align: center;
+            }
+
+            .footer-contact li {
+                justify-content: center;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 575px) {
+
+            .about-section {
+                padding: 70px 0;
+            }
+
+            .about-gallery {
+                min-height: 440px;
+                padding: 15px 15px 40px 10px;
+            }
+
+            .about-image-main,
+            .about-gallery-frame {
+                height: 390px;
+                border-top-right-radius: 65px;
+            }
+
+            .about-orbit {
+                width: 125px;
+                height: 125px;
+                right: 0;
+                top: -15px;
+            }
+
+            .about-experience-card {
+                width: 125px;
+                padding: 16px 13px;
+                bottom: 55px;
+            }
+
+            .about-experience-card strong {
+                font-size: 32px;
+            }
+
+            .about-experience-card span {
+                font-size: 9px;
+            }
+
+            .about-image-secondary {
+                width: 145px;
+                height: 120px;
+                bottom: 0;
+            }
+
+            .about-image-label {
+                right: -4px;
+                top: 55px;
+                font-size: 8px;
+            }
+
+            .about-title {
+                font-size: 2.2rem;
+            }
+
+            .about-lead {
+                font-size: 17px;
+            }
+
+            .about-values-grid {
+                gap: 25px 18px;
+            }
+
+            .value-text h5 {
+                font-size: 14px;
+            }
+
+            .value-text p {
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .industry-card {
+                height: 380px;
+            }
+
+            .industry-content h3 {
+                font-size: 26px;
+            }
+        }
+
+
+        /* =========================================================
+           ACCESSIBILITY
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .anim-base {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="site-header-original" id="mainHeaderOriginal">
+
+        <div class="header-inner">
+
+            <a href="#" class="brand">
+
+                <figure class="cr-figure">
+
+                    <img
+                        src="images/artha-hospitality-management-logo.png"
+                        alt="Artha Hospitality Management Logo"
+                    >
+
+                    <figcaption class="cr-only">
+                        Artha Hospitality Management Logo
+                    </figcaption>
+
+                </figure>
+
+            </a>
+
+            <nav class="main-nav">
+
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About us</a>
+                
+                <!-- SERVICES DROPDOWN -->
+                <div class="nav-item-dropdown">
+                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    
+                    <div class="mega-menu">
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-coins"></i></div>
+                            <div class="mega-text">
+                                <h6>Capital Investment Planning</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="mega-text">
+                                <h6>Location Selection</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-drafting-compass"></i></div>
+                            <div class="mega-text">
+                                <h6>Outlet & Kitchen Design</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="mega-text">
+                                <h6>Staffing Support</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-hammer"></i></div>
+                            <div class="mega-text">
+                                <h6>Civil & Interior Work</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-bullhorn"></i></div>
+                            <div class="mega-text">
+                                <h6>Marketing Services</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-calculator"></i></div>
+                            <div class="mega-text">
+                                <h6>Food & Running Cost Management</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-truck-loading"></i></div>
+                            <div class="mega-text">
+                                <h6>Vendor Selection & Purchase</h6>
+                            </div>
+                        </a>
+                        
+                        <a href="#services" class="mega-item">
+                            <div class="mega-icon"><i class="fas fa-concierge-bell"></i></div>
+                            <div class="mega-text">
+                                <h6>Food & Service Quality</h6>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <a href="#industries" class="nav-link">Openings</a>
+                <a href="#why-artha" class="nav-link">Clients</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
+            </nav>
+
+            <div class="btn-wrapper">
+
+                <a href="#contact" class="btn-cta">
+                    Get in Touch
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+            <button class="mobile-toggle" aria-label="Open menu">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO SECTION
+    ========================================================= -->
+
+    <section class="hero-architectural">
+
+        <div
+            id="heroSlider"
+            class="carousel slide carousel-fade hero-slider"
+            data-bs-ride="carousel"
+            data-bs-interval="6000"
+        >
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+
+                    <figure class="cr-figure">
+
+                        <img
+                            src="images/slider-img-1.jpg"
+                            alt="Luxury Hotel Room Interior"
+                        >
+
+                        <figcaption class="cr-only">
+                            Luxury Hotel Room Interior
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                <div class="carousel-item">
+
+                    <figure class="cr-figure">
+
+                        <img
+                            src="images/slider-img-2.jpg"
+                            alt="Hospitality Restaurant"
+                        >
+
+                        <figcaption class="cr-only">
+                            Hospitality Restaurant
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                <div class="carousel-item">
+
+                    <figure class="cr-figure">
+
+                        <img
+                            src="images/slider-img-3.jpg"
+                            alt="Premium Hospitality Interior"
+                        >
+
+                        <figcaption class="cr-only">
+                            Premium Hospitality Interior
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-wave-decoration"></div>
+
+        <div class="hero-content-layer">
+
+            <div class="hero-text-box">
+
+                <div class="hero-golden-line"></div>
+
+                <div class="hero-text-mask">
+
+                    <div class="hero-kicker text-anim d-1">
+                        HOSPITALITY CONSULTING & MANAGEMENT
+                    </div>
+
+                    <h1 class="hero-title text-anim d-2">
+                        Creating Exceptional
+                        <br>
+                        Hospitality Experiences.
+                        <em>Building Successful Businesses.</em>
+                    </h1>
+
+                    <p class="hero-desc text-anim d-3">
+                        From the first business idea to everyday operations,
+                        we help restaurants, pubs and hotels build better
+                        hospitality experiences through thoughtful planning
+                        and practical management solutions.
+                    </p>
+
+                    <div class="hero-btns text-anim d-4">
+
+                        <a href="#services" class="btn-hero-primary">
+                            Explore Our Services
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+
+                        <a href="#contact" class="btn-hero-secondary">
+                            <i class="far fa-calendar-alt"></i>
+                            Talk to Our Team
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-bottom-controls">
+
+            <div class="hero-pagination">
+
+                <span class="current" id="currentSlideNum">01</span>
+
+                <div class="line"></div>
+
+                <span class="total">03</span>
+
+            </div>
+
+            <div class="hero-arrows">
+
+                <button
+                    type="button"
+                    class="hero-arrow-btn"
+                    data-bs-target="#heroSlider"
+                    data-bs-slide="prev"
+                    aria-label="Previous Slide"
+                >
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="hero-arrow-btn"
+                    data-bs-target="#heroSlider"
+                    data-bs-slide="next"
+                    aria-label="Next Slide"
+                >
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT ARTHA
+    ========================================================= -->
+
+    <section class="about-section" id="about">
+
+        <div class="container">
+
+            <div class="row align-items-center g-4">
+
+
+                <!-- LEFT SIDE IMAGE -->
+
+                <div class="col-lg-6">
+
+                    <div class="about-gallery anim-base anim-fade-right">
+
+                        <div class="about-orbit"></div>
+
+                        <div class="about-gallery-frame"></div>
+
+                        <div class="about-image-main">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=85"
+                                alt="Beautifully designed restaurant hospitality space"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="about-image-label">
+                            Hospitality Management
+                        </div>
+
+                        <div class="about-experience-card">
+
+                            <div class="experience-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+
+                            <strong>15+</strong>
+
+                            <span>
+                                Years of<br>
+                                Experience
+                            </span>
+
+                        </div>
+
+                        <div class="about-image-secondary">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=85"
+                                alt="Professional chef at work"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE CONTENT -->
+
+                <div class="col-lg-6">
+
+                    <div class="about-content anim-base anim-fade-left delay-1">
+
+                        <div class="section-kicker">
+                            ABOUT ARTHA
+                        </div>
+
+                        <h2 class="about-title">
+                            Great hospitality begins
+                            <br>
+                            with <em>great service.</em>
+                        </h2>
+
+                        <div class="about-heading-decoration">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <p class="about-lead">
+                            We don't just consult; we partner with you
+                            to build robust, resilient business models
+                            that stand the test of time.
+                        </p>
+
+                        <p class="about-desc">
+                            At Artha, we believe that great hospitality
+                            begins with great service. Our mission is to
+                            help restaurant owners and hospitality
+                            businesses overcome their toughest service
+                            challenges, improve guest satisfaction, and
+                            grow sustainably. With a deep understanding
+                            of the industry and a commitment to excellence,
+                            we provide tailor-made solutions that create
+                            lasting value for our partners.
+                        </p>
+
+                        <p class="about-desc">
+                            From the initial spark of a concept to the
+                            daily nuances of operations, our team is
+                            dedicated to helping businesses strengthen
+                            their approach and deliver better experiences.
+                            Every detail matters, from the ambience you
+                            curate to the service your team provides.
+                        </p>
+
+
+                        <!-- 2 x 2 VALUE GRID -->
+
+                        <div class="about-values-grid">
+
+                            <div class="value-item anim-base anim-fade-up delay-2">
+
+                                <div class="value-icon">
+                                    <i class="fas fa-concierge-bell"></i>
+                                </div>
+
+                                <div class="value-text">
+
+                                    <h5>Guest Satisfaction</h5>
+
+                                    <p>
+                                        Elevating every dining and stay
+                                        experience to create loyal patrons.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="value-item anim-base anim-fade-up delay-2">
+
+                                <div class="value-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+
+                                <div class="value-text">
+
+                                    <h5>Sustainable Growth</h5>
+
+                                    <p>
+                                        Building robust business models
+                                        that thrive for years to come.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="value-item anim-base anim-fade-up delay-3">
+
+                                <div class="value-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+
+                                <div class="value-text">
+
+                                    <h5>Tailor-Made Solutions</h5>
+
+                                    <p>
+                                        Customized strategies that fit
+                                        your unique brand and vision.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="value-item anim-base anim-fade-up delay-3">
+
+                                <div class="value-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+
+                                <div class="value-text">
+
+                                    <h5>Industry Expertise</h5>
+
+                                    <p>
+                                        Bringing hospitality knowledge
+                                        and practical operational
+                                        understanding to every project.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="about-bottom">
+
+                            <a href="#contact" class="about-discover-btn">
+                                Discover More
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         WHY CHOOSE ARTHA
+    ========================================================= -->
+
+    <section class="why-section" id="why-artha">
+
+        <div class="container">
+
+            <div class="why-heading anim-base anim-fade-up">
+
+                <div class="section-kicker">
+                    THE ARTHA ADVANTAGE
+                </div>
+
+                <h2 class="section-title">
+                    More Than Advice.
+                    <em>A Practical Partner in Your Growth.</em>
+                </h2>
+
+                <p class="section-description">
+                    Every hospitality business has its own goals and
+                    challenges. We focus on understanding your business
+                    first and finding practical ways to help it move forward.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card anim-base anim-fade-up">
+
+                        <div class="why-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+
+                        <h3>Industry Understanding</h3>
+
+                        <p>
+                            We bring hospitality knowledge and operational
+                            understanding to help businesses make informed
+                            decisions at every stage.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card anim-base anim-fade-up delay-1">
+
+                        <div class="why-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+
+                        <h3>Tailored Solutions</h3>
+
+                        <p>
+                            Every business is different. We shape our
+                            approach around your requirements, goals and
+                            the way your business operates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card anim-base anim-fade-up delay-2">
+
+                        <div class="why-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+
+                        <h3>People & Service Focus</h3>
+
+                        <p>
+                            The right team and consistent service can shape
+                            the entire guest experience. We help businesses
+                            focus on both.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card anim-base anim-fade-up delay-3">
+
+                        <div class="why-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+
+                        <h3>Long-Term Growth</h3>
+
+                        <p>
+                            We look beyond the initial setup and focus on
+                            practices that support smoother operations and
+                            sustainable business growth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         OUR SERVICES
+    ========================================================= -->
+
+    <section class="services-section" id="services">
+
+        <div class="container">
+
+            <div class="services-heading anim-base anim-fade-up">
+
+                <div class="services-heading-content">
+
+                    <div class="section-kicker">
+                        WHAT WE DO
+                    </div>
+
+                    <h2 class="section-title">
+                        Complete Hospitality Solutions,
+                        <em>From Planning to Performance.</em>
+                    </h2>
+
+                    <p class="section-description">
+                        Building and managing a hospitality business
+                        involves many moving parts. We offer support
+                        across different stages of hospitality development
+                        and management, helping business owners make
+                        practical decisions and maintain quality.
+                    </p>
+
+                </div>
+
+                <a href="#contact" class="secondary-btn">
+                    Discuss Your Requirements
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- SERVICE 1 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up">
+
+                        <div class="service-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+
+                        <h3>Capital Investment Planning</h3>
+
+                        <p>
+                            A successful hospitality business starts with
+                            a clear understanding of where the investment
+                            goes. We help plan spending on property,
+                            equipment and infrastructure while keeping
+                            future business goals in mind.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 2 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-1">
+
+                        <div class="service-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+
+                        <h3>Location Selection</h3>
+
+                        <p>
+                            The right location can make a significant
+                            difference to a business. We help assess
+                            potential locations based on customer demand,
+                            accessibility, competition and growth
+                            opportunities.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 3 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-2">
+
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+
+                        <h3>Outlet & Kitchen Design</h3>
+
+                        <p>
+                            A well-designed space should look inviting
+                            while making everyday operations easier.
+                            We focus on practical outlet layouts and
+                            kitchen planning that support efficiency
+                            and guest experience.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 4 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up">
+
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+
+                        <h3>Staffing Support</h3>
+
+                        <p>
+                            Good service starts with the right people.
+                            We support businesses with staffing
+                            requirements, recruitment planning,
+                            training and team management to help
+                            maintain consistent service standards.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 5 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-1">
+
+                        <div class="service-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+
+                        <h3>Civil & Interior Work</h3>
+
+                        <p>
+                            From structural work to the finishing details,
+                            we support the development of functional and
+                            welcoming hospitality spaces that balance
+                            comfort, appearance and practical use.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 6 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-2">
+
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+
+                        <h3>Marketing Services</h3>
+
+                        <p>
+                            Reaching the right customers takes more than
+                            simply promoting a business. We support
+                            branding, advertising and marketing campaigns
+                            that help hospitality businesses build
+                            visibility and attract guests.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 7 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up">
+
+                        <div class="service-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+
+                        <h3>Food & Running Cost Management</h3>
+
+                        <p>
+                            Managing everyday expenses is essential to
+                            maintaining a healthy business. We help
+                            businesses pay attention to food costs,
+                            staff expenses, utilities and other
+                            operating requirements.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 8 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-1">
+
+                        <div class="service-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+
+                        <h3>Vendor Selection & Purchase Advisory</h3>
+
+                        <p>
+                            Reliable suppliers and smart purchasing
+                            decisions make a difference to both quality
+                            and cost. We help businesses identify suitable
+                            vendors and make practical purchasing choices.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SERVICE 9 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article class="service-card anim-base anim-fade-up delay-2">
+
+                        <div class="service-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+
+                        <h3>Food & Service Quality</h3>
+
+                        <p>
+                            Guests remember the quality of their
+                            experience. We help businesses focus on
+                            food standards, presentation, service
+                            consistency and customer satisfaction.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="services-bottom anim-base anim-fade-up delay-3">
+
+                <p>
+                    Have a specific requirement? Let's discuss what
+                    your hospitality business needs.
+                </p>
+
+                <a href="#contact" class="secondary-btn">
+                    Start a Conversation
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INDUSTRIES WE SERVE
+    ========================================================= -->
+
+    <section class="industries-section" id="industries">
+
+        <div class="container">
+
+            <div class="industries-heading anim-base anim-fade-up">
+
+                <div class="section-kicker">
+                    OUR AREAS OF EXPERTISE
+                </div>
+
+                <h2 class="section-title">
+                    Hospitality Solutions for
+                    <em>Every Kind of Experience.</em>
+                </h2>
+
+                <p class="section-description">
+                    Different hospitality businesses have different
+                    operational needs. We understand these differences
+                    and work towards solutions that suit the nature
+                    of each business.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- RESTAURANTS -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <a href="#contact" class="industry-card anim-base anim-fade-up">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                            alt="Restaurant interior"
+                            loading="lazy"
+                        >
+
+                        <div class="industry-overlay"></div>
+
+                        <div class="industry-content">
+
+                            <span class="industry-index">01 / DINING</span>
+
+                            <h3>Restaurants</h3>
+
+                            <p>
+                                From kitchen planning and daily operations
+                                to service quality, we help restaurants
+                                build a strong foundation for memorable
+                                dining experiences.
+                            </p>
+
+                            <span class="industry-link">
+                                Discuss Your Restaurant
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- PUBS & RESTO-BARS -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <a href="#contact" class="industry-card anim-base anim-fade-up delay-1">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=85"
+                            alt="Pub and resto bar interior"
+                            loading="lazy"
+                        >
+
+                        <div class="industry-overlay"></div>
+
+                        <div class="industry-content">
+
+                            <span class="industry-index">02 / SOCIAL DINING</span>
+
+                            <h3>Pub & Resto-Bars</h3>
+
+                            <p>
+                                A successful pub or resto-bar needs the
+                                right atmosphere, efficient operations
+                                and attentive service. We help bring
+                                these elements together.
+                            </p>
+
+                            <span class="industry-link">
+                                Discuss Your Project
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- HOTELS -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <a href="#contact" class="industry-card anim-base anim-fade-up delay-2">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85"
+                            alt="Luxury hotel interior"
+                            loading="lazy"
+                        >
+
+                        <div class="industry-overlay"></div>
+
+                        <div class="industry-content">
+
+                            <span class="industry-index">03 / STAY</span>
+
+                            <h3>Hotels</h3>
+
+                            <p>
+                                We support hotels in improving operational
+                                processes, maintaining service standards
+                                and creating comfortable guest experiences.
+                            </p>
+
+                            <span class="industry-link">
+                                Discuss Your Hotel
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONSULTATION CTA
+    ========================================================= -->
+
+    <section class="consultation-section">
+
+        <div class="container">
+
+            <div class="consultation-content anim-base anim-fade-up">
+
+                <div class="section-kicker">
+                    LET'S BUILD SOMETHING GREAT
+                </div>
+
+                <h2>
+                    Have a Hospitality Project
+                    <em>in Mind?</em>
+                </h2>
+
+                <p>
+                    Whether you're planning a new restaurant, setting up
+                    a pub or looking to improve an existing hotel, we'd
+                    be happy to understand your requirements. Tell us
+                    what you're planning, and let's explore how Artha
+                    can help you take the next step.
+                </p>
+
+                <a href="#contact" class="consultation-btn">
+                    Discuss Your Project
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT SECTION
+    ========================================================= -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="col-lg-5">
+
+                    <div class="contact-info anim-base anim-fade-right">
+
+                        <div class="section-kicker">
+                            GET IN TOUCH
+                        </div>
+
+                        <h2>
+                            Let's Talk About
+                            Your Next Project.
+                        </h2>
+
+                        <span class="gold-line"></span>
+
+                        <p>
+                            Every successful hospitality business begins
+                            with a conversation. Share your plans with us
+                            and let's discuss how we can help bring your
+                            vision to life.
+                        </p>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+
+                            <div>
+                                <h4>Our Office</h4>
+                                <p>
+                                    T-14, 3rd Floor, Meridian Guru Plaza,
+                                    Bijai, Mangalore 575004
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+
+                            <div>
+                                <h4>Phone</h4>
+                                <p>
+                                    <a href="tel:+919980447824">
+                                        +91 99804 47824
+                                    </a>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+
+                            <div>
+                                <h4>Email</h4>
+                                <p>
+                                    <a href="mailto:artha.hm24@gmail.com">
+                                        artha.hm24@gmail.com
+                                    </a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+
+                <div class="col-lg-7">
+
+                    <div class="contact-form anim-base anim-fade-left delay-1">
+
+                        <h3>Tell Us About Your Project</h3>
+
+                        <p>
+                            Fill in your details and we'll get in touch
+                            to understand your requirements.
+                        </p>
+
+                        <form id="arthaContactForm">
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label" for="contactName">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="contactName"
+                                        name="name"
+                                        placeholder="Your name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label" for="contactPhone">
+                                        Phone Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        class="form-control"
+                                        id="contactPhone"
+                                        name="phone"
+                                        placeholder="Your phone number"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label" for="contactEmail">
+                                        Email Address
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="contactEmail"
+                                        name="email"
+                                        placeholder="Your email address"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label" for="businessType">
+                                        Type of Business
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="businessType"
+                                        name="business"
+                                        required
+                                    >
+
+                                        <option value="" selected disabled>
+                                            Select business type
+                                        </option>
+
+                                        <option value="Restaurant">
+                                            Restaurant
+                                        </option>
+
+                                        <option value="Pub & Resto-Bar">
+                                            Pub & Resto-Bar
+                                        </option>
+
+                                        <option value="Hotel">
+                                            Hotel
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label class="form-label" for="contactMessage">
+                                        Tell Us About Your Project
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        id="contactMessage"
+                                        name="message"
+                                        placeholder="Briefly describe your requirements..."
+                                        required
+                                    ></textarea>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <button
+                                        type="submit"
+                                        class="contact-submit"
+                                    >
+                                        Send Enquiry
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="row g-5">
+
+                <!-- COMPANY -->
+
+                <div class="col-lg-4 col-md-6 footer-brand">
+
+                    <figure class="cr-figure">
+
+                        <img
+                            src="images/artha-hospitality-management-logo.png"
+                            alt="Artha Hospitality Management Logo"
+                        >
+
+                        <figcaption class="cr-only">
+                            Artha Hospitality Management
+                        </figcaption>
+
+                    </figure>
+
+                    <p class="footer-desc">
+                        Helping hospitality businesses turn ideas into
+                        well-planned, efficiently managed and memorable
+                        experiences. Your vision, supported by thoughtful
+                        planning and practical solutions.
+                    </p>
+
+                    <div class="social-icons">
+
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <h4 class="footer-heading">Quick Links</h4>
+
+                    <ul class="footer-links">
+
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About Artha</a></li>
+                        <li><a href="#why-artha">Why Choose Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#industries">Industries</a></li>
+                        <li><a href="#contact">Contact</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- SERVICES -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <h4 class="footer-heading">Our Services</h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="#services">Capital Investment Planning</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Location Selection</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Outlet & Kitchen Design</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Staffing Support</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Civil & Interior Work</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Marketing Services</a>
+                        </li>
+
+                        <li>
+                            <a href="#services">Food & Service Quality</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <h4 class="footer-heading">Get in Touch</h4>
+
+                    <ul class="footer-contact">
+
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+
+                            <span>
+                                T-14, 3rd Floor, Meridian Guru Plaza,
+                                Bijai, Mangalore 575004
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+
+                            <a href="tel:+919980447824">
+                                +91 99804 47824
+                            </a>
+                        </li>
+
+                        <li>
+                            <i class="fas fa-envelope"></i>
+
+                            <a href="mailto:artha.hm24@gmail.com">
+                                artha.hm24@gmail.com
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <div>
+                    &copy; 2026 Artha Hospitality Management.
+                    All Rights Reserved.
+                </div>
+
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    <span class="mx-2">|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         BOOTSTRAP JAVASCRIPT
+    ========================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- =========================================================
+         CUSTOM JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            /* =====================================================
+               1. COMPACT HEADER
+            ===================================================== */
+
+            const originalHeader =
+                document.getElementById('mainHeaderOriginal');
+
+            const compactHeader = originalHeader.cloneNode(true);
+
+            compactHeader.classList.remove('site-header-original');
+            compactHeader.classList.add('site-header-compact');
+            compactHeader.removeAttribute('id');
+
+            document.body.prepend(compactHeader);
+
+            const headerObserver = new IntersectionObserver(
+                function (entries) {
+
+                    const entry = entries[0];
+
+                    if (entry.isIntersecting) {
+
+                        compactHeader.classList.remove('is-visible');
+
+                    } else {
+
+                        compactHeader.classList.add('is-visible');
+
+                    }
+
+                },
+                {
+                    threshold: 0,
+                    rootMargin: "0px"
+                }
+            );
+
+            headerObserver.observe(originalHeader);
+
+
+            /* =====================================================
+               2. HERO SLIDER
+            ===================================================== */
+
+            const heroSlider = document.getElementById('heroSlider');
+
+            const currentSlideNum =
+                document.getElementById('currentSlideNum');
+
+            const textBox =
+                document.querySelector('.hero-text-box');
+
+            function reanimateText() {
+
+                const line =
+                    textBox.querySelector('.hero-golden-line');
+
+                if (line) {
+
+                    line.style.animation = 'none';
+
+                    line.offsetHeight;
+
+                    line.style.animation = null;
+
+                }
+
+                textBox.querySelectorAll('.text-anim').forEach(function (el) {
+
+                    el.style.animation = 'none';
+
+                    el.offsetHeight;
+
+                    el.style.animation = null;
+
+                });
+
+            }
+
+            heroSlider.addEventListener(
+                'slid.bs.carousel',
+                function (event) {
+
+                    const slideIndex = event.to + 1;
+
+                    currentSlideNum.textContent =
+                        String(slideIndex).padStart(2, '0');
+
+                    reanimateText();
+
+                }
+            );
+
+
+            /* =====================================================
+               3. SCROLL ANIMATIONS
+            ===================================================== */
+
+            const animatedElements =
+                document.querySelectorAll('.anim-base');
+
+            const scrollObserver = new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add('is-in-view');
+
+                        } else {
+
+                            entry.target.classList.remove('is-in-view');
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -40px 0px"
+                }
+            );
+
+            animatedElements.forEach(function (element) {
+
+                scrollObserver.observe(element);
+
+            });
+
+
+            /* =====================================================
+               4. CONTACT FORM - WHATSAPP REDIRECT
+            ===================================================== */
+
+            const contactForm =
+                document.getElementById('arthaContactForm');
+
+            contactForm.addEventListener('submit', function (event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById('contactName').value.trim();
+
+                const phone =
+                    document.getElementById('contactPhone').value.trim();
+
+                const email =
+                    document.getElementById('contactEmail').value.trim();
+
+                const business =
+                    document.getElementById('businessType').value;
+
+                const message =
+                    document.getElementById('contactMessage').value.trim();
+
+                const whatsappNumber = "919980447824";
+
+                const whatsappMessage =
+                    "Hello Artha Hospitality Management,\n\n" +
+                    "I would like to enquire about your services.\n\n" +
+                    "Name: " + name + "\n" +
+                    "Phone: " + phone + "\n" +
+                    "Email: " + email + "\n" +
+                    "Business Type: " + business + "\n" +
+                    "Project Details: " + message;
+
+                const whatsappURL =
+                    "https://wa.me/" + whatsappNumber +
+                    "?text=" + encodeURIComponent(whatsappMessage);
+
+                window.open(whatsappURL, "_blank");
+
+            });
+
+
+            /* =====================================================
+               5. ACTIVE NAVIGATION STATE
+            ===================================================== */
+
+            const allNavLinks = document.querySelectorAll(
+                '.site-header-original .nav-link, .site-header-compact .nav-link'
+            );
+
+            allNavLinks.forEach(function (link) {
+
+                link.addEventListener('click', function () {
+
+                    const targetHref = link.getAttribute('href');
+
+                    allNavLinks.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    document.querySelectorAll(
+                        '.nav-link[href="' + targetHref + '"]'
+                    ).forEach(function (item) {
+                        item.classList.add('active');
+                    });
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
