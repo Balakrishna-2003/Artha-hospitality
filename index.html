@@ -59,17 +59,35 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso)}
+h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
 h1{letter-spacing:-.02em}
 h2{font-size:clamp(1.8rem,3.4vw,2.9rem);letter-spacing:-.01em}
 h3{font-size:1.25rem}
-p{max-width:62ch}
+p{max-width:62ch; overflow-wrap: break-word; word-wrap: break-word;}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 button{font-family:inherit;cursor:pointer;border:0;background:none}
 ul{list-style:none}
 
-.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+/* Accessibility Figure Classes */
+.cr-figure {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.cr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px; width: 100%;}
 .eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
@@ -167,6 +185,13 @@ header.scrolled{
   box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
   padding:14px 0; 
 }
+
+/* ADDED: Solid background for header when mobile menu is open */
+header.menu-open {
+  background: var(--offwhite);
+  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+}
+
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
 
 .logo{display:block;line-height:0;}
@@ -181,7 +206,6 @@ header.scrolled .brand-logo {
 }
 
 .nav-links{display:flex;align-items:center;gap:30px}
-/* Updated selector to exclude the CTA button so its padding is preserved */
 .nav-links > a:not(.btn):not(.nav-cta), .nav-item-dropdown > a {
   font-size:.93rem;font-weight:500;color:var(--espresso);position:relative;padding:8px 0;transition:color .2s;
   display: flex; align-items: center; gap: 6px;
@@ -192,7 +216,6 @@ header.scrolled .brand-logo {
 .nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
 .nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
 
-/* Dropdown Structure */
 .nav-item-dropdown { position: relative; }
 .nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
 .nav-item-dropdown:hover .fa-chevron-down { transform: rotate(180deg); }
@@ -251,7 +274,6 @@ header.scrolled .brand-logo {
   color: var(--espresso);
 }
 
-/* Header CTA - Fixed padding and alignment */
 .nav-cta {
   margin-left: 12px;
   padding: 12px 24px;
@@ -282,27 +304,30 @@ header.scrolled .brand-logo {
 .menu-toggle.open span:nth-child(2){opacity:0}
 .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* ============ REFINED MOBILE MENU ============ */
 .mobile-menu{
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
   background:var(--cream);padding:100px 28px 40px;
-  flex-direction:column;gap:10px;
+  flex-direction:column;
   overflow-y: auto;
 }
 .mobile-menu.open{display:flex}
-.mobile-menu a{font-family:'DM Serif Display',serif;font-size:1.5rem;padding:12px 0;border-bottom:1px solid rgba(10,28,58,.1); display: block;}
 
-/* Mobile Dropdown Details */
+/* Target only navigation links, not buttons */
+.mobile-menu > a:not(.btn),
 .mobile-dropdown summary {
   font-family:'DM Serif Display',serif;
-  font-size:1.5rem;
-  padding:12px 0;
-  border-bottom:1px solid rgba(10,28,58,.1);
-  cursor: pointer;
-  list-style: none;
+  font-size:1.35rem;
+  padding:16px 0;
+  border-bottom:1px solid rgba(10,28,58,.08);
+  color: var(--espresso);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+  list-style: none;
 }
+
 .mobile-dropdown summary::-webkit-details-marker { display: none; }
 .mobile-dropdown summary::after {
   content: "+";
@@ -314,19 +339,20 @@ header.scrolled .brand-logo {
 .mobile-dropdown[open] summary::after { content: "-"; }
 
 .mobile-sub-links {
-  padding-left: 15px;
-  padding-bottom: 10px;
-  border-bottom:1px solid rgba(10,28,58,.1);
+  padding: 10px 0 15px 15px;
+  border-bottom:1px solid rgba(10,28,58,.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .mobile-sub-links a {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  padding: 10px 0;
-  border-bottom: none;
+  font-size: 0.95rem;
   color: #707986;
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: color 0.2s;
 }
 .mobile-sub-links a i {
   color: var(--burnt);
@@ -334,7 +360,17 @@ header.scrolled .brand-logo {
   text-align: center;
 }
 .mobile-sub-links a:hover { color: var(--burnt); }
-.mobile-menu .btn{margin-top:20px;justify-content:center}
+
+/* Mobile Menu Button Fix */
+.mobile-menu .btn {
+  margin-top: 30px;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border-bottom: none;
+  padding: 16px 24px;
+  width: 100%;
+}
 
 /* ============ HERO & CAROUSEL ============ */
 .hero{
@@ -353,14 +389,14 @@ header.scrolled .brand-logo {
   }
 }
 
-.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
-
-/* --- Top Right Navigation Arrows --- */
-.hero-visual {
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  gap:56px;
+  align-items:center;
   position: relative;
-  min-height: 540px;
-  padding-top: 70px;
 }
+
 .hero-arrows {
   position: absolute;
   top: 0;
@@ -393,7 +429,6 @@ header.scrolled .brand-logo {
   height: 20px;
 }
 
-/* --- Bottom Carousel Dots --- */
 .hero-dots {
   display: flex;
   align-items: center;
@@ -417,7 +452,6 @@ header.scrolled .brand-logo {
   background: var(--burnt);
 }
 
-/* Text Stagger Animation */
 .hero-text-wrap {
   transition: opacity 0.4s ease;
 }
@@ -440,18 +474,23 @@ header.scrolled .brand-logo {
 
 .hero h1{font-size:clamp(2.3rem,4.8vw,4.1rem);line-height:1.04;margin-bottom:22px}
 .hero h1 span{color:var(--burnt);}
-.hero .desc{font-size:1.08rem;color:#707986;max-width:50ch;margin-bottom:30px}
+.hero .desc{font-size:1.08rem;color:#707986;
+margin-bottom:30px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 
-/* --- Clean Image Animations (No Blur) --- */
 .hero-main{
-  position:absolute;top:70px;right:0;width:78%;height:calc(100% - 70px);
+  position:absolute;top:0;right:0;width:78%;height:100%;
   border-radius:26px;overflow:hidden;box-shadow:var(--shadow);
 }
 .hero-mini{
-  position:absolute;top:calc(7% + 70px);left:0;width:38%;height:38%;
+  position:absolute;top:7%;left:0;width:38%;height:38%;
   border-radius:20px;overflow:hidden;border:6px solid var(--offwhite);
   box-shadow:var(--shadow-soft);z-index:2;
+}
+
+.hero-main .cr-figure, .hero-mini .cr-figure {
+  width: 100%;
+  height: 100%;
 }
 
 .hero-main img, .hero-mini img {
@@ -460,7 +499,11 @@ header.scrolled .brand-logo {
   transform-origin: center center;
 }
 
-/* Fade-out states */
+.hero-visual {
+  position: relative;
+  min-height: 540px;
+}
+
 .hero-visual.fade-out .hero-main img {
   opacity: 0;
   transform: translateY(15px) scale(0.98);
@@ -470,7 +513,6 @@ header.scrolled .brand-logo {
   transform: translateY(15px) scale(0.98);
 }
 
-/* Fade-in (Resting) states */
 .hero-visual:not(.fade-out) .hero-main img {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -480,7 +522,6 @@ header.scrolled .brand-logo {
   transform: translateY(0) scale(1);
 }
 
-/* Hover effects */
 .hero-main:hover img {
   transform: scale(1.06) !important;
   transition: transform 0.6s ease-out;
@@ -498,10 +539,9 @@ header.scrolled .brand-logo {
 .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
 .about-visual{position:relative;min-height:480px}
 .about-img{position:absolute;border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.about-img img{width:100%;height:100%;object-fit:cover}
-.about-img.main{width:80%;
-/* height:82%; */
-top:0;right:0;z-index:2}
+.about-img .cr-figure { width: 100%; height: 100%; }
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-img.main{width:80%; top:0; right:0; z-index:2;}
 .about-img.sub{width:54%;height:46%;bottom:0;left:0;z-index:3;border:6px solid var(--offwhite)}
 .about-tag{
   position:absolute;right:6%;bottom:6%;z-index:4;
@@ -735,8 +775,9 @@ top:0;right:0;z-index:2}
   display:flex;flex-direction:column;
 }
 .ind:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.ind-img{position:relative;height:260px;overflow:hidden}
-.ind-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.ind-img{position:relative; height: auto; overflow:hidden;}
+.ind-img .cr-figure { width: 100%; height: auto; }
+.ind-img img{width:100%;height:auto; display:block; transition:transform .8s ease}
 .ind:hover .ind-img img{transform:scale(1.06)}
 .ind-cat{
   position:absolute;top:16px;left:16px;
@@ -860,7 +901,6 @@ footer {
   overflow: hidden;
 }
 
-/* Large subtle background circle */
 .footer-bg-circle {
   position: absolute;
   bottom: -250px;
@@ -892,18 +932,15 @@ footer {
   z-index: 2;
 }
 
-/* Columns with "Interesting Dividers" */
 .footer-brand, .footer-links-section, .footer-contact-section {
   position: relative;
   padding: 0 40px;
 }
 
-/* First column doesn't need left padding */
 .footer-brand {
   padding-left: 0;
 }
 
-/* Add vertical gradient dividers */
 .footer-brand::after, .footer-links-section::after {
   content: '';
   position: absolute;
@@ -914,7 +951,6 @@ footer {
   background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
 }
 
-/* Left Column: Brand & Tagline */
 .footer-brand {
   display: flex;
   flex-direction: column;
@@ -974,7 +1010,6 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Middle Column: Links (Straight Line) */
 .footer-links-section {
   display: flex;
   flex-direction: column;
@@ -989,7 +1024,6 @@ footer {
   letter-spacing: 0.02em;
 }
 
-/* Stack links vertically */
 .links-list {
   display: flex;
   flex-direction: column;
@@ -1019,7 +1053,6 @@ footer {
   transform: translate(3px, -3px);
 }
 
-/* Right Column: Contact */
 .footer-contact-section {
   display: flex;
   flex-direction: column;
@@ -1074,7 +1107,6 @@ footer {
   color: var(--offwhite);
 }
 
-/* Footer Bottom */
 .footer-bottom {
   margin-top: 70px;
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -1109,15 +1141,54 @@ footer {
   text-decoration: underline;
 }
 
-/* ============ REVEAL ============ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+/* ============ ROBUST SCROLL ANIMATIONS ============ */
+.anim-base {
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+.anim-fade-up { transform: translateY(40px); }
+.anim-fade-down { transform: translateY(-40px); }
+.anim-fade-left { transform: translateX(40px); }
+.anim-fade-right { transform: translateX(-40px); }
+.anim-zoom-in { transform: scale(0.95); }
+.anim-zoom-out { transform: scale(1.05); }
+
+.anim-is-visible {
+  opacity: 1;
+  transform: translate(0) scale(1) !important;
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
 @media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
+  .anim-base {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   html{scroll-behavior:auto}
 }
 
 /* ============ RESPONSIVE ============ */
+/* Expanded container max-width for larger screens to remove side gaps */
+@media(min-width: 1400px) {
+  :root { --max: 1320px; }
+}
+@media(min-width: 1600px) {
+  :root { --max: 1440px; }
+}
+@media(min-width: 1920px) {
+  :root { --max: 1600px; }
+}
+@media(min-width: 2400px) {
+  :root { --max: 1800px; }
+}
+
 @media(max-width:1080px){
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-visual{min-height:480px;max-width:560px;margin:0 auto;width:100%}
@@ -1125,7 +1196,6 @@ footer {
   .about-visual{min-height:440px;max-width:520px;margin:0 auto;width:100%}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .ind-grid{grid-template-columns:1fr;gap:22px}
-  .ind-img{height:240px}
   
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1142,7 +1212,6 @@ footer {
     gap: 40px;
   }
   
-  /* Reset dividers on tablet */
   .footer-brand::after, .footer-links-section::after {
     display: none;
   }
@@ -1161,18 +1230,181 @@ footer {
   }
 }
 
-@media(max-width:860px){
+/* Comprehensive Centering Rules for Tablet and Mobile */
+@media(max-width:991.98px){
   :root{--sec-pad:60px}
+  
+  /* Navigation */
   .nav-links{display:none}
   .nav-cta{display:none}
   .menu-toggle{display:flex}
-  
   .brand-logo{height:58px;}
   header.scrolled .brand-logo{height:46px;}
   
+  /* Global Text Centering */
+  .hero-copy,
+  .about-copy,
+  .why-card,
+  .svc-row,
+  .head-split,
+  .head-split-title,
+  .ind-body,
+  .approach-card,
+  .contact-info,
+  .footer-brand,
+  .footer-header,
+  .footer-bottom,
+  .contact-card,
+  .form-card {
+    text-align: center;
+  }
+
+  .hero-text-wrap {
+    padding: 0 15px;
+  }
+
+  /* Flex Container Centering */
+  .hero-ctas,
+  .hero-dots,
+  .values,
+  .footer-socials,
+  .contact-list,
+  .form-card,
+  .head-split,
+  .head-split-title {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Hero Arrows specific positioning */
+  .hero-arrows {
+    top: -10px; 
+    right: 20px; 
+    left: auto;
+    transform: none;
+    z-index: 10;
+  }
+  
+  .hero-copy {
+    padding-top: 70px; 
+  }
+
+  /* About Section */
+  .value {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-copy .btn {
+    margin: 0 auto;
+    display: inline-flex;
+  }
+
+  /* Why Section */
+  .why-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .why-card .ic {
+    margin: 0 auto 20px auto;
+  }
+
+  /* Services Section */
+  .svc-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 0;
+  }
+  .svc-row .ic {
+    margin-bottom: 0;
+  }
+  .svc-row p {
+    max-width: 100%;
+  }
+
+  /* Industries Section */
+  .head-split p {
+    margin: 0 auto;
+  }
+  .ind-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ind-body .explore {
+    justify-content: center;
+  }
+
+  /* Approach Section */
+  .approach-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Footer Grid & Columns */
+  .footer-grid {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+  }
+  
+  .footer-links-section,
+  .footer-contact-section {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-brand::after, .footer-links-section::after {
+    display: none;
+  }
+  
+  .footer-brand, .footer-links-section, .footer-contact-section {
+    padding: 0;
+  }
+  
+  .footer-brand {
+    grid-column: 1 / -1;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .footer-socials {
+    justify-content: center;
+  }
+
+  /* === Links List Row Layout (Mobile) === */
+  .links-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px 25px;
+  }
+
+  .link-item {
+    justify-content: center;
+    padding: 0;
+    border-bottom: none;
+    gap: 8px;
+  }
+
+  .link-item:hover {
+    padding-left: 0;
+  }
+
+  /* Contact Card Centering */
+  .contact-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Footer Bottom */
   .footer-bottom {
     flex-direction: column;
-    text-align: center;
     gap: 20px;
   }
 }
@@ -1190,7 +1422,6 @@ footer {
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
   
-  /* Stats Card Mobile */
   .stats-section {
     padding: 60px 0;
   }
@@ -1208,7 +1439,6 @@ footer {
     font-size: 2.5rem;
   }
   
-  /* Services Mobile */
   .svc-row {
     flex-direction: column;
     gap: 16px;
@@ -1223,7 +1453,6 @@ footer {
     max-width: 100%;
   }
 
-  /* Approach Mobile */
   .approach-grid {
     grid-template-columns: 1fr;
   }
@@ -1231,7 +1460,6 @@ footer {
     padding: 30px 24px;
   }
 
-  /* Footer Mobile */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1260,7 +1488,10 @@ footer {
 <header id="site-header">
   <div class="wrap nav">
     <a href="#home" class="logo" aria-label="Artha Hospitality Management home">
-      <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo" class="brand-logo">
+      <figure class="cr-figure">
+        <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo" class="brand-logo">
+        <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+      </figure>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#home">Home</a>
@@ -1327,8 +1558,18 @@ footer {
 <section class="hero" id="home">
   <div class="wrap hero-grid">
     
+    <!-- Hero Arrows -->
+    <div class="hero-arrows">
+      <button class="nav-btn" id="prev-btn" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="nav-btn" id="next-btn" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
     <!-- Hero Copy -->
-    <div class="hero-copy reveal" id="hero-copy">
+    <div class="hero-copy anim-base anim-fade-right" id="hero-copy">
       <div class="hero-text-wrap" id="hero-text-wrap">
         <span class="eyebrow slide-el">Hospitality Management &amp; Consultancy</span>
         <h1 id="hero-title" class="slide-el">Building Better Hospitality Businesses, <span>From the Ground Up.</span></h1>
@@ -1342,26 +1583,25 @@ footer {
     </div>
 
     <!-- Hero Visuals -->
-    <div class="hero-visual reveal" id="hero-visual" aria-hidden="true">
-      <div class="hero-arrows">
-        <button class="nav-btn" id="prev-btn" aria-label="Previous slide">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="nav-btn" id="next-btn" aria-label="Next slide">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-
+    <div class="hero-visual anim-base anim-fade-left delay-200" id="hero-visual" aria-hidden="true">
       <svg class="hero-contour" viewBox="0 0 300 300" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity=".55">
         <path d="M20 150C20 78 78 20 150 20s130 58 130 130-58 130-130 130"/>
         <path d="M55 150c0-52 43-95 95-95s95 43 95 95-43 95-95 95"/>
         <path d="M90 150c0-33 27-60 60-60s60 27 60 60-27 60-60 60"/>
       </svg>
+      
       <div class="hero-main">
-        <img id="hero-img-main" src="images/slide-img-1-lgr.jpg" alt="Premium restaurant interior with warm lighting" loading="eager">
+        <figure class="cr-figure">
+          <img id="hero-img-main" src="images/slide-img-1-lgr.jpg" alt="Premium restaurant interior with warm lighting" loading="eager">
+          <figcaption class="cr-only" id="hero-cap-main">Premium restaurant interior with warm lighting</figcaption>
+        </figure>
       </div>
+      
       <div class="hero-mini">
-        <img id="hero-img-mini" src="images/slide-img-1-sml.jpg" alt="Professional chef working in a commercial kitchen" loading="lazy">
+        <figure class="cr-figure">
+          <img id="hero-img-mini" src="images/slide-img-1-sml.jpg" alt="Professional chef working in a commercial kitchen" loading="lazy">
+          <figcaption class="cr-only" id="hero-cap-mini">Professional chef working in a commercial kitchen</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1370,7 +1610,7 @@ footer {
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="about-copy reveal">
+    <div class="about-copy anim-base anim-fade-right">
       <span class="eyebrow">About Artha</span>
       <h2>Hospitality Begins With Great Service.</h2>
       <p class="lead" style="margin-top:16px">At Artha, we believe that great hospitality begins with great service. Our mission is to help restaurant owners and hospitality businesses overcome their toughest service challenges, improve guest satisfaction, and grow sustainably.</p>
@@ -1400,12 +1640,18 @@ footer {
       <a href="#services" class="btn btn-primary">Discover What We Do <span class="arrow">↗</span></a>
     </div>
 
-    <div class="about-visual reveal" aria-hidden="true">
+    <div class="about-visual anim-base anim-fade-left delay-200" aria-hidden="true">
       <div class="about-img main">
-        <img src="images/artha-hospitality-management-about-us-lgr-img.jpg" alt="Hospitality team working in a professional kitchen" loading="lazy">
+        <figure class="cr-figure">
+          <img src="images/artha-hospitality-management-about-us-lgr-img.jpg" alt="Hospitality team working in a professional kitchen" loading="lazy">
+          <figcaption class="cr-only">Hospitality team working in a professional kitchen</figcaption>
+        </figure>
       </div>
       <div class="about-img sub">
-        <img src="images/artha-hospitality-management-about-us-sml-img.jpg" alt="Premium restaurant dining environment" loading="lazy">
+        <figure class="cr-figure">
+          <img src="images/artha-hospitality-management-about-us-sml-img.jpg" alt="Premium restaurant dining environment" loading="lazy">
+          <figcaption class="cr-only">Premium restaurant dining environment</figcaption>
+        </figure>
       </div>
       <div class="about-tag"><strong>15+</strong>Years in Hospitality</div>
     </div>
@@ -1415,24 +1661,24 @@ footer {
 <!-- STATS SECTION -->
 <section class="stats-section">
   <div class="wrap">
-    <div class="stats-grid reveal">
-      <div class="stat-card">
+    <div class="stats-grid">
+      <div class="stat-card anim-base anim-fade-up delay-100">
         <div class="n" data-count="15">0</div>
         <div class="l">Years of Experience</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card anim-base anim-fade-up delay-200">
         <div class="n" data-count="10">0</div>
         <div class="l">Core Services</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card anim-base anim-fade-up delay-300">
         <div class="n" data-count="3">0</div>
         <div class="l">Hospitality Segments</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card anim-base anim-fade-up delay-400">
         <div class="n" data-count="50">0</div>
         <div class="l">Projects Consulted</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card anim-base anim-fade-up delay-500">
         <div class="n" data-count="100">0</div>
         <div class="l">Client Focus</div>
       </div>
@@ -1443,35 +1689,35 @@ footer {
 <!-- WHY -->
 <section id="why" class="why">
   <div class="wrap">
-    <div class="why-heading reveal">
+    <div class="why-heading anim-base anim-fade-up">
       <span class="eyebrow">Why Choose Artha</span>
       <h2 class="section-title">Experience That Turns Ideas Into Successful Operations.</h2>
       <p class="section-description">Backed by over <em>15 years</em> of experience in hospitality and hotel operations, our team combines industry insight with proven strategies to deliver solutions that work from day one.</p>
     </div>
 
     <div class="why-grid">
-      <article class="why-card reveal">
+      <article class="why-card anim-base anim-fade-up delay-100">
         <span class="ic" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l3 6 6 .9-4.5 4.3 1.1 6.2L12 16.5 6.4 19.4l1.1-6.2L3 8.9 9 8z"/></svg>
         </span>
         <h3>Industry Experience</h3>
         <p>More than 15 years of experience in hospitality and hotel operations.</p>
       </article>
-      <article class="why-card reveal">
+      <article class="why-card anim-base anim-fade-up delay-200">
         <span class="ic" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
         </span>
         <h3>Strategic Approach</h3>
         <p>Solutions built around business requirements and operational objectives.</p>
       </article>
-      <article class="why-card reveal">
+      <article class="why-card anim-base anim-fade-up delay-300">
         <span class="ic" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
         </span>
         <h3>End-to-End Support</h3>
         <p>Support across planning, development, design and operational requirements.</p>
       </article>
-      <article class="why-card reveal">
+      <article class="why-card anim-base anim-fade-up delay-400">
         <span class="ic" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </span>
@@ -1485,14 +1731,14 @@ footer {
 <!-- SERVICES -->
 <section id="services">
   <div class="wrap">
-    <div class="head-center reveal">
+    <div class="head-center anim-base anim-fade-up">
       <span class="eyebrow">Our Services</span>
       <h2>Everything Your Hospitality Business Needs, Under One Roof.</h2>
       <p>From the first business decision to everyday operations, Artha provides comprehensive hospitality management solutions designed to help businesses operate efficiently and grow sustainably.</p>
     </div>
 
-    <div class="services-list reveal">
-      <article class="svc-row">
+    <div class="services-list">
+      <article class="svc-row anim-base anim-fade-up delay-100">
         <span class="ic"><i class="fas fa-chart-pie"></i></span>
         <div class="text">
           <h3>Business Strategy & Feasibility</h3>
@@ -1500,7 +1746,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-100">
         <span class="ic"><i class="fas fa-map-marked-alt"></i></span>
         <div class="text">
           <h3>Site Selection & Analysis</h3>
@@ -1508,7 +1754,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-200">
         <span class="ic"><i class="fas fa-layer-group"></i></span>
         <div class="text">
           <h3>Spatial Design & Flow</h3>
@@ -1516,7 +1762,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-200">
         <span class="ic"><i class="fas fa-utensils"></i></span>
         <div class="text">
           <h3>Culinary Operations</h3>
@@ -1524,7 +1770,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-300">
         <span class="ic"><i class="fas fa-user-graduate"></i></span>
         <div class="text">
           <h3>Staff Training & Sourcing</h3>
@@ -1532,7 +1778,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-300">
         <span class="ic"><i class="fas fa-truck"></i></span>
         <div class="text">
           <h3>Supply Chain & Vendors</h3>
@@ -1540,7 +1786,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-400">
         <span class="ic"><i class="fas fa-bullseye"></i></span>
         <div class="text">
           <h3>Brand Identity & Marketing</h3>
@@ -1548,7 +1794,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-400">
         <span class="ic"><i class="fas fa-file-invoice-dollar"></i></span>
         <div class="text">
           <h3>Financial & Cost Control</h3>
@@ -1556,7 +1802,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-500">
         <span class="ic"><i class="fas fa-award"></i></span>
         <div class="text">
           <h3>Quality & Guest Experience</h3>
@@ -1564,7 +1810,7 @@ footer {
         </div>
       </article>
 
-      <article class="svc-row">
+      <article class="svc-row anim-base anim-fade-up delay-500">
         <span class="ic"><i class="fas fa-rocket"></i></span>
         <div class="text">
           <h3>Pre-Opening & Launch Support</h3>
@@ -1578,7 +1824,7 @@ footer {
 <!-- INDUSTRIES -->
 <section id="industries" class="industries">
   <div class="wrap">
-    <div class="head-split reveal">
+    <div class="head-split anim-base anim-fade-up">
       <div class="head-split-title">
         <span class="eyebrow">Industries We Serve</span>
         <h2>Creating Better Experiences Across Hospitality.</h2>
@@ -1587,9 +1833,12 @@ footer {
     </div>
 
     <div class="ind-grid">
-      <article class="ind reveal">
+      <article class="ind anim-base anim-fade-up delay-100">
         <div class="ind-img">
-          <img src="images/artha-hospitality-mangement-restruant-img.jpg" alt="Premium restaurant interior" loading="lazy">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-restruant-img.jpg" alt="Premium restaurant interior" loading="lazy">
+            <figcaption class="cr-only">Premium restaurant interior</figcaption>
+          </figure>
           <span class="ind-cat">Restaurants</span>
         </div>
         <div class="ind-body">
@@ -1599,9 +1848,12 @@ footer {
         </div>
       </article>
 
-      <article class="ind reveal">
+      <article class="ind anim-base anim-fade-up delay-200">
         <div class="ind-img">
-          <img src="images/artha-hospitality-mangement-hotels-img.jpg" alt="Elegant hotel interior" loading="lazy">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-hotels-img.jpg" alt="Elegant hotel interior" loading="lazy">
+            <figcaption class="cr-only">Elegant hotel interior</figcaption>
+          </figure>
           <span class="ind-cat">Hotels</span>
         </div>
         <div class="ind-body">
@@ -1611,9 +1863,12 @@ footer {
         </div>
       </article>
 
-      <article class="ind reveal">
+      <article class="ind anim-base anim-fade-up delay-300">
         <div class="ind-img">
-          <img src="images/artha-hospitality-mangement-pub-and-resto-img.jpg" alt="Sophisticated bar and resto bar interior" loading="lazy">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-pub-and-resto-img.jpg" alt="Sophisticated bar and resto bar interior" loading="lazy">
+            <figcaption class="cr-only">Sophisticated bar and resto bar interior</figcaption>
+          </figure>
           <span class="ind-cat">Pub &amp; Resto Bar</span>
         </div>
         <div class="ind-body">
@@ -1629,14 +1884,14 @@ footer {
 <!-- APPROACH -->
 <section id="approach" class="approach">
   <div class="wrap">
-    <div class="head-center reveal">
+    <div class="head-center anim-base anim-fade-up">
       <span class="eyebrow">Our Approach</span>
       <h2>From Vision to a Well-Running Hospitality Business.</h2>
       <p>A clear way of thinking about hospitality development — from the first idea to everyday operations.</p>
     </div>
 
     <div class="approach-grid">
-      <div class="approach-card reveal">
+      <div class="approach-card anim-base anim-fade-up delay-100">
         <div class="approach-icon">
           <i class="fas fa-search"></i>
         </div>
@@ -1644,7 +1899,7 @@ footer {
         <p>Understand the client's business idea, requirements, goals and challenges.</p>
       </div>
 
-      <div class="approach-card reveal">
+      <div class="approach-card anim-base anim-fade-up delay-200">
         <div class="approach-icon">
           <i class="fas fa-chess-knight"></i>
         </div>
@@ -1652,7 +1907,7 @@ footer {
         <p>Develop an approach around investment, location, design and operational needs.</p>
       </div>
 
-      <div class="approach-card reveal">
+      <div class="approach-card anim-base anim-fade-up delay-300">
         <div class="approach-icon">
           <i class="fas fa-sitemap"></i>
         </div>
@@ -1660,7 +1915,7 @@ footer {
         <p>Coordinate the required development activities, including civil work, interiors, staffing and vendor-related support.</p>
       </div>
 
-      <div class="approach-card reveal">
+      <div class="approach-card anim-base anim-fade-up delay-400">
         <div class="approach-icon">
           <i class="fas fa-chart-line"></i>
         </div>
@@ -1673,7 +1928,7 @@ footer {
 
 <!-- CTA -->
 <section class="cta">
-  <div class="wrap cta-inner reveal">
+  <div class="wrap cta-inner anim-base anim-zoom-in">
     <span class="eyebrow">Let's Work Together</span>
     <h2>Have a Hospitality Vision? Let's Bring It to Life.</h2>
     <p>Whether you're planning a new restaurant, developing a hotel or improving an existing hospitality business, Artha is ready to help you take the next step.</p>
@@ -1685,7 +1940,7 @@ footer {
 </section>
 
 <!-- NEW PREMIUM FOOTER -->
-<footer id="footer">
+<footer id="footer" class="anim-base anim-fade-up">
   <div class="footer-bg-circle"></div>
   <div class="footer-bg-circle-2"></div>
   
@@ -1695,7 +1950,10 @@ footer {
       <!-- Brand Column -->
       <div class="footer-brand">
         <a href="#home" class="footer-logo" aria-label="Artha Hospitality Management">
-          <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
+            <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+          </figure>
         </a>
         
         <div class="footer-tagline">
@@ -1793,27 +2051,33 @@ const mobileMenu = document.getElementById('mobileMenu');
 const setMenu = (open) => {
   toggle.classList.toggle('open', open);
   mobileMenu.classList.toggle('open', open);
+  header.classList.toggle('menu-open', open); /* ADDED: Toggle class on header */
   toggle.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
 };
 toggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
 
-// Close mobile menu when clicking any link (including the dropdown links)
 mobileMenu.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => setMenu(false));
 });
 
-/* ============ SCROLL REVEAL ============ */
-const reveals = document.querySelectorAll('.reveal');
+/* ============ ROBUST SCROLL REVEAL ============ */
+const animElements = document.querySelectorAll('.anim-base');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add('anim-is-visible');
+        io.unobserve(e.target);
+      }
     });
-  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  reveals.forEach(el => io.observe(el));
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  animElements.forEach(el => io.observe(el));
 } else {
-  reveals.forEach(el => el.classList.add('in'));
+  animElements.forEach(el => el.classList.add('anim-is-visible'));
 }
 
 /* ============ HERO CAROUSEL ENGINE ============ */
@@ -1852,20 +2116,20 @@ const slideDuration = 6000;
 const heroTitle = document.getElementById('hero-title');
 const heroDesc = document.getElementById('hero-desc');
 const heroImgMain = document.getElementById('hero-img-main');
+const heroCapMain = document.getElementById('hero-cap-main');
 const heroImgMini = document.getElementById('hero-img-mini');
+const heroCapMini = document.getElementById('hero-cap-mini');
 const heroTextWrap = document.getElementById('hero-text-wrap');
 const heroVisual = document.getElementById('hero-visual');
 const dotsContainer = document.getElementById('hero-dots');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
-// Preload images for smooth transitions
 heroSlides.forEach(slide => {
   const img1 = new Image(); img1.src = slide.imgMain;
   const img2 = new Image(); img2.src = slide.imgMini;
 });
 
-// Initialize Dots
 function initDots() {
   dotsContainer.innerHTML = '';
   heroSlides.forEach((_, i) => {
@@ -1892,11 +2156,9 @@ function changeSlide(newIndex) {
   isAnimating = true;
   clearTimeout(slideTimer);
   
-  // Fade out text and visuals
   heroTextWrap.classList.add('fade-out');
   heroVisual.classList.add('fade-out');
   
-  // Swap content after fade out transition
   slideTimer = setTimeout(() => {
     currentSlide = newIndex;
     const slide = heroSlides[currentSlide];
@@ -1906,23 +2168,23 @@ function changeSlide(newIndex) {
     
     heroImgMain.src = slide.imgMain;
     heroImgMain.alt = slide.altMain;
+    heroCapMain.textContent = slide.altMain;
+    
     heroImgMini.src = slide.imgMini;
     heroImgMini.alt = slide.altMini;
+    heroCapMini.textContent = slide.altMini;
     
     updateDots(currentSlide);
     
-    // Fade back in
     heroTextWrap.classList.remove('fade-out');
     heroVisual.classList.remove('fade-out');
     
     isAnimating = false;
     
-    // Reset auto-play timer
     slideTimer = setTimeout(() => changeSlide((currentSlide + 1) % heroSlides.length), slideDuration);
-  }, 400); // Wait 400ms to match CSS transition
+  }, 400);
 }
 
-// Next / Prev Button Listeners
 nextBtn.addEventListener('click', () => {
   if (isAnimating) return;
   changeSlide((currentSlide + 1) % heroSlides.length);
@@ -1933,7 +2195,6 @@ prevBtn.addEventListener('click', () => {
   changeSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length);
 });
 
-// Start Carousel
 initDots();
 slideTimer = setTimeout(() => changeSlide((currentSlide + 1) % heroSlides.length), slideDuration);
 
@@ -1945,8 +2206,6 @@ const animateCount = (el) => {
   const dur = 1200, start = performance.now();
   const step = (now) => {
     const p = Math.min((now - start) / dur, 1);
-    
-    // Add '+' for most, '%' for 100
     let suffix = '';
     if (target >= 15 && target !== 100) suffix = '+';
     if (target === 100) suffix = '%';
