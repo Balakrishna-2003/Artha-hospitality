@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>About Us | Artha Hospitality Management</title>
+
+<meta name="description" content="Learn about Artha Hospitality Management. With over 15 years of experience, we help hospitality businesses overcome service challenges and grow sustainably." />
+
+<link rel="shortcut icon" href="images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+/* ============ EXACT STYLES FROM INDEX ============ */
+
+:root{
+
+  --burnt:#D4AF37;
+
+  --terra:#B99428;
+
+  --cream:#F8F6F1;
+
+  --espresso:#0A1C3A;
+
+  --sand:#D4AF37;
+
+  --offwhite:#FFFFFF;
+
+  --max:1200px;
+
+  --radius:20px;
+
+  --shadow:0 20px 44px -22px rgba(10,28,58,.30);
+
+  --shadow-soft:0 12px 30px -20px rgba(10,28,58,.35);
+
+  --sec-pad:84px;
+
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+
+body{
+
+  font-family:'DM Sans',system-ui,sans-serif;
+
+  color:var(--espresso);
+
+  background:var(--offwhite);
+
+  line-height:1.6;
+
+  font-size:16px;
+
+  -webkit-font-smoothing:antialiased;
+
+  overflow-x:hidden;
+
+}
+
+h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
+
+h1{letter-spacing:-.02em}
+
+h2{font-size:clamp(1.8rem,3.4vw,2.9rem);letter-spacing:-.01em}
+
+h3{font-size:1.25rem}
+
+p{max-width:62ch; overflow-wrap: break-word; word-wrap: break-word;}
+
+a{color:inherit;text-decoration:none}
+
+img{display:block;max-width:100%;height:auto}
+
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+
+ul{list-style:none}
+
+
+
+.cr-figure { margin: 0; padding: 0; display: block; }
+
+.cr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px; width: 100%;}
+
+.eyebrow{
+
+  display:inline-flex;align-items:center;gap:10px;
+
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+
+  font-weight:600;color:var(--burnt);margin-bottom:16px;
+
+}
+
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--burnt);display:inline-block}
+
+.lead{font-size:1.05rem;color:#707986}
+
+
+
+.btn{
+
+  display:inline-flex;align-items:center;gap:10px;
+
+  padding:14px 26px;border-radius:100px;
+
+  font-weight:600;font-size:.95rem;line-height:1;
+
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+
+  white-space:nowrap;
+
+}
+
+.btn-primary{background:var(--burnt);color:var(--espresso);box-shadow:0 12px 24px -14px rgba(212,175,55,.9)}
+
+.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(212,175,55,.95)}
+
+.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(10,28,58,.28)}
+
+.btn-ghost:hover{border-color:var(--burnt);color:var(--burnt);transform:translateY(-2px)}
+
+
+
+/* ============ HEADER & DROPDOWN (UPDATED BACKGROUND) ============ */
+
+header{
+
+  position:fixed;top:0;left:0;right:0;z-index:100;
+
+  transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+
+  padding:26px 0; 
+
+  /* ADDED REQUESTED BACKGROUND */
+
+  background: radial-gradient(900px 500px at 96% -8%, rgba(212,175,55,.18), transparent 65%), #F8F6F1;
+
+}
+
+header.scrolled{
+
+  background: radial-gradient(900px 500px at 96% -8%, rgba(212,175,55,.18), transparent 65%), rgba(248, 246, 241, 0.98);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
+
+  padding:14px 0; 
+
+}
+
+header.menu-open {
+
+  background: var(--offwhite);
+
+  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+
+}
+
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+
+.logo{display:block;line-height:0;}
+
+.brand-logo{
+
+  height:70px; 
+
+  width:auto;
+
+  object-fit:contain;
+
+  transition:height .35s ease;
+
+}
+
+header.scrolled .brand-logo {
+
+  height:54px; 
+
+}
+
+.nav-links{display:flex;align-items:center;gap:30px}
+
+.nav-links > a:not(.btn):not(.nav-cta), .nav-item-dropdown > a {
+
+  font-size:.93rem;font-weight:500;color:var(--espresso);position:relative;padding:8px 0;transition:color .2s;
+
+  display: flex; align-items: center; gap: 6px;
+
+}
+
+.nav-links > a:not(.btn):not(.nav-cta)::after, .nav-item-dropdown > a::after {
+
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--burnt);transition:width .25s ease;
+
+}
+
+.nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
+
+.nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+
+
+
+.nav-item-dropdown { position: relative; }
+
+.nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
+
+.nav-item-dropdown:hover .fa-chevron-down { transform: rotate(180deg); }
+
+
+
+.dropdown-menu {
+
+  position: absolute;
+
+  top: 100%;
+
+  left: 50%;
+
+  transform: translateX(-50%) translateY(15px);
+
+  background: var(--offwhite);
+
+  min-width: 480px;
+
+  box-shadow: 0 20px 40px -10px rgba(10,28,58,.15);
+
+  border: 1px solid rgba(10,28,58,.08);
+
+  border-top: 3px solid var(--burnt);
+
+  border-radius: 0 0 12px 12px;
+
+  padding: 15px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 5px 15px;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  z-index: 110;
+
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+
+}
+
+.dropdown-menu a {
+
+  display: flex; align-items: center; gap: 12px;
+
+  font-size: 0.85rem; font-weight: 500; color: #707986;
+
+  padding: 10px 14px; border-radius: 8px;
+
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+
+  white-space: nowrap;
+
+}
+
+.dropdown-menu a i { color: var(--burnt); width: 16px; text-align: center; font-size: 0.9rem; transition: color 0.2s; }
+
+.dropdown-menu a:hover { background: var(--cream); color: var(--burnt); padding-left: 18px; }
+
+.dropdown-menu a:hover i { color: var(--espresso); }
+
+
+
+.nav-cta {
+
+  margin-left: 12px; padding: 12px 24px; font-size: 0.9rem; font-weight: 600; border-radius: 100px;
+
+  background: var(--burnt); color: var(--espresso) !important;
+
+  display: inline-flex; align-items: center; justify-content: center; line-height: 1.2;
+
+  box-shadow: 0 8px 16px -10px rgba(212,175,55,0.6); transition: all 0.3s ease;
+
+  text-transform: none; letter-spacing: normal;
+
+}
+
+.nav-cta::after { display: none !important; }
+
+.nav-cta:hover { background: var(--terra); transform: translateY(-2px); box-shadow: 0 12px 20px -10px rgba(212,175,55,0.8); }
+
+
+
+.menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px}
+
+.menu-toggle span{width:24px;height:2px;background:var(--espresso);transition:.3s}
+
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+
+.menu-toggle.open span:nth-child(2){opacity:0}
+
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+
+
+/* ============ MOBILE MENU ============ */
+
+.mobile-menu{
+
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
+
+  background:var(--cream);padding:100px 28px 40px;
+
+  flex-direction:column; overflow-y: auto;
+
+}
+
+.mobile-menu.open{display:flex}
+
+.mobile-menu > a:not(.btn), .mobile-dropdown summary {
+
+  font-family:'DM Serif Display',serif; font-size:1.35rem; padding:16px 0;
+
+  border-bottom:1px solid rgba(10,28,58,.08); color: var(--espresso);
+
+  display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none;
+
+}
+
+.mobile-dropdown summary::-webkit-details-marker { display: none; }
+
+.mobile-dropdown summary::after { content: "+"; font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 300; color: var(--burnt); }
+
+.mobile-dropdown[open] summary::after { content: "-"; }
+
+.mobile-sub-links { padding: 10px 0 15px 15px; border-bottom:1px solid rgba(10,28,58,.08); display: flex; flex-direction: column; gap: 12px; }
+
+.mobile-sub-links a { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #707986; display: flex; align-items: center; gap: 12px; transition: color 0.2s; }
+
+.mobile-sub-links a i { color: var(--burnt); width: 16px; text-align: center; }
+
+.mobile-sub-links a:hover { color: var(--burnt); }
+
+.mobile-menu .btn { margin-top: 30px; justify-content: center; font-family: 'DM Sans', sans-serif; font-size: 1rem; border-bottom: none; padding: 16px 24px; width: 100%; }
+
+
+
+/* ============ REDESIGNED ABOUT HERO ============ */
+.about-hero {
+    height: 75vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: clamp(100px, 13vh, 115px) 0 24px;
+    overflow: hidden;
+    background: var(--cream);
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    right: -260px;
+    top: -250px;
+    border: 1px solid rgba(212, 175, 55, .14);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+}
+
+/* LEFT CONTENT */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.hero-text .eyebrow {
+    margin-bottom: 0;
+    color: var(--burnt);
+}
+
+.hero-text h1 {
+    color: var(--espresso);
+    font-size: clamp(2.8rem, 4.4vw, 4.25rem);
+    line-height: 1.06;
+    letter-spacing: -.02em;
+    margin: 0;
+    animation: fadeUpHero .8s ease both;
+}
+
+.hero-text h1 span {
+    display: block;
+    color: var(--burnt);
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+}
+
+.hero-text p {
+    color: #707986;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 55ch;
+    border: none;
+    padding: 0;
+    margin: 0;
+    animation: fadeUpHero .8s ease .15s both;
+}
+
+/* HERO BUTTONS */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 4px;
+    animation: fadeUpHero .8s ease .3s both;
+}
+
+/* RIGHT IMAGE */
+.hero-visual {
+    position: relative;
+    height: min(53vh, 480px);
+    min-height: 300px;
+    isolation: isolate;
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 18px -14px -14px 36px;
+    border: 1px solid var(--burnt);
+    border-radius: var(--radius);
+    z-index: -1;
+}
+
+.hero-image-frame {
+    position: absolute;
+    inset: 0 0 0 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--espresso);
+    box-shadow: var(--shadow);
+}
+
+.hero-image-frame img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    animation: slowZoom 25s ease-in-out infinite alternate;
+}
+
+/* EXPERIENCE CARD */
+.hero-experience {
+    position: absolute;
+    left: -18px;
+    bottom: 28px;
+    z-index: 3;
+    width: 180px;
+    padding: 18px 20px;
+    background: var(--offwhite);
+    border-left: 4px solid var(--burnt);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hero-experience strong {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.35rem;
+    line-height: 1;
+    color: var(--espresso);
+}
+
+.hero-experience span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    line-height: 1.5;
+    color: #707986;
+}
+
+/* HERO ANIMATIONS */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+}
+
+@keyframes fadeUpHero {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============ EXACT FOOTER FROM INDEX ============ */
+
+footer {
+
+  background: var(--espresso);
+
+  color: rgba(255,255,255,.7);
+
+  padding: 80px 0 0;
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+.footer-bg-circle {
+
+  position: absolute; bottom: -250px; right: -100px; width: 700px; height: 700px;
+
+  border: 1px solid rgba(212, 175, 55, 0.08); border-radius: 50%; pointer-events: none; z-index: 0;
+
+}
+
+.footer-bg-circle-2 {
+
+  position: absolute; bottom: -200px; right: -50px; width: 600px; height: 600px;
+
+  border: 1px dashed rgba(212, 175, 55, 0.12); border-radius: 50%; pointer-events: none; z-index: 0;
+
+}
+
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 0; position: relative; z-index: 2; }
+
+.footer-brand, .footer-links-section, .footer-contact-section { position: relative; padding: 0 40px; }
+
+.footer-brand { padding-left: 0; }
+
+.footer-brand::after, .footer-links-section::after {
+
+  content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px;
+
+  background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
+
+}
+
+.footer-brand { display: flex; flex-direction: column; }
+
+.footer-logo { display: inline-block; margin-bottom: 30px; line-height: 0; }
+
+.footer-logo img { height: 65px; width: auto; object-fit: contain; }
+
+.footer-tagline { font-family: 'DM Sans', sans-serif; font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+
+.footer-tagline span { display: block; }
+
+.footer-tagline .white { color: var(--offwhite); }
+
+.footer-tagline .gold { color: var(--burnt); }
+
+.footer-desc { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; max-width: 32ch; }
+
+.footer-socials { display: flex; gap: 12px; }
+
+.social-btn {
+
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+
+  display: flex; align-items: center; justify-content: center; color: var(--offwhite); transition: all 0.3s ease;
+
+}
+
+.social-btn:hover { background: var(--burnt); border-color: var(--burnt); color: var(--espresso); transform: translateY(-3px); }
+
+
+
+.footer-links-section { display: flex; flex-direction: column; }
+
+.footer-header { margin-bottom: 30px; }
+
+.footer-header .title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--offwhite); letter-spacing: 0.02em; }
+
+.links-list { display: flex; flex-direction: column; }
+
+.link-item {
+
+  display: flex; align-items: center; justify-content: space-between; padding: 16px 0;
+
+  border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: all 0.3s ease;
+
+}
+
+.link-item:hover { color: var(--burnt); border-bottom-color: rgba(212, 175, 55, 0.3); padding-left: 8px; }
+
+.link-item i { font-size: 0.75rem; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
+
+.link-item:hover i { opacity: 1; transform: translate(3px, -3px); }
+
+
+
+.footer-contact-section { display: flex; flex-direction: column; padding-right: 0; }
+
+.contact-list { display: flex; flex-direction: column; gap: 24px; }
+
+.contact-card { display: flex; align-items: flex-start; gap: 16px; }
+
+.contact-icon {
+
+  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.3);
+
+  display: flex; align-items: center; justify-content: center; color: var(--burnt); font-size: 1.1rem; transition: all 0.3s ease;
+
+}
+
+.contact-card:hover .contact-icon { background: var(--burnt); color: var(--espresso); }
+
+.contact-details { display: flex; flex-direction: column; gap: 4px; }
+
+.contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--sand); }
+
+.contact-value { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
+
+.contact-value a { display: inline-block; color: inherit; transition: color 0.3s ease, text-shadow 0.3s ease; }
+
+.contact-value a:hover { color: var(--burnt); text-shadow: 0 0 12px rgba(212, 175, 55, 0.6); }
+
+
+
+.footer-bottom {
+
+  margin-top: 70px; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0;
+
+  display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2;
+
+}
+
+.fb-left { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+
+.fb-right { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+
+.fb-right a { color: var(--burnt); font-weight: 600; transition: color 0.2s; }
+
+.fb-right a:hover { color: var(--sand); text-decoration: underline; }
+
+
+
+/* ============ RESPONSIVE ADJUSTMENTS ============ */
+
+@media(max-width:1080px){
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  .footer-brand::after, .footer-links-section::after { display: none; }
+
+  .footer-brand, .footer-links-section, .footer-contact-section { padding: 0; }
+
+  .footer-brand { grid-column: 1 / -1; text-align: center; align-items: center; }
+
+  .footer-socials { justify-content: center; }
+
+}
+
+
+
+@media(max-width:991.98px){
+
+  .nav-links, .nav-cta { display:none; }
+
+  .menu-toggle{display:flex;}
+
+  .brand-logo{height:58px;}
+
+  header.scrolled .brand-logo{height:46px;}
+
+
+
+  .about-hero {
+
+    padding-top: 130px;
+
+    height: auto;
+
+    min-height: 75vh;
+
+    background-position: 70% center;
+
+  }
+
+  .hero-overlay {
+
+    background: linear-gradient(180deg, rgba(10, 28, 58, 0.8) 0%, rgba(10, 28, 58, 0.95) 100%);
+
+  }
+
+  .hero-text {
+
+    text-align: center;
+
+    margin: 0 auto;
+
+    align-items: center;
+
+  }
+
+  .hero-text p {
+
+    border-left: none;
+
+    border-top: 3px solid var(--burnt);
+
+    padding-left: 0;
+
+    padding-top: 20px;
+
+    margin: 0 auto;
+
+  }
+
+
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .footer-links-section, .footer-contact-section { align-items: center; text-align: center; width: 100%; }
+
+  .links-list { flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px 25px; }
+
+  .link-item { justify-content: center; padding: 0; border-bottom: none; gap: 8px; }
+
+  .link-item:hover { padding-left: 0; }
+
+  .contact-card { flex-direction: column; align-items: center; text-align: center; }
+
+  .footer-bottom { flex-direction: column; gap: 20px; }
+
+}
+
+
+
+@media(max-width:640px){
+
+  .wrap{padding:0 20px}
+
+  .brand-logo{height:50px;}
+
+  header.scrolled .brand-logo{height:40px;}
+
+  .about-hero-content h1 { font-size: 2.5rem; }
+
+}
+
+
+
+/* ============ REDESIGNED HERO RESPONSIVE RULES ============ */
+@media (max-width: 991.98px) {
+    .about-hero {
+        height: 75vh;
+        padding: clamp(90px, 12vh, 108px) 0 24px;
+    }
+
+    .hero-container {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, .82fr);
+        gap: 28px;
+    }
+
+    .hero-text {
+        max-width: none;
+        gap: 18px;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.35rem, 4.8vw, 3.5rem);
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        text-align: left;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero-visual {
+        height: min(48vh, 390px);
+        min-height: 260px;
+    }
+
+    .hero-experience {
+        width: 152px;
+        padding: 14px 16px;
+        left: -8px;
+        bottom: 18px;
+    }
+
+    .hero-experience strong {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-hero {
+        height: 75vh;
+        padding: 108px 0 24px;
+    }
+
+    .hero-container {
+        display: block;
+        height: 100%;
+    }
+
+    .hero-text {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.25rem, 8vw, 3.05rem);
+        line-height: 1.06;
+        max-width: 14ch;
+    }
+
+    .hero-text p {
+        font-size: .96rem;
+        line-height: 1.7;
+        text-align: center;
+        max-width: 48ch;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .hero-actions .btn {
+        padding: 13px 20px;
+        font-size: .88rem;
+    }
+
+    .hero-visual {
+        position: absolute;
+        top: 0;
+        right: -12%;
+        width: 78%;
+        height: 100%;
+        min-height: 0;
+        opacity: .12;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .hero-image-frame {
+        inset: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .hero-image-frame img {
+        object-position: center;
+    }
+
+    .hero-visual::before,
+    .hero-experience {
+        display: none;
+    }
+}
+
+
+
+/* Keep the desktop navigation comfortable on laptop-width screens. */
+@media (min-width: 992px) and (max-width: 1080px) {
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-cta {
+        margin-left: 4px;
+        padding: 10px 17px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<!-- HEADER -->
+
+<header id="site-header">
+
+  <div class="wrap nav">
+
+    <a href="index.html" class="logo" aria-label="Artha Hospitality Management home">
+
+      <figure class="cr-figure">
+
+        <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo" class="brand-logo">
+
+        <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+
+      </figure>
+
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+
+      <a href="index.html">Home</a>
+
+      <a href="about.html">About us</a>
+
+
+
+      <!-- Dropdown for Services -->
+
+      <div class="nav-item-dropdown">
+
+        <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
+
+        <div class="dropdown-menu">
+
+          <a href="index.html#services"><i class="fas fa-chart-pie"></i> Business Strategy</a>
+
+          <a href="index.html#services"><i class="fas fa-map-marked-alt"></i> Site Selection</a>
+
+          <a href="index.html#services"><i class="fas fa-layer-group"></i> Spatial Design</a>
+
+          <a href="index.html#services"><i class="fas fa-utensils"></i> Culinary Operations</a>
+
+          <a href="index.html#services"><i class="fas fa-user-graduate"></i> Staff Training</a>
+
+          <a href="index.html#services"><i class="fas fa-truck"></i> Supply Chain</a>
+
+          <a href="index.html#services"><i class="fas fa-bullseye"></i> Brand Identity</a>
+
+          <a href="index.html#services"><i class="fas fa-file-invoice-dollar"></i> Financial Control</a>
+
+          <a href="index.html#services"><i class="fas fa-award"></i> Quality Assurance</a>
+
+          <a href="index.html#services"><i class="fas fa-rocket"></i> Pre-Opening Support</a>
+
+        </div>
+
+      </div>
+
+
+
+      <a href="index.html#industries">Openings</a>
+
+      <a href="index.html#why">Clients</a>
+
+      <a href="index.html#footer">Contact</a>
+
+      <a href="index.html#footer" class="nav-cta">Get in Touch</a>
+
+    </nav>
+
+
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+
+      <span></span><span></span><span></span>
+
+    </button>
+
+  </div>
+
+</header>
+
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+
+  <a href="index.html">Home</a>
+
+  <a href="about.html">About us</a>
+
+
+
+  <!-- Mobile Dropdown for Services -->
+
+  <details class="mobile-dropdown">
+
+    <summary>Services</summary>
+
+    <div class="mobile-sub-links">
+
+      <a href="index.html#services"><i class="fas fa-chart-pie"></i> Business Strategy</a>
+
+      <a href="index.html#services"><i class="fas fa-map-marked-alt"></i> Site Selection</a>
+
+      <a href="index.html#services"><i class="fas fa-layer-group"></i> Spatial Design</a>
+
+      <a href="index.html#services"><i class="fas fa-utensils"></i> Culinary Operations</a>
+
+      <a href="index.html#services"><i class="fas fa-user-graduate"></i> Staff Training</a>
+
+      <a href="index.html#services"><i class="fas fa-truck"></i> Supply Chain</a>
+
+      <a href="index.html#services"><i class="fas fa-bullseye"></i> Brand Identity</a>
+
+      <a href="index.html#services"><i class="fas fa-file-invoice-dollar"></i> Financial Control</a>
+
+      <a href="index.html#services"><i class="fas fa-award"></i> Quality Assurance</a>
+
+      <a href="index.html#services"><i class="fas fa-rocket"></i> Pre-Opening Support</a>
+
+    </div>
+
+  </details>
+
+
+
+  <a href="index.html#industries">Openings</a>
+
+  <a href="index.html#why">Clients</a>
+
+  <a href="index.html#footer">Contact</a>
+
+  <a href="index.html#footer" class="btn btn-primary">Get in Touch</a>
+
+</div>
+
+
+
+<!-- REDESIGNED ABOUT HERO -->
+<section class="about-hero">
+    <div class="wrap hero-container">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-text">
+            <span class="eyebrow">About Artha</span>
+
+            <h1>
+                Hospitality Begins With
+                <span>Great Service.</span>
+            </h1>
+
+            <p>
+                At Artha, we believe that great hospitality begins with great service.
+                Our mission is to help restaurant owners and hospitality businesses
+                overcome their toughest service challenges, improve guest satisfaction,
+                and grow sustainably.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#footer" class="btn btn-primary">
+                    Get in Touch
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a href="index.html#services" class="btn btn-ghost">
+                    Explore Services
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="hero-visual">
+            <div class="hero-image-frame">
+                <img
+                    src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+                    alt="Elegant hospitality dining environment"
+                >
+            </div>
+
+            <!-- EXPERIENCE CARD -->
+            <div class="hero-experience">
+                <strong>15+</strong>
+                <span>Years of hospitality experience</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer id="footer">
+
+  <div class="footer-bg-circle"></div>
+
+  <div class="footer-bg-circle-2"></div>
+
+
+
+  <div class="wrap">
+
+    <div class="footer-grid">
+
+
+
+      <!-- Brand Column -->
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo" aria-label="Artha Hospitality Management">
+
+          <figure class="cr-figure">
+
+            <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
+
+            <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+
+          </figure>
+
+        </a>
+
+
+
+        <div class="footer-tagline">
+
+          <span class="white">Strategic Hospitality.</span>
+
+          <span class="gold">Exceptional Operations.</span>
+
+        </div>
+
+
+
+        <p class="footer-desc">
+
+          Helping hospitality businesses build stronger foundations, improve operations and create better guest experiences.
+
+        </p>
+
+
+
+        <div class="footer-socials">
+
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+          <a href="https://www.instagram.com/arthahospitalitymanagement?rpxt=MTg1bDd3eG9tMmhlMw==" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+
+          <a href="https://www.facebook.com/profile.php?id=61596645240447" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Links Column -->
+
+      <div class="footer-links-section">
+
+        <div class="footer-header">
+
+          <span class="title">Explore</span>
+
+        </div>
+
+
+
+        <div class="links-list">
+
+          <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
+
+          <a href="about.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
+
+          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+
+          <a href="index.html#industries" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
+
+          <a href="index.html#why" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
+
+          <a href="index.html#footer" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Contact Column -->
+
+      <div class="footer-contact-section">
+
+        <div class="footer-header">
+
+          <span class="title">Contact</span>
+
+        </div>
+
+
+
+        <div class="contact-list">
+
+          <!-- Address -->
+
+          <div class="contact-card">
+
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+
+            <div class="contact-details">
+
+              <span class="contact-label">Visit Us</span>
+
+              <span class="contact-value">T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore – 575004.</span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Phone -->
+
+          <div class="contact-card">
+
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+
+            <div class="contact-details">
+
+              <span class="contact-label">Call Us</span>
+
+              <span class="contact-value">
+
+                <a href="tel:+918951511234">+91 89515 11234</a><br>
+
+                <a href="tel:+919980447824">+91 99804 47824</a><br>
+
+                <a href="tel:+9108242148889">+91  0824-214-8889</a>
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Email -->
+
+          <div class="contact-card">
+
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+
+            <div class="contact-details">
+
+              <span class="contact-label">Email Us</span>
+
+              <span class="contact-value">Artha.hm26@gmail.com</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <!-- Footer Bottom -->
+
+    <div class="footer-bottom">
+
+      <div class="fb-left">
+
+        <span>© 2026 Artha Hospitality Management. All Rights Reserved.</span>
+
+      </div>
+
+      <div class="fb-right">
+
+        <span>Powered by <a href="https://bluelinecomputers.com/" target="_blank" rel="noopener noreferrer">Blueline Computers</a></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+/* ============ STICKY HEADER ============ */
+
+const header = document.getElementById('site-header');
+
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+
+window.addEventListener('scroll', onScroll, {passive:true});
+
+onScroll();
+
+
+
+/* ============ MOBILE MENU ============ */
+
+const toggle = document.getElementById('menuToggle');
+
+const mobileMenu = document.getElementById('mobileMenu');
+
+const setMenu = (open) => {
+
+  toggle.classList.toggle('open', open);
+
+  mobileMenu.classList.toggle('open', open);
+
+  header.classList.toggle('menu-open', open);
+
+  toggle.setAttribute('aria-expanded', open);
+
+  document.body.style.overflow = open ? 'hidden' : '';
+
+};
+
+toggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+
+
+
+mobileMenu.querySelectorAll('a').forEach(a => {
+
+  a.addEventListener('click', () => setMenu(false));
+
+});
+
+</script>
+
+</body>
+
+</html>

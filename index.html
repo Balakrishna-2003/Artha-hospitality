@@ -10,6 +10,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:image" content="images/og-image.jpg" />
 <meta property="og:locale" content="en_IN" />
+<link rel="shortcut icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -21,8 +22,8 @@
   "@type": "ProfessionalService",
   "name": "Artha Hospitality Management",
   "description": "Hospitality management consultancy supporting restaurants, hotels and pub/resto bars across planning, design, development and operations.",
-  "telephone": ["+919980447824","+918660408934","+918242148889"],
-  "email": "artha.hm24@gmail.com",
+  "telephone": ["+918951511234","+919980447824","+91000000000"],
+  "email": "Artha.hm26@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "T-14, 3rd Floor, Meridian Guru Plaza, Bijai",
@@ -1101,10 +1102,17 @@ footer {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.7);
   line-height: 1.4;
-  transition: color 0.3s ease;
 }
-.contact-card:hover .contact-value {
-  color: var(--offwhite);
+
+/* FIX: Individual link hover for phone numbers */
+.contact-value a {
+  display: inline-block;
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.contact-value a:hover {
+  color: var(--burnt);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
 }
 
 .footer-bottom {
@@ -1487,37 +1495,37 @@ footer {
 <!-- HEADER -->
 <header id="site-header">
   <div class="wrap nav">
-    <a href="#home" class="logo" aria-label="Artha Hospitality Management home">
+    <a href="index.html" class="logo" aria-label="Artha Hospitality Management home">
       <figure class="cr-figure">
         <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo" class="brand-logo">
         <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
       </figure>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#home">Home</a>
-      <a href="#about">About us</a>
+      <a href="index.html">Home</a>
+      <a href="artha-hospitality-about-us.html">About us</a>
       
       <!-- Dropdown for Services -->
       <div class="nav-item-dropdown">
         <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-menu">
-          <a href="#services"><i class="fas fa-chart-pie"></i> Business Strategy</a>
-          <a href="#services"><i class="fas fa-map-marked-alt"></i> Site Selection</a>
-          <a href="#services"><i class="fas fa-layer-group"></i> Spatial Design</a>
-          <a href="#services"><i class="fas fa-utensils"></i> Culinary Operations</a>
-          <a href="#services"><i class="fas fa-user-graduate"></i> Staff Training</a>
-          <a href="#services"><i class="fas fa-truck"></i> Supply Chain</a>
-          <a href="#services"><i class="fas fa-bullseye"></i> Brand Identity</a>
-          <a href="#services"><i class="fas fa-file-invoice-dollar"></i> Financial Control</a>
-          <a href="#services"><i class="fas fa-award"></i> Quality Assurance</a>
-          <a href="#services"><i class="fas fa-rocket"></i> Pre-Opening Support</a>
+          <a href="artha-hospitality-management-capital-investment-plan.html"><i class="fas fa-chart-pie"></i> Capital Investment Plan</a>
+          <a href="artha-hospitality-management-location-selection.html"><i class="fas fa-map-marked-alt"></i> Location Selection</a>
+          <a href="artha-hospitality-management-outlet-kitchen-design.html"><i class="fas fa-utensils"></i> Outlet &amp; Kitchen Design</a>
+          <a href="artha-hospitality-management-staffing-support.html"><i class="fas fa-user-graduate"></i> Staffing Support</a>
+          <a href="artha-hospitality-management-civil-work.html"><i class="fas fa-hard-hat"></i> Civil Work</a>
+          <a href="artha-hospitality-management-interior-work.html"><i class="fas fa-layer-group"></i> Interior Work</a>
+          <a href="artha-hospitality-management-marketing-service.html"><i class="fas fa-bullseye"></i> Marketing Service</a>
+          <a href="artha-hospitality-management-food-running-cost.html"><i class="fas fa-file-invoice-dollar"></i> Food &amp; Running Cost</a>
+          <a href="artha-hospitality-management-vendor-selection-purchase-advice.html"><i class="fas fa-truck"></i> Vendor Selection &amp; Purchase Advice</a>
+          <a href="artha-hospitality-management-food-service-quality.html"><i class="fas fa-award"></i> Food and Service Quality</a>
         </div>
       </div>
 
-      <a href="#industries">Openings</a>
-      <a href="#why">Clients</a>
-      <a href="#footer">Contact</a>
-      <a href="#footer" class="nav-cta">Get in Touch</a>
+      <a href="artha-hospitality-openings.html">Openings</a>
+      <a href="artha-hospitality-clients.html">Clients</a>
+      <a href="artha-hospitality-contact-us.html">Contact</a>
+      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
     </nav>
     
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1528,30 +1536,30 @@ footer {
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
-  <a href="#home">Home</a>
-  <a href="#about">About us</a>
+  <a href="index.html">Home</a>
+  <a href="artha-hospitality-about-us.html">About us</a>
   
   <!-- Mobile Dropdown for Services -->
   <details class="mobile-dropdown">
     <summary>Services</summary>
     <div class="mobile-sub-links">
-      <a href="#services"><i class="fas fa-chart-pie"></i> Business Strategy</a>
-      <a href="#services"><i class="fas fa-map-marked-alt"></i> Site Selection</a>
-      <a href="#services"><i class="fas fa-layer-group"></i> Spatial Design</a>
-      <a href="#services"><i class="fas fa-utensils"></i> Culinary Operations</a>
-      <a href="#services"><i class="fas fa-user-graduate"></i> Staff Training</a>
-      <a href="#services"><i class="fas fa-truck"></i> Supply Chain</a>
-      <a href="#services"><i class="fas fa-bullseye"></i> Brand Identity</a>
-      <a href="#services"><i class="fas fa-file-invoice-dollar"></i> Financial Control</a>
-      <a href="#services"><i class="fas fa-award"></i> Quality Assurance</a>
-      <a href="#services"><i class="fas fa-rocket"></i> Pre-Opening Support</a>
+      <a href="artha-hospitality-management-capital-investment-plan.html"><i class="fas fa-chart-pie"></i> Capital Investment Plan</a>
+      <a href="artha-hospitality-management-location-selection.html"><i class="fas fa-map-marked-alt"></i> Location Selection</a>
+      <a href="artha-hospitality-management-outlet-kitchen-design.html"><i class="fas fa-utensils"></i> Outlet &amp; Kitchen Design</a>
+      <a href="artha-hospitality-management-staffing-support.html"><i class="fas fa-user-graduate"></i> Staffing Support</a>
+      <a href="artha-hospitality-management-civil-work.html"><i class="fas fa-hard-hat"></i> Civil Work</a>
+      <a href="artha-hospitality-management-interior-work.html"><i class="fas fa-layer-group"></i> Interior Work</a>
+      <a href="artha-hospitality-management-marketing-service.html"><i class="fas fa-bullseye"></i> Marketing Service</a>
+      <a href="artha-hospitality-management-food-running-cost.html"><i class="fas fa-file-invoice-dollar"></i> Food &amp; Running Cost</a>
+      <a href="artha-hospitality-management-vendor-selection-purchase-advice.html"><i class="fas fa-truck"></i> Vendor Selection &amp; Purchase Advice</a>
+      <a href="artha-hospitality-management-food-service-quality.html"><i class="fas fa-award"></i> Food and Service Quality</a>
     </div>
   </details>
 
-  <a href="#industries">Openings</a>
-  <a href="#why">Clients</a>
-  <a href="#footer">Contact</a>
-  <a href="#footer" class="btn btn-primary">Get in Touch</a>
+  <a href="artha-hospitality-openings.html">Openings</a>
+  <a href="artha-hospitality-clients.html">Clients</a>
+  <a href="artha-hospitality-contact-us.html">Contact</a>
+  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
 </div>
 
 <!-- HERO (ANIMATED CAROUSEL) -->
@@ -1575,7 +1583,7 @@ footer {
         <h1 id="hero-title" class="slide-el">Building Better Hospitality Businesses, <span>From the Ground Up.</span></h1>
         <p class="desc slide-el" id="hero-desc">From strategic planning and location selection to outlet design, operations and service quality, Artha helps hospitality businesses turn ideas into successful, sustainable ventures.</p>
         <div class="hero-ctas slide-el">
-          <a href="#footer" class="btn btn-primary">Let's Build Your Business <span class="arrow">↗</span></a>
+          <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Let's Build Your Business <span class="arrow">↗</span></a>
           <a href="#services" class="btn btn-ghost">Explore Our Services</a>
         </div>
       </div>
@@ -1933,8 +1941,8 @@ footer {
     <h2>Have a Hospitality Vision? Let's Bring It to Life.</h2>
     <p>Whether you're planning a new restaurant, developing a hotel or improving an existing hospitality business, Artha is ready to help you take the next step.</p>
     <div class="cta-btns">
-      <a href="tel:+919980447824" class="btn btn-light">Start a Conversation <span class="arrow">↗</span></a>
-      <a href="tel:+919980447824" class="btn btn-outline-light">Call Us Today</a>
+      <a href="tel:+918951511234" class="btn btn-light">Start a Conversation <span class="arrow">↗</span></a>
+      <a href="tel:+918951511234" class="btn btn-outline-light">Call Us Today</a>
     </div>
   </div>
 </section>
@@ -1949,7 +1957,7 @@ footer {
       
       <!-- Brand Column -->
       <div class="footer-brand">
-        <a href="#home" class="footer-logo" aria-label="Artha Hospitality Management">
+        <a href="index.html" class="footer-logo" aria-label="Artha Hospitality Management">
           <figure class="cr-figure">
             <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
             <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
@@ -1967,8 +1975,8 @@ footer {
         
         <div class="footer-socials">
           <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/arthahospitalitymanagement?rpxt=MTg1bDd3eG9tMmhlMw==" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61596645240447" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
 
@@ -1979,12 +1987,12 @@ footer {
         </div>
         
         <div class="links-list">
-          <a href="#home" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
-          <a href="#about" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
+          <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
           <a href="#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
-          <a href="#industries" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
-          <a href="#why" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
-          <a href="#footer" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2009,7 +2017,11 @@ footer {
             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
             <div class="contact-details">
               <span class="contact-label">Call Us</span>
-              <span class="contact-value">9980447824<br>8660408934<br>0824-214-8889</span>
+              <span class="contact-value">
+                <a href="tel:+918951511234">+91 89515 11234</a><br>
+                <a href="tel:+919980447824">+91 99804 47824</a><br>
+                <a href="tel:+9108242148889">+91  0824-214-8889</a>
+              </span>
             </div>
           </div>
           
@@ -2018,7 +2030,7 @@ footer {
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div class="contact-details">
               <span class="contact-label">Email Us</span>
-              <span class="contact-value">artha.hm24@gmail.com</span>
+              <span class="contact-value">Artha.hm26@gmail.com</span>
             </div>
           </div>
         </div>
@@ -2234,3 +2246,18 @@ if ('IntersectionObserver' in window) {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
