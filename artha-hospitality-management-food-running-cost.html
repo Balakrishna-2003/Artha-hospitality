@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Food &amp; Running Cost | Artha Hospitality Management</title>
+<meta name="description" content="At Artha Hospitality Management, we help hospitality businesses understand, monitor, and manage their food costs and day-to-day operating expenses." />
+<meta property="og:title" content="Food &amp; Running Cost | Artha Hospitality Management" />
+<meta property="og:description" content="Managing Costs. Maximising Operational Efficiency. Food cost monitoring, inventory control, staffing expenses, utility management, and daily operating expense control." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/og-image.jpg" />
+<meta property="og:locale" content="en_IN" />
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --burnt:#D4AF37;
+  --terra:#B99428;
+  --cream:#F8F6F1;
+  --espresso:#0A1C3A;
+  --sand:#D4AF37;
+  --offwhite:#FFFFFF;
+  --max:1200px;
+  --radius:20px;
+  --shadow:0 20px 44px -22px rgba(10,28,58,.30);
+  --shadow-soft:0 12px 30px -20px rgba(10,28,58,.35);
+  --sec-pad:84px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  color:var(--espresso);
+  background:var(--offwhite);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
+h1{letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,3.4vw,2.9rem);letter-spacing:-.01em}
+h3{font-size:1.25rem}
+p{max-width:62ch; overflow-wrap: break-word; word-wrap: break-word;}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+ul{list-style:none}
+
+/* Accessibility Figure Classes */
+.cr-figure {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.cr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px; width: 100%;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--burnt);margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--burnt);display:inline-block}
+.lead{font-size:1.05rem;color:#707986}
+section{padding:var(--sec-pad) 0;position:relative}
+
+/* Section Headings */
+.head-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 56px;
+  width: 100%;
+}
+.head-center h2 {
+  max-width: 850px;
+  margin-bottom: 18px;
+}
+.head-center p {
+  max-width: 660px;
+  color: #707986;
+  font-size: 1rem;
+  line-height: 1.85;
+  margin: 0 auto;
+}
+.head-center .eyebrow {
+  justify-content: center;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 26px;border-radius:100px;
+  font-weight:600;font-size:.95rem;line-height:1;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--burnt);color:var(--espresso);box-shadow:0 12px 24px -14px rgba(212,175,55,.9)}
+.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(212,175,55,.95)}
+.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(10,28,58,.28)}
+.btn-ghost:hover{border-color:var(--burnt);color:var(--burnt);transform:translateY(-2px)}
+.btn-light{background:var(--offwhite);color:var(--espresso); box-shadow: 0 10px 20px -10px rgba(0,0,0,0.3);}
+.btn-light:hover{transform:translateY(-2px); box-shadow: 0 16px 28px -16px rgba(0,0,0,.4)}
+.btn-outline-light{background:transparent;color:var(--offwhite);border:1.5px solid rgba(255,255,255,.55)}
+.btn-outline-light:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn .arrow{transition:transform .25s ease}
+.btn:hover .arrow{transform:translate(3px,-3px)}
+
+/* ============ HEADER & DROPDOWN (EXACT FROM INDEX.HTML) ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+  padding:26px 0; 
+}
+header.scrolled{
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
+  padding:14px 0; 
+}
+header.menu-open {
+  background: var(--offwhite);
+  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+}
+
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+
+.logo{display:block;line-height:0;}
+.brand-logo{
+  height:70px; 
+  width:auto;
+  object-fit:contain;
+  transition:height .35s ease;
+}
+header.scrolled .brand-logo {
+  height:54px; 
+}
+
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links > a:not(.btn):not(.nav-cta), .nav-item-dropdown > a {
+  font-size:.93rem;font-weight:500;color:var(--espresso);position:relative;padding:8px 0;transition:color .2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-links > a:not(.btn):not(.nav-cta)::after, .nav-item-dropdown > a::after {
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--burnt);transition:width .25s ease;
+}
+.nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
+.nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+
+.nav-item-dropdown { position: relative; }
+.nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
+.nav-item-dropdown:hover .fa-chevron-down { transform: rotate(180deg); }
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: var(--offwhite);
+  min-width: 480px;
+  box-shadow: 0 20px 40px -10px rgba(10,28,58,.15);
+  border: 1px solid rgba(10,28,58,.08);
+  border-top: 3px solid var(--burnt);
+  border-radius: 0 0 12px 12px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 110;
+}
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #707986;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+  white-space: nowrap;
+}
+.dropdown-menu a i {
+  color: var(--burnt);
+  width: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.dropdown-menu a:hover {
+  background: var(--cream);
+  color: var(--burnt);
+  padding-left: 18px;
+}
+.dropdown-menu a:hover i {
+  color: var(--espresso);
+}
+
+.nav-cta {
+  margin-left: 12px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 100px;
+  background: var(--burnt);
+  color: var(--espresso) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  box-shadow: 0 8px 16px -10px rgba(212,175,55,0.6);
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: var(--terra);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -10px rgba(212,175,55,0.8);
+}
+
+.menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px}
+.menu-toggle span{width:24px;height:2px;background:var(--espresso);transition:.3s}
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.open span:nth-child(2){opacity:0}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============ REFINED MOBILE MENU (EXACT FROM INDEX.HTML) ============ */
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
+  background:var(--cream);padding:100px 28px 40px;
+  flex-direction:column;
+  overflow-y: auto;
+}
+.mobile-menu.open{display:flex}
+
+.mobile-menu > a:not(.btn),
+.mobile-dropdown summary {
+  font-family:'DM Serif Display',serif;
+  font-size:1.35rem;
+  padding:16px 0;
+  border-bottom:1px solid rgba(10,28,58,.08);
+  color: var(--espresso);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-dropdown summary::-webkit-details-marker { display: none; }
+.mobile-dropdown summary::after {
+  content: "+";
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--burnt);
+}
+.mobile-dropdown[open] summary::after { content: "-"; }
+
+.mobile-sub-links {
+  padding: 10px 0 15px 15px;
+  border-bottom:1px solid rgba(10,28,58,.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mobile-sub-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #707986;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.2s;
+}
+.mobile-sub-links a i {
+  color: var(--burnt);
+  width: 16px;
+  text-align: center;
+}
+.mobile-sub-links a:hover { color: var(--burnt); }
+
+.mobile-menu .btn {
+  margin-top: 30px;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border-bottom: none;
+  padding: 16px 24px;
+  width: 100%;
+}
+
+/* ============ NEW 75VH COST ALLOCATION RING, STEPPED EFFICIENCY BARS & CULINARY LEDGER HERO ============ */
+.cost-hero {
+  height: 75vh;
+  min-height: 560px;
+  padding: clamp(110px, 12.5vh, 128px) 0 clamp(24px, 3.5vh, 36px);
+  background:
+    radial-gradient(660px 430px at 88% 18%, rgba(212,175,55,0.16), transparent 65%),
+    var(--cream);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(10,28,58,0.08);
+  display: flex;
+  align-items: center;
+}
+
+/* Subtle ledger accounting grid texture behind hero */
+.cost-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(10,28,58,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,28,58,0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cost-hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: clamp(32px, 4.5vw, 60px);
+  align-items: center;
+  height: 100%;
+}
+
+/* Left Copy Column */
+.cost-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: clamp(10px, 1.6vh, 15px);
+}
+
+.crumb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: var(--offwhite);
+  border: 1px solid rgba(10,28,58,0.08);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: #707986;
+}
+.crumb-badge a {
+  color: var(--espresso);
+  transition: color 0.2s ease;
+}
+.crumb-badge a:hover {
+  color: var(--burnt);
+}
+.crumb-badge .sep {
+  color: var(--burnt);
+  font-size: 0.58rem;
+}
+.crumb-badge .curr {
+  color: var(--burnt);
+}
+
+.cost-hero-copy .eyebrow {
+  margin-bottom: 0;
+}
+
+.cost-hero-copy h1 {
+  font-size: clamp(2rem, 3.3vw, 3.15rem);
+  line-height: 1.07;
+  color: var(--espresso);
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(12px, 1.8vh, 16px);
+}
+.cost-hero-copy h1 em {
+  color: var(--burnt);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.cost-hero-copy p {
+  font-size: clamp(0.92rem, 1vw, 0.98rem);
+  color: #707986;
+  line-height: 1.68;
+  margin-bottom: clamp(18px, 2.6vh, 26px);
+  max-width: 54ch;
+}
+
+.cost-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.cost-hero-actions .btn {
+  padding: 13px 24px;
+  font-size: 0.92rem;
+}
+
+/* Right Column: Segmented Cost-Allocation Ring, Ascending Efficiency Bars & Culinary Ledger Frame (No Text) */
+.cost-ledger-stage {
+  position: relative;
+  height: clamp(380px, 53vh, 480px);
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
+}
+
+/* Shape 1: Segmented Gold & Navy Cost Allocation Ring SVG (Top-Left) */
+.cl-ring-svg {
+  position: absolute;
+  top: -22px;
+  left: -18px;
+  width: 185px;
+  height: 185px;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 24px rgba(10,28,58,0.16));
+}
+
+/* Shape 2: Ascending 4-Bar Cost Efficiency Column Slab (Right Edge) */
+.cl-bar-columns {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  top: 40px;
+  width: 96px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+  z-index: 0;
+  pointer-events: none;
+}
+.cl-bar {
+  width: 18px;
+  border-radius: 10px 10px 4px 4px;
+  box-shadow: var(--shadow-soft);
+}
+.cl-bar.b1 {
+  height: 42%;
+  background: rgba(10,28,58,0.75);
+}
+.cl-bar.b2 {
+  height: 60%;
+  background: var(--espresso);
+}
+.cl-bar.b3 {
+  height: 78%;
+  background: linear-gradient(180deg, #E5C453 0%, #B99428 100%);
+}
+.cl-bar.b4 {
+  height: 94%;
+  background: var(--espresso);
+  border-top: 4px solid var(--burnt);
+}
+
+/* Shape 3: Offset Gold Ledger Wireframe */
+.cl-wireframe {
+  position: absolute;
+  inset: 6px 34px 24px 8px;
+  border: 1.5px solid var(--burnt);
+  border-radius: 76px 26px 96px 26px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main Sculpted Culinary & Operations Image Frame */
+.cl-main-frame {
+  position: absolute;
+  inset: 16px 46px 14px 20px;
+  z-index: 2;
+  border-radius: 72px 24px 90px 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 6px solid var(--offwhite);
+  background: var(--espresso);
+}
+.cl-main-frame .cr-figure {
+  width: 100%;
+  height: 100%;
+}
+.cl-main-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.cl-main-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* Shape 4: Central Gold Balance Scale / Efficiency Node inside Top-Left Ring (Icon Only) */
+.cl-scale-node {
+  position: absolute;
+  top: 38px;
+  left: 42px;
+  z-index: 5;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--espresso);
+  color: var(--burnt);
+  border: 4px solid var(--offwhite);
+  box-shadow: 0 14px 28px -8px rgba(10,28,58,0.45);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+}
+
+/* Shape 5: 3-Icon Expense Control Dock (Bottom-Left: Food, Inventory, Utilities - Icons Only) */
+.cl-expense-dock {
+  position: absolute;
+  left: 8px;
+  bottom: 24px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  background: var(--espresso);
+  border: 1.5px solid rgba(212,175,55,0.55);
+  box-shadow: var(--shadow);
+}
+.cl-expense-dock span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(212,175,55,0.14);
+  border: 1px solid rgba(212,175,55,0.38);
+  color: var(--burnt);
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.cl-expense-dock span:hover {
+  background: var(--burnt);
+  color: var(--espresso);
+  transform: translateY(-2px);
+}
+
+/* ============ SECTION 1: BETTER COST MANAGEMENT FOR SUSTAINABLE GROWTH (OFFWHITE) ============ */
+.cost-overview-sec {
+  padding: var(--sec-pad) 0;
+  background: var(--offwhite);
+  position: relative;
+}
+
+.overview-split {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: clamp(36px, 5vw, 68px);
+  align-items: center;
+}
+
+.overview-copy h2 {
+  margin-bottom: 18px;
+}
+.overview-copy h2 em {
+  font-style: italic;
+  color: var(--burnt);
+  font-weight: 400;
+}
+.overview-copy p {
+  font-size: 0.98rem;
+  color: #707986;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.cost-callout {
+  margin-top: 24px;
+  padding: 22px 26px;
+  background: var(--cream);
+  border-left: 4px solid var(--burnt);
+  border-radius: 0 18px 18px 0;
+}
+.cost-callout span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--burnt);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+.cost-callout p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.16rem;
+  color: var(--espresso);
+  line-height: 1.48;
+  margin: 0;
+}
+
+/* Right Column: Sculpted Single Image with Shapes (No Text) */
+.overview-arch-stage {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+}
+.oas-navy-slab {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 64%;
+  height: 64%;
+  background: var(--espresso);
+  border-radius: 68px 24px 24px 24px;
+  z-index: 0;
+  box-shadow: var(--shadow-soft);
+}
+.oas-navy-slab::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 56px 16px 16px 16px;
+  border: 1px dashed rgba(212,175,55,0.38);
+}
+.oas-wireframe {
+  position: absolute;
+  inset: 22px 0 0 22px;
+  border: 1.5px solid var(--burnt);
+  border-radius: 26px 86px 26px 96px;
+  pointer-events: none;
+  z-index: 1;
+}
+.oas-rings-svg {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 180px;
+  height: 180px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.oas-dots {
+  position: absolute;
+  right: -6px;
+  top: 24px;
+  width: 68px;
+  height: 88px;
+  background-image: radial-gradient(var(--burnt) 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.75;
+  z-index: 3;
+  pointer-events: none;
+}
+.oas-backdrop-img {
+  position: absolute;
+  inset: 16px 14px 12px 16px;
+  border-radius: 24px 82px 24px 92px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 6px solid var(--cream);
+  background: var(--espresso);
+  z-index: 2;
+}
+.oas-backdrop-img .cr-figure {
+  width: 100%;
+  height: 100%;
+}
+.oas-backdrop-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.overview-arch-stage:hover .oas-backdrop-img img {
+  transform: scale(1.05);
+}
+
+/* ============ SECTION 2: OUR COST MANAGEMENT FOCUS AREAS (DEEP ARCHITECTURAL NAVY #0D2244 - 5-ZONE BLUEPRINT MATRIX) ============ */
+.cost-focus-sec {
+  padding: var(--sec-pad) 0;
+  background: #0D2244;
+  color: var(--offwhite);
+  border-top: 1px solid rgba(212,175,55,0.2);
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+  position: relative;
+}
+.cost-focus-sec .head-center h2 {
+  color: var(--offwhite);
+}
+.cost-focus-sec .head-center p {
+  color: rgba(255,255,255,0.72);
+}
+
+.cost-blueprint {
+  border-top: 2px solid rgba(212,175,55,0.5);
+  border-bottom: 2px solid rgba(212,175,55,0.5);
+}
+
+/* Top Row: 01 & 02 */
+.cb-row-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid rgba(212,175,55,0.18);
+  position: relative;
+}
+.cb-row-top::after {
+  content: "+";
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  transform: translateX(-50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--burnt);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Bottom Row: 03, 04 & 05 */
+.cb-row-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cb-cell {
+  padding: 44px 38px;
+  position: relative;
+  border-right: 1px solid rgba(212,175,55,0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.35s ease;
+}
+.cb-row-top .cb-cell:last-child,
+.cb-row-bottom .cb-cell:last-child {
+  border-right: none;
+}
+.cb-cell:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.cb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.cb-num-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(212,175,55,0.14);
+  border: 1px solid rgba(212,175,55,0.35);
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: var(--burnt);
+}
+.cb-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,175,55,0.3);
+  color: var(--burnt);
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.cb-cell:hover .cb-icon {
+  background: var(--burnt);
+  color: var(--espresso);
+  transform: scale(1.08);
+}
+
+.cb-body h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.55rem;
+  color: var(--offwhite);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+.cb-cell:hover .cb-body h3 {
+  color: var(--burnt);
+}
+.cb-body p {
+  font-size: 0.96rem;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ============ SECTION 3: OUR APPROACH TO COST MANAGEMENT (LIGHT SLATE-BLUE TINT #EDF2F8 - 4 CARDS) ============ */
+.approach-sec {
+  padding: var(--sec-pad) 0;
+  background: #EDF2F8;
+  position: relative;
+}
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.approach-card {
+  background: var(--offwhite);
+  border-radius: var(--radius);
+  padding: 38px 28px;
+  border: 1px solid rgba(10,28,58,0.08);
+  box-shadow: 0 12px 32px -16px rgba(10,28,58,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.approach-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--burnt);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.approach-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -20px rgba(10,28,58,0.18);
+  border-color: rgba(212,175,55,0.35);
+}
+.approach-card:hover::after {
+  transform: scaleX(1);
+}
+
+.ac-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--cream);
+  color: var(--espresso);
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+.approach-card:hover .ac-icon {
+  background: var(--burnt);
+  color: var(--offwhite);
+  transform: rotate(5deg) scale(1.05);
+}
+.approach-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--espresso);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+.approach-card p {
+  font-size: 0.92rem;
+  color: #707986;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============ SECTION 4: CTA (WARM GOLD CHAMPAGNE #EFE3C6) ============ */
+.cta{
+  background: #EFE3C6;
+  color: var(--espresso);
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner{position:relative;text-align:center;max-width:780px;margin:0 auto}
+.cta h2{color:var(--espresso);margin-bottom:16px}
+.cta p{color:#707986;margin:0 auto 14px;max-width:64ch}
+.cta p:last-of-type{margin-bottom:30px}
+.cta .eyebrow { color: var(--burnt); justify-content: center; }
+.cta .eyebrow::before { background: var(--burnt); }
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+.cta .btn-light { background: var(--burnt); color: var(--espresso); box-shadow: 0 10px 20px -10px rgba(212,175,55,0.6); }
+.cta .btn-light:hover { background: var(--terra); transform: translateY(-2px); }
+.cta .btn-outline-light { border-color: var(--espresso); color: var(--espresso); }
+.cta .btn-outline-light:hover { background: rgba(10,28,58,0.05); }
+
+/* ============ NEW PREMIUM FOOTER (EXACT FROM INDEX.HTML) ============ */
+footer {
+  background: var(--espresso);
+  color: rgba(255,255,255,.7);
+  padding: 80px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-bg-circle {
+  position: absolute;
+  bottom: -250px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.footer-bg-circle-2 {
+  position: absolute;
+  bottom: -200px;
+  right: -50px;
+  width: 600px;
+  height: 600px;
+  border: 1px dashed rgba(212, 175, 55, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 0; 
+  position: relative;
+  z-index: 2;
+}
+
+.footer-brand, .footer-links-section, .footer-contact-section {
+  position: relative;
+  padding: 0 40px;
+}
+
+.footer-brand {
+  padding-left: 0;
+}
+
+.footer-brand::after, .footer-links-section::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 30px;
+  line-height: 0;
+}
+.footer-logo img {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+}
+.footer-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.footer-tagline span {
+  display: block;
+}
+.footer-tagline .white {
+  color: var(--offwhite);
+}
+.footer-tagline .gold {
+  color: var(--burnt);
+}
+.footer-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  max-width: 32ch;
+}
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--offwhite);
+  transition: all 0.3s ease;
+}
+.social-btn:hover {
+  background: var(--burnt);
+  border-color: var(--burnt);
+  color: var(--espresso);
+  transform: translateY(-3px);
+}
+
+.footer-links-section {
+  display: flex;
+  flex-direction: column;
+}
+.footer-header {
+  margin-bottom: 30px;
+}
+.footer-header .title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  color: var(--offwhite);
+  letter-spacing: 0.02em;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+}
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.link-item:hover {
+  color: var(--burnt);
+  border-bottom-color: rgba(212, 175, 55, 0.3);
+  padding-left: 8px;
+}
+.link-item i {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.link-item:hover i {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+
+.footer-contact-section {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0;
+}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.contact-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--burnt);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+.contact-card:hover .contact-icon {
+  background: var(--burnt);
+  color: var(--espresso);
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--sand);
+}
+.contact-value {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+.contact-value a {
+  display: inline-block;
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.contact-value a:hover {
+  color: var(--burnt);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.footer-bottom {
+  margin-top: 70px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.fb-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
+.fb-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
+.fb-right a {
+  color: var(--burnt);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.fb-right a:hover {
+  color: var(--sand);
+  text-decoration: underline;
+}
+
+/* ============ ROBUST SCROLL ANIMATIONS ============ */
+.anim-base {
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+.anim-fade-up { transform: translateY(40px); }
+.anim-fade-down { transform: translateY(-40px); }
+.anim-fade-left { transform: translateX(40px); }
+.anim-fade-right { transform: translateX(-40px); }
+.anim-zoom-in { transform: scale(0.95); }
+
+.anim-is-visible {
+  opacity: 1;
+  transform: translate(0) scale(1) !important;
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion:reduce){
+  .anim-base {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html{scroll-behavior:auto}
+}
+
+/* ============ RESPONSIVE ============ */
+@media(min-width: 1400px) { :root { --max: 1320px; } }
+@media(min-width: 1600px) { :root { --max: 1440px; } }
+@media(min-width: 1920px) { :root { --max: 1600px; } }
+@media(min-width: 2400px) { :root { --max: 1800px; } }
+
+@media(max-width:1080px){
+  .overview-split {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .overview-arch-stage {
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cb-row-bottom {
+    grid-template-columns: 1fr;
+  }
+  .cb-row-bottom .cb-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(212,175,55,0.18);
+  }
+  .cb-row-bottom .cb-cell:last-child {
+    border-bottom: none;
+  }
+  .approach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand::after, .footer-links-section::after {
+    display: none;
+  }
+  .footer-brand, .footer-links-section, .footer-contact-section {
+    padding: 0;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-socials {
+    justify-content: center;
+  }
+}
+
+@media(max-width:991.98px){
+  :root{--sec-pad:60px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .menu-toggle{display:flex}
+  .brand-logo{height:58px;}
+  header.scrolled .brand-logo{height:46px;}
+
+  .cost-hero {
+    height: 75vh;
+    min-height: 480px;
+    padding: clamp(96px, 12vh, 114px) 0 24px;
+  }
+  .cost-hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 24px;
+  }
+
+  /* Footer Mobile Rules */
+  .footer-brand,
+  .footer-header,
+  .footer-bottom,
+  .contact-card {
+    text-align: center;
+  }
+  .footer-socials,
+  .contact-list {
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+  }
+  .footer-links-section,
+  .footer-contact-section {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .links-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px 25px;
+  }
+  .link-item {
+    justify-content: center;
+    padding: 0;
+    border-bottom: none;
+    gap: 8px;
+  }
+  .link-item:hover {
+    padding-left: 0;
+  }
+  .contact-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media(max-width:640px){
+  :root{--sec-pad:42px}
+  .wrap{padding:0 20px}
+  .brand-logo{height:50px;}
+  header.scrolled .brand-logo{height:40px;}
+  .cost-hero {
+    height: 75vh;
+    min-height: 450px;
+    padding: 96px 0 24px;
+  }
+  .cost-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .cost-ledger-stage {
+    display: none;
+  }
+  .cost-hero-copy {
+    text-align: center;
+    align-items: center;
+  }
+  .service-meta-row {
+    justify-content: center;
+  }
+  .cost-hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  .cb-row-top,
+  .approach-grid {
+    grid-template-columns: 1fr;
+  }
+  .cb-row-top::after {
+    display: none;
+  }
+  .cb-cell {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(212,175,55,0.18) !important;
+    padding: 32px 20px;
+  }
+  .cb-row-bottom .cb-cell:last-child {
+    border-bottom: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="Artha Hospitality Management home">
+      <figure class="cr-figure">
+        <img src="images/artha-hospitality-management-logo.png" alt="Artha Hospitality Management Logo" class="brand-logo">
+        <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+      </figure>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="artha-hospitality-about-us.html">About us</a>
+      
+      <!-- Dropdown for Services -->
+      <div class="nav-item-dropdown">
+        <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-menu">
+          <a href="artha-hospitality-management-capital-investment-plan.html"><i class="fas fa-chart-pie"></i> Capital Investment Plan</a>
+          <a href="artha-hospitality-management-location-selection.html"><i class="fas fa-map-marked-alt"></i> Location Selection</a>
+          <a href="artha-hospitality-management-outlet-kitchen-design.html"><i class="fas fa-utensils"></i> Outlet &amp; Kitchen Design</a>
+          <a href="artha-hospitality-management-staffing-support.html"><i class="fas fa-user-graduate"></i> Staffing Support</a>
+          <a href="artha-hospitality-management-civil-work.html"><i class="fas fa-hard-hat"></i> Civil Work</a>
+          <a href="artha-hospitality-management-interior-work.html"><i class="fas fa-layer-group"></i> Interior Work</a>
+          <a href="artha-hospitality-management-marketing-service.html"><i class="fas fa-bullseye"></i> Marketing Service</a>
+          <a href="artha-hospitality-management-food-running-cost.html"><i class="fas fa-file-invoice-dollar"></i> Food &amp; Running Cost</a>
+          <a href="artha-hospitality-management-vendor-selection-purchase-advice.html"><i class="fas fa-truck"></i> Vendor Selection &amp; Purchase Advice</a>
+          <a href="artha-hospitality-management-food-service-quality.html"><i class="fas fa-award"></i> Food and Service Quality</a>
+        </div>
+      </div>
+
+      <a href="artha-hospitality-openings.html">Openings</a>
+      <a href="artha-hospitality-clients.html">Clients</a>
+      <a href="artha-hospitality-contact-us.html">Contact</a>
+      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
+    </nav>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="artha-hospitality-about-us.html">About us</a>
+  
+  <!-- Mobile Dropdown for Services -->
+  <details class="mobile-dropdown">
+    <summary>Services</summary>
+    <div class="mobile-sub-links">
+      <a href="artha-hospitality-management-capital-investment-plan.html"><i class="fas fa-chart-pie"></i> Capital Investment Plan</a>
+      <a href="artha-hospitality-management-location-selection.html"><i class="fas fa-map-marked-alt"></i> Location Selection</a>
+      <a href="artha-hospitality-management-outlet-kitchen-design.html"><i class="fas fa-utensils"></i> Outlet &amp; Kitchen Design</a>
+      <a href="artha-hospitality-management-staffing-support.html"><i class="fas fa-user-graduate"></i> Staffing Support</a>
+      <a href="artha-hospitality-management-civil-work.html"><i class="fas fa-hard-hat"></i> Civil Work</a>
+      <a href="artha-hospitality-management-interior-work.html"><i class="fas fa-layer-group"></i> Interior Work</a>
+      <a href="artha-hospitality-management-marketing-service.html"><i class="fas fa-bullseye"></i> Marketing Service</a>
+      <a href="artha-hospitality-management-food-running-cost.html"><i class="fas fa-file-invoice-dollar"></i> Food &amp; Running Cost</a>
+      <a href="artha-hospitality-management-vendor-selection-purchase-advice.html"><i class="fas fa-truck"></i> Vendor Selection &amp; Purchase Advice</a>
+      <a href="artha-hospitality-management-food-service-quality.html"><i class="fas fa-award"></i> Food and Service Quality</a>
+    </div>
+  </details>
+
+  <a href="artha-hospitality-openings.html">Openings</a>
+  <a href="artha-hospitality-clients.html">Clients</a>
+  <a href="artha-hospitality-contact-us.html">Contact</a>
+  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
+</div>
+
+<!-- NEW 75VH COST ALLOCATION RING, STEPPED EFFICIENCY BARS & CULINARY LEDGER HERO SECTION -->
+<section class="cost-hero" id="cost-top">
+  <div class="wrap cost-hero-grid">
+
+    <!-- Left Column: Editorial Copy & CTAs -->
+    <div class="cost-hero-copy anim-base anim-fade-right">
+      <div class="service-meta-row">
+        <nav class="crumb-badge" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep"><i class="fas fa-chevron-right"></i></span>
+          <a href="index.html#services">Services</a>
+          <span class="sep"><i class="fas fa-chevron-right"></i></span>
+          <span class="curr">Food &amp; Running Cost</span>
+        </nav>
+        <span class="eyebrow">Cost Control &amp; Efficiency</span>
+      </div>
+
+      <h1>Managing Costs. <em>Maximising Operational Efficiency.</em></h1>
+      <p>Managing expenses is essential to running a profitable and sustainable hospitality business. At Artha Hospitality Management, we help hospitality businesses understand, monitor, and manage their food costs and day-to-day operating expenses.</p>
+
+      <div class="cost-hero-actions">
+        <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Partner With Artha <span class="arrow">↗</span></a>
+        <a href="#focus-areas" class="btn btn-ghost">Our Cost Focus Areas</a>
+      </div>
+    </div>
+
+    <!-- Right Column: Segmented Cost-Allocation Ring, Stepped Bar Columns & Culinary Ledger Window (No Text) -->
+    <div class="cost-ledger-stage anim-base anim-fade-left delay-100">
+      <!-- Segmented Donut Cost Allocation Ring SVG -->
+      <svg class="cl-ring-svg" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+        <circle cx="90" cy="90" r="68" stroke="#FFFFFF" stroke-width="18" />
+        <circle cx="90" cy="90" r="68" stroke="#0A1C3A" stroke-width="12" stroke-dasharray="160 270" stroke-linecap="round" />
+        <circle cx="90" cy="90" r="68" stroke="#D4AF37" stroke-width="12" stroke-dasharray="115 315" stroke-dashoffset="-175" stroke-linecap="round" />
+        <circle cx="90" cy="90" r="50" stroke="#D4AF37" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7" />
+      </svg>
+
+      <!-- Central Balance Scale Medallion Inside Donut Ring -->
+      <div class="cl-scale-node" aria-hidden="true">
+        <i class="fas fa-balance-scale"></i>
+      </div>
+
+      <!-- Ascending 4-Column Efficiency Bars on Right Edge -->
+      <div class="cl-bar-columns" aria-hidden="true">
+        <span class="cl-bar b1"></span>
+        <span class="cl-bar b2"></span>
+        <span class="cl-bar b3"></span>
+        <span class="cl-bar b4"></span>
+      </div>
+
+      <div class="cl-wireframe" aria-hidden="true"></div>
+
+      <!-- Main Sculpted Culinary & Operations Image Frame -->
+      <div class="cl-main-frame">
+        <figure class="cr-figure">
+          <img src="images/artha-hospitality-mangement-restruant-img.jpg" alt="Well-managed hospitality dining and kitchen operations" loading="eager">
+          <figcaption class="cr-only">Well-managed hospitality dining and kitchen operations</figcaption>
+        </figure>
+      </div>
+
+      <!-- 3-Icon Expense Control Dock (Food, Inventory, Utilities - Icons Only, No Text) -->
+      <div class="cl-expense-dock" aria-hidden="true">
+        <span><i class="fas fa-utensils"></i></span>
+        <span><i class="fas fa-boxes"></i></span>
+        <span><i class="fas fa-bolt"></i></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 1: BETTER COST MANAGEMENT FOR SUSTAINABLE GROWTH (OFFWHITE) -->
+<section class="cost-overview-sec" id="cost-overview">
+  <div class="wrap overview-split">
+
+    <div class="overview-copy anim-base anim-fade-right">
+      <span class="eyebrow">Financial Discipline &amp; Quality</span>
+      <h2>Better Cost Management for <em>Sustainable Growth.</em></h2>
+      <p>In the hospitality industry, even small variations in daily expenses can have a significant impact on overall profitability. Uncontrolled ingredient usage, inefficient resource consumption, and poorly managed operating expenses can gradually affect business performance.</p>
+      <p>Whether you operate a restaurant, café, hotel, or resto-bar, we help bring greater visibility and structure to your everyday expenses, enabling you to maintain better cost control while delivering consistent service and quality.</p>
+
+      <div class="cost-callout">
+        <span>Balanced Financial Decisions</span>
+        <p>“From ingredient procurement and food usage to staff salaries, utilities, and daily operational expenditure, we focus on identifying cost factors and supporting better financial decisions without compromising food quality or guest experience.”</p>
+      </div>
+    </div>
+
+    <!-- Right Column: Single Image with Shapes (No Text) -->
+    <div class="overview-arch-stage anim-base anim-fade-left delay-100">
+      <svg class="oas-rings-svg" viewBox="0 0 220 220" fill="none" stroke="#D4AF37" stroke-width="1.2" aria-hidden="true">
+        <circle cx="110" cy="110" r="98" stroke-dasharray="6 6" opacity="0.55" />
+        <circle cx="110" cy="110" r="70" opacity="0.65" />
+      </svg>
+      <div class="oas-navy-slab" aria-hidden="true"></div>
+      <div class="oas-wireframe" aria-hidden="true"></div>
+      <div class="oas-dots" aria-hidden="true"></div>
+
+      <div class="oas-backdrop-img">
+        <figure class="cr-figure">
+          <img src="images/artha-hospitality-capital-inverstments-content-1.jpg" alt="Structured hospitality cost management and operational efficiency" loading="lazy">
+          <figcaption class="cr-only">Structured hospitality cost management and operational efficiency</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 2: OUR COST MANAGEMENT FOCUS AREAS (DEEP ARCHITECTURAL NAVY #0D2244 - 5-ZONE BLUEPRINT MATRIX) -->
+<section class="cost-focus-sec" id="focus-areas">
+  <div class="wrap">
+    <div class="head-center anim-base anim-fade-up">
+      <span class="eyebrow">Key Expenditure Pillars</span>
+      <h2>Our Cost Management Focus Areas.</h2>
+      <p>Bringing structured visibility and practical controls across food costs, inventory, workforce, utilities, and daily operations.</p>
+    </div>
+
+    <div class="cost-blueprint anim-base anim-fade-up delay-100">
+      <!-- Top Row: 01 & 02 -->
+      <div class="cb-row-top">
+        <!-- 01. Food Cost Monitoring -->
+        <article class="cb-cell">
+          <div class="cb-top">
+            <span class="cb-num-pill">01. Food Cost Monitoring</span>
+            <span class="cb-icon" aria-hidden="true"><i class="fas fa-utensils"></i></span>
+          </div>
+          <div class="cb-body">
+            <h3>Food Cost Monitoring</h3>
+            <p>We focus on monitoring ingredient expenses, food usage, and overall food costs to help maintain a better balance between product quality and profitability.</p>
+          </div>
+        </article>
+
+        <!-- 02. Ingredient & Inventory Management -->
+        <article class="cb-cell">
+          <div class="cb-top">
+            <span class="cb-num-pill">02. Ingredient &amp; Inventory</span>
+            <span class="cb-icon" aria-hidden="true"><i class="fas fa-boxes"></i></span>
+          </div>
+          <div class="cb-body">
+            <h3>Ingredient &amp; Inventory Management</h3>
+            <p>We encourage systematic ingredient planning, purchasing, and inventory monitoring to minimise unnecessary spending, reduce wastage, and support efficient stock utilisation.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Bottom Row: 03, 04 & 05 -->
+      <div class="cb-row-bottom">
+        <!-- 03. Staff Cost Management -->
+        <article class="cb-cell">
+          <div class="cb-top">
+            <span class="cb-num-pill">03. Staff Cost Management</span>
+            <span class="cb-icon" aria-hidden="true"><i class="fas fa-users-cog"></i></span>
+          </div>
+          <div class="cb-body">
+            <h3>Staff Cost Management</h3>
+            <p>We help assess staffing requirements, salary expenses, and workforce allocation to support effective manpower utilisation and balanced operating costs.</p>
+          </div>
+        </article>
+
+        <!-- 04. Utility & Resource Management -->
+        <article class="cb-cell">
+          <div class="cb-top">
+            <span class="cb-num-pill">04. Utility &amp; Resources</span>
+            <span class="cb-icon" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+          </div>
+          <div class="cb-body">
+            <h3>Utility &amp; Resource Management</h3>
+            <p>We consider everyday utility expenses, including electricity, water, gas, and other essential resources, while identifying opportunities for more efficient consumption.</p>
+          </div>
+        </article>
+
+        <!-- 05. Daily Operating Expense Control -->
+        <article class="cb-cell">
+          <div class="cb-top">
+            <span class="cb-num-pill">05. Daily Operating Expenses</span>
+            <span class="cb-icon" aria-hidden="true"><i class="fas fa-file-invoice-dollar"></i></span>
+          </div>
+          <div class="cb-body">
+            <h3>Daily Operating Expense Control</h3>
+            <p>We focus on understanding recurring operational expenses, tracking expenditure, and encouraging practical cost management practices that support the financial health of your business.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: OUR APPROACH TO COST MANAGEMENT (LIGHT SLATE-BLUE TINT #EDF2F8 - 4 CARDS) -->
+<section class="approach-sec" id="cost-approach">
+  <div class="wrap">
+    <div class="head-center anim-base anim-fade-up">
+      <span class="eyebrow">Our Process</span>
+      <h2>Our Approach to Cost Management.</h2>
+      <p>A disciplined four-step methodology to evaluate expenditure, reduce wastage, and protect long-term hospitality margins.</p>
+    </div>
+
+    <div class="approach-grid">
+      <article class="approach-card anim-base anim-fade-up delay-100">
+        <span class="ac-icon" aria-hidden="true"><i class="fas fa-search-dollar"></i></span>
+        <h3>Understanding Your Expenses</h3>
+        <p>We begin by understanding your business operations, food requirements, staffing structure, and recurring operating expenses.</p>
+      </article>
+
+      <article class="approach-card anim-base anim-fade-up delay-200">
+        <span class="ac-icon" aria-hidden="true"><i class="fas fa-clipboard-list"></i></span>
+        <h3>Evaluating Cost Factors</h3>
+        <p>We examine key expenditure areas, including ingredients, inventory, staff salaries, utilities, and other daily operational requirements.</p>
+      </article>
+
+      <article class="approach-card anim-base anim-fade-up delay-300">
+        <span class="ac-icon" aria-hidden="true"><i class="fas fa-sliders-h"></i></span>
+        <h3>Identifying Improvement Opportunities</h3>
+        <p>We identify areas where better planning, resource utilisation, and expense management practices can help minimise unnecessary costs.</p>
+      </article>
+
+      <article class="approach-card anim-base anim-fade-up delay-400">
+        <span class="ac-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></span>
+        <h3>Supporting Continuous Cost Control</h3>
+        <p>We encourage consistent monitoring and practical cost management practices to help maintain operational efficiency and support long-term profitability.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: CTA (WARM GOLD CHAMPAGNE #EFE3C6) -->
+<section class="cta">
+  <div class="wrap cta-inner anim-base anim-zoom-in">
+    <span class="eyebrow">Let's Make Your Hospitality Business More Cost-Efficient.</span>
+    <h2>Control Costs. Strengthen Your Business.</h2>
+    <p>A successful hospitality business is built not only on attracting customers but also on managing expenses effectively. Better visibility into food and running costs helps you make informed decisions, improve operational efficiency, and build a more sustainable business.</p>
+    <p>Let Artha Hospitality Management help you bring structure, discipline, and efficiency to your everyday operations.</p>
+    <div class="cta-btns">
+      <a href="artha-hospitality-contact-us.html" class="btn btn-light">Partner With Artha <span class="arrow">↗</span></a>
+      <a href="artha-hospitality-contact-us.html" class="btn btn-outline-light">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEW PREMIUM FOOTER -->
+<footer id="footer" class="anim-base anim-fade-up">
+  <div class="footer-bg-circle"></div>
+  <div class="footer-bg-circle-2"></div>
+  
+  <div class="wrap">
+    <div class="footer-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="Artha Hospitality Management">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
+            <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
+          </figure>
+        </a>
+        
+        <div class="footer-tagline">
+          <span class="white">Strategic Hospitality.</span>
+          <span class="gold">Exceptional Operations.</span>
+        </div>
+        
+        <p class="footer-desc">
+          Helping hospitality businesses build stronger foundations, improve operations and create better guest experiences.
+        </p>
+        
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/arthahospitalitymanagement?rpxt=MTg1bDd3eG9tMmhlMw==" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61596645240447" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <!-- Links Column -->
+      <div class="footer-links-section">
+        <div class="footer-header">
+          <span class="title">Explore</span>
+        </div>
+        
+        <div class="links-list">
+          <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
+          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-contact-section">
+        <div class="footer-header">
+          <span class="title">Contact</span>
+        </div>
+        
+        <div class="contact-list">
+          <!-- Address -->
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-details">
+              <span class="contact-label">Visit Us</span>
+              <span class="contact-value">T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore – 575004.</span>
+            </div>
+          </div>
+          
+          <!-- Phone -->
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-details">
+              <span class="contact-label">Call Us</span>
+              <span class="contact-value">
+                <a href="tel:+918951511234">+91 89515 11234</a><br>
+                <a href="tel:+919980447824">+91 99804 47824</a><br>
+                <a href="tel:+9108242148889">+91  0824-214-8889</a>
+              </span>
+            </div>
+          </div>
+          
+          <!-- Email -->
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-details">
+              <span class="contact-label">Email Us</span>
+              <span class="contact-value">Artha.hm26@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="fb-left">
+        <span>© 2026 Artha Hospitality Management. All Rights Reserved.</span>
+      </div>
+      <div class="fb-right">
+        <span>Powered by <a href="https://bluelinecomputers.com/" target="_blank" rel="noopener noreferrer">Blueline Computers</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ STICKY HEADER ============ */
+const header = document.getElementById('site-header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ============ MOBILE MENU ============ */
+const toggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const setMenu = (open) => {
+  toggle.classList.toggle('open', open);
+  mobileMenu.classList.toggle('open', open);
+  header.classList.toggle('menu-open', open);
+  toggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+toggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => setMenu(false));
+});
+
+/* ============ ROBUST SCROLL REVEAL ============ */
+const animElements = document.querySelectorAll('.anim-base');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('anim-is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  animElements.forEach(el => io.observe(el));
+} else {
+  animElements.forEach(el => el.classList.add('anim-is-visible'));
+}
+</script>
+</body>
+</html>
