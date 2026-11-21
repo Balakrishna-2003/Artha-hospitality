@@ -31,7 +31,7 @@
   --sec-pad:84px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{scroll-behavior:smooth;scroll-padding-top:110px; overflow-x:hidden;}
 body{
   font-family:'DM Sans',system-ui,sans-serif;
   color:var(--espresso);
@@ -39,7 +39,7 @@ body{
   line-height:1.6;
   font-size:16px;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x: clip;  
 }
 h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
 h1{letter-spacing:-.02em}
@@ -138,6 +138,19 @@ header.scrolled .brand-logo {
 }
 .nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
 .nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+.nav-links > a.active:not(.btn):not(.nav-cta),
+.nav-item-dropdown > a.active { color: var(--burnt); }
+.nav-links > a.active:not(.btn):not(.nav-cta)::after,
+.nav-item-dropdown > a.active::after { width: 100%; }
+.dropdown-menu a.active {
+  background: var(--cream);
+  color: var(--burnt);
+  font-weight: 600;
+}
+.dropdown-menu a.active i { color: var(--espresso); }
+.mobile-menu > a.active:not(.btn),
+.mobile-dropdown > summary.active,
+.mobile-sub-links a.active { color: var(--burnt); font-weight: 600; }
 
 .nav-item-dropdown { position: relative; }
 .nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
@@ -1763,21 +1776,52 @@ footer {
   }
 }
 
+@media(max-width:778.98px){
+  .about-editorial-hero {
+    height: auto;
+    min-height: 75vh;
+    padding: clamp(104px, 13vh, 124px) 0 40px;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .hero-story-col {
+    padding-right: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-top-tags {
+    justify-content: center;
+  }
+  .hero-cta-group {
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-visual-stage {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 480px;
+    height: clamp(330px, 46vh, 420px);
+  }
+}
+
 @media(max-width:640px){
   :root{--sec-pad:42px}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
   .about-editorial-hero {
-    height: 75vh;
-    min-height: 440px;
-    padding: 96px 0 24px;
+    height: auto;
+    min-height: 75vh;
+    padding: 102px 0 36px;
   }
   .hero-inner {
     grid-template-columns: 1fr;
   }
   .hero-visual-stage {
-    display: none;
+    height: clamp(300px, 44vh, 380px);
   }
   .hero-story-col {
     padding-right: 0;
@@ -1814,7 +1858,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="artha-hospitality-about-us.html">About us</a>
+      <a href="artha-hospitality-about-us.html" class="active">About us</a>
       
       <!-- Dropdown for Services -->
       <div class="nav-item-dropdown">
@@ -1836,7 +1880,7 @@ footer {
       <a href="artha-hospitality-openings.html">Openings</a>
       <a href="artha-hospitality-clients.html">Clients</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
-      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
     
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1848,7 +1892,7 @@ footer {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
-  <a href="artha-hospitality-about-us.html">About us</a>
+  <a href="artha-hospitality-about-us.html" class="active">About us</a>
   
   <!-- Mobile Dropdown for Services -->
   <details class="mobile-dropdown">
@@ -1870,7 +1914,7 @@ footer {
   <a href="artha-hospitality-openings.html">Openings</a>
   <a href="artha-hospitality-clients.html">Clients</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
-  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
+  <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
 
 <!-- NEW 75VH ABOUT US HERO SECTION -->
@@ -2011,16 +2055,131 @@ footer {
   </div>
 </section>
 
-<!-- SECTION 2: LEADERSHIP & VISION + FOUNDER SPOTLIGHT (ANIL KUMAR K) -->
-<section class="leader-spotlight bg-sand-light" id="anil-kumar">
+<!-- SECTION 2: LEADERSHIP & VISION + CEO SPOTLIGHT (VIHANI ANIL) -->
+<section class="leader-spotlight bg-sand-light" id="vihani-anil">
   <div class="wrap">
     <div class="head-center anim-base anim-fade-up" style="margin-bottom:56px;">
       <span class="eyebrow">Leadership &amp; Vision</span>
       <h2>The Minds Driving Culinary, People &amp; Operational Excellence.</h2>
-      <p>Guided by seasoned hospitality veterans, kitchen innovators, HR strategists, and operations leaders committed to building resilient, people-first hospitality ventures.</p>
+      <p>Guided by visionary leadership, seasoned hospitality veterans, kitchen innovators, HR strategists, and operations leaders committed to building resilient, people-first hospitality ventures.</p>
     </div>
 
     <div class="spotlight-grid">
+
+      <!-- Portrait Column -->
+      <div class="leader-portrait-stage anim-base anim-fade-right">
+        <div class="portrait-backing" aria-hidden="true"></div>
+        <div class="portrait-wireframe" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <figure class="cr-figure">
+            <img src="images/vihani-anil.jpg" alt="Vihani Anil - Future CEO, Artha Hospitality Management" loading="lazy" style="object-position: center top;">
+            <figcaption class="cr-only">Vihani Anil - Future CEO | Artha Hospitality Management</figcaption>
+          </figure>
+        </div>
+        <div class="portrait-exp-badge">
+          <strong>Future</strong>
+          <span>CEO · Artha<br>Hospitality</span>
+        </div>
+      </div>
+
+      <!-- Biography & Vision Column -->
+      <div class="leader-copy anim-base anim-fade-left delay-100">
+        <span class="eyebrow">Leadership &amp; Vision</span>
+        <h2>Vihani Anil</h2>
+        <div class="role-pill">
+          <i class="fas fa-crown"></i>
+          <span>Future CEO | Artha Hospitality Management</span>
+        </div>
+
+        <div class="leader-bio">
+          <p>Vihani Anil is the Future CEO of Artha Hospitality Management, representing the next generation of strategic leadership, brand vision, and client-first hospitality advisory across India.</p>
+          <p>Guided by the principle <em>Dream · Plan · Achieve</em>, she brings a forward-looking perspective to modern hospitality consulting—bridging creative concept development with disciplined business planning and sustainable growth.</p>
+          <p>Her leadership focus centres on empowering restaurant, café, hotel, cloud kitchen, and resort founders with clarity, structured execution, and long-term operational confidence from day one.</p>
+        </div>
+
+        <div class="leader-chips">
+          <span>Future Leadership</span>
+          <span>Brand Strategy</span>
+          <span>Client Partnerships</span>
+          <span>Business Growth</span>
+          <span>Hospitality Innovation</span>
+          <span>Strategic Planning</span>
+        </div>
+
+        <div class="vision-callout">
+          <div class="vc-head">
+            <i class="fas fa-compass"></i>
+            <span>Future Vision &amp; Leadership</span>
+          </div>
+          <p>As Future CEO, Vihani champions a culture of excellence, transparency, and purposeful execution—ensuring every hospitality venture partnered with Artha transforms ambitious ideas into thriving, guest-loved destinations.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: FOUNDER & DIRECTOR SPOTLIGHT (ANIL KUMAR K) -->
+<section class="leader-spotlight bg-offwhite" id="anil-kumar">
+  <div class="wrap">
+    <div class="spotlight-grid reverse">
+
+      <!-- Biography & Vision Column -->
+      <div class="leader-copy anim-base anim-fade-right">
+        <span class="eyebrow">Leadership &amp; Vision</span>
+        <h2>Anil Kumar K</h2>
+        <div class="role-pill">
+          <i class="fas fa-chess-king"></i>
+          <span>Founder &amp; Director – Artha Hospitality</span>
+        </div>
+
+        <div class="leader-bio">
+          <p>Chef Anil Kumar K is the Founder &amp; Director of Artha Hospitality, bringing over 25 years of experience in the hospitality industry.</p>
+          <p>With a professional background as a Chef, Anil has extensive hands-on experience in professional kitchens, restaurant operations, kitchen planning, commercial kitchen equipment, food production, and hospitality management.</p>
+          <p>His 25 years of industry experience provide him with a deep understanding of the practical requirements of hotels, restaurants, cafés, catering businesses, and commercial food-service operations.</p>
+        </div>
+
+        <div class="leader-chips">
+          <span>Professional Kitchens</span>
+          <span>Restaurant Operations</span>
+          <span>Kitchen Planning</span>
+          <span>Commercial Kitchen Equipment</span>
+          <span>Food Production</span>
+          <span>Hospitality Management</span>
+        </div>
+
+        <div class="vision-callout">
+          <div class="vc-head">
+            <i class="fas fa-compass"></i>
+            <span>Strategic Vision &amp; Leadership</span>
+          </div>
+          <p>As Founder &amp; Director of Artha Hospitality, Anil leads the company’s business strategy, kitchen solutions, operational planning, client relationships, and overall execution, with a vision to deliver reliable, efficient, and sustainable hospitality solutions.</p>
+        </div>
+      </div>
+
+      <!-- Portrait Column -->
+      <div class="leader-portrait-stage anim-base anim-fade-left delay-100">
+        <div class="portrait-backing" aria-hidden="true"></div>
+        <div class="portrait-wireframe" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <figure class="cr-figure">
+            <img src="images/about-us-images/anil-kumar-k.jpg" alt="Chef Anil Kumar K - Founder & Director of Artha Hospitality" loading="lazy">
+            <figcaption class="cr-only">Chef Anil Kumar K - Founder &amp; Director – Artha Hospitality</figcaption>
+          </figure>
+        </div>
+        <div class="portrait-exp-badge">
+          <strong>25+</strong>
+          <span>Years in<br>Hospitality</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: HR DIRECTOR SPOTLIGHT - SUSHMA AMIN -->
+<section class="leader-spotlight bg-sand-light" id="sushma-amin">
+  <div class="wrap spotlight-grid">
 
     <!-- Portrait Column -->
     <div class="leader-portrait-stage anim-base anim-fade-right">
@@ -2028,59 +2187,18 @@ footer {
       <div class="portrait-wireframe" aria-hidden="true"></div>
       <div class="portrait-frame">
         <figure class="cr-figure">
-          <img src="images/about-us-images/anil-kumar-k.jpg" alt="Chef Anil Kumar K - Founder & CEO of Vinyasa Kitchen Equipment" loading="lazy">
-          <figcaption class="cr-only">Chef Anil Kumar K - Founder &amp; CEO – VINYASA KITCHEN EQUIPMENT</figcaption>
+          <img src="images/about-us-images/sushma-amin.jpg" alt="Sushma Amin - HR Director & Hospitality HR Professional" loading="lazy">
+          <figcaption class="cr-only">Sushma Amin - HR Director &amp; Hospitality HR Professional</figcaption>
         </figure>
       </div>
       <div class="portrait-exp-badge">
-        <strong>25+</strong>
-        <span>Years in<br>Hospitality</span>
+        <strong>20+</strong>
+        <span>Years in HR &amp;<br>Hospitality</span>
       </div>
     </div>
 
     <!-- Biography & Vision Column -->
     <div class="leader-copy anim-base anim-fade-left delay-100">
-      <span class="eyebrow">Leadership &amp; Vision</span>
-      <h2>Anil Kumar K</h2>
-      <div class="role-pill">
-        <i class="fas fa-chess-king"></i>
-        <span>Founder &amp; CEO – VINYASA KITCHEN EQUIPMENT</span>
-      </div>
-
-      <div class="leader-bio">
-        <p>Chef Anil Kumar K is the Founder &amp; CEO of VINYASA KITCHEN EQUIPMENT, bringing over 25 years of experience in the hospitality industry.</p>
-        <p>With a professional background as a Chef, Anil has extensive hands-on experience in professional kitchens, restaurant operations, kitchen planning, commercial kitchen equipment, food production, and hospitality management.</p>
-        <p>His 25 years of industry experience provide him with a deep understanding of the practical requirements of hotels, restaurants, cafés, catering businesses, and commercial food-service operations.</p>
-      </div>
-
-      <div class="leader-chips">
-        <span>Professional Kitchens</span>
-        <span>Restaurant Operations</span>
-        <span>Kitchen Planning</span>
-        <span>Commercial Kitchen Equipment</span>
-        <span>Food Production</span>
-        <span>Hospitality Management</span>
-      </div>
-
-      <div class="vision-callout">
-        <div class="vc-head">
-          <i class="fas fa-compass"></i>
-          <span>Strategic Vision &amp; Leadership</span>
-        </div>
-        <p>As Founder &amp; CEO, Anil leads the company’s business strategy, kitchen solutions, product development, client relationships, and overall operations, with a vision to provide reliable, efficient, durable, and customized commercial kitchen solutions.</p>
-      </div>
-    </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: HR DIRECTOR SPOTLIGHT - SUSHMA AMIN -->
-<section class="leader-spotlight bg-offwhite" id="sushma-amin">
-  <div class="wrap spotlight-grid reverse">
-
-    <!-- Biography & Vision Column -->
-    <div class="leader-copy anim-base anim-fade-right">
       <span class="eyebrow">Leadership &amp; Vision</span>
       <h2>Sushma Amin</h2>
       <div class="role-pill">
@@ -2109,22 +2227,6 @@ footer {
           <span>Professional Vision</span>
         </div>
         <p>Her professional vision is to connect the right talent with the right opportunities, empower people, strengthen organizations, and contribute to the growth of the hospitality industry through ethical, transparent, and result-oriented HR practices.</p>
-      </div>
-    </div>
-
-    <!-- Portrait Column -->
-    <div class="leader-portrait-stage anim-base anim-fade-left delay-100">
-      <div class="portrait-backing" aria-hidden="true"></div>
-      <div class="portrait-wireframe" aria-hidden="true"></div>
-      <div class="portrait-frame">
-        <figure class="cr-figure">
-          <img src="images/about-us-images/sushma-amin.jpg" alt="Sushma Amin - HR Director & Hospitality HR Professional" loading="lazy">
-          <figcaption class="cr-only">Sushma Amin - HR Director &amp; Hospitality HR Professional</figcaption>
-        </figure>
-      </div>
-      <div class="portrait-exp-badge">
-        <strong>20+</strong>
-        <span>Years in HR &amp;<br>Hospitality</span>
       </div>
     </div>
 
@@ -2330,7 +2432,7 @@ footer {
         <div class="links-list">
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
-          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>

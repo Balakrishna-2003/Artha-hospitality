@@ -50,7 +50,11 @@
   --sec-pad:84px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:110px;
+  overflow-x:hidden;
+}
 body{
   font-family:'DM Sans',system-ui,sans-serif;
   color:var(--espresso);
@@ -58,7 +62,7 @@ body{
   line-height:1.6;
   font-size:16px;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x: clip; 
 }
 h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
 h1{letter-spacing:-.02em}
@@ -216,6 +220,19 @@ header.scrolled .brand-logo {
 }
 .nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
 .nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+.nav-links > a.active:not(.btn):not(.nav-cta),
+.nav-item-dropdown > a.active { color: var(--burnt); }
+.nav-links > a.active:not(.btn):not(.nav-cta)::after,
+.nav-item-dropdown > a.active::after { width: 100%; }
+.dropdown-menu a.active {
+  background: var(--cream);
+  color: var(--burnt);
+  font-weight: 600;
+}
+.dropdown-menu a.active i { color: var(--espresso); }
+.mobile-menu > a.active:not(.btn),
+.mobile-dropdown > summary.active,
+.mobile-sub-links a.active { color: var(--burnt); font-weight: 600; }
 
 .nav-item-dropdown { position: relative; }
 .nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
@@ -874,16 +891,139 @@ margin-bottom:30px}
   margin: 0;
 }
 
+/* ============ WHO THIS IS FOR (6-CARD IMAGE GALLERY GRID) ============ */
+.who-for {
+  background:
+    radial-gradient(900px 420px at 50% 0%, rgba(45, 92, 160, 0.42), transparent 70%),
+    #152F56;
+  color: var(--offwhite);
+  border-top: 1px solid rgba(212,175,55,0.28);
+  border-bottom: 1px solid rgba(212,175,55,0.28);
+  position: relative;
+  overflow: hidden;
+}
+.who-for .head-center h2 {
+  color: var(--offwhite);
+  max-width: 860px;
+}
+.who-for .head-center h2 em {
+  color: var(--burnt);
+  font-style: italic;
+}
+.who-for .head-center p {
+  color: rgba(255,255,255,0.82);
+}
+
+.who-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.who-photo-card {
+  position: relative;
+  height: 320px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.3);
+  box-shadow: 0 20px 44px -20px rgba(0,0,0,0.55);
+  background: var(--espresso);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease;
+}
+.who-photo-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--burnt);
+}
+
+.wpc-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.wpc-media .cr-figure {
+  width: 100%;
+  height: 100%;
+}
+.wpc-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.who-photo-card:hover .wpc-media img {
+  transform: scale(1.07);
+}
+
+.wpc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10,28,58,0.12) 0%,
+    rgba(10,28,58,0.42) 42%,
+    rgba(10,28,58,0.95) 100%
+  );
+  z-index: 1;
+}
+
+.wpc-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(10,28,58,0.78);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(212,175,55,0.45);
+  color: var(--burnt);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.who-photo-card:hover .wpc-badge {
+  background: var(--burnt);
+  color: var(--espresso);
+}
+
+.wpc-body {
+  position: relative;
+  z-index: 2;
+  padding: 24px 26px;
+}
+.wpc-body h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem;
+  color: var(--offwhite);
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+.who-photo-card:hover .wpc-body h3 {
+  color: var(--burnt);
+}
+.wpc-body p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ============ CTA ============ */
 .cta{
-  background: #F5EBDD;
+  background: var(--cream);
   color: var(--espresso);
+  border-top: 1px solid rgba(10,28,58,0.06);
   position: relative;
   overflow: hidden;
 }
 .cta-inner{position:relative;text-align:center;max-width:760px;margin:0 auto}
 .cta h2{color:var(--espresso);margin-bottom:16px}
-.cta p{color:#707986;margin:0 auto 30px}
+.cta p{color:#4E5968;margin:0 auto 30px;font-size:1.03rem;line-height:1.78}
 .cta .eyebrow { color: var(--burnt); justify-content: center; }
 .cta .eyebrow::before { background: var(--burnt); }
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -1214,6 +1354,9 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+  .who-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1419,7 +1562,7 @@ footer {
 
 @media(max-width:640px){
   :root{--sec-pad:42px}
-  .wrap{padding:0 20px}
+  .wrap{padding:0 28px}
   .hero{padding-top:130px;}
   .hero-ctas .btn{flex:1;justify-content:center}
   .hero-visual{min-height:380px}
@@ -1464,6 +1607,12 @@ footer {
   .approach-grid {
     grid-template-columns: 1fr;
   }
+  .who-photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .who-photo-card {
+    height: 270px;
+  }
   .approach-card {
     padding: 30px 24px;
   }
@@ -1502,7 +1651,7 @@ footer {
       </figure>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="artha-hospitality-about-us.html">About us</a>
       
       <!-- Dropdown for Services -->
@@ -1525,7 +1674,7 @@ footer {
       <a href="artha-hospitality-openings.html">Openings</a>
       <a href="artha-hospitality-clients.html">Clients</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
-      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
     
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1536,7 +1685,7 @@ footer {
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
-  <a href="index.html">Home</a>
+  <a href="index.html" class="active">Home</a>
   <a href="artha-hospitality-about-us.html">About us</a>
   
   <!-- Mobile Dropdown for Services -->
@@ -1559,7 +1708,7 @@ footer {
   <a href="artha-hospitality-openings.html">Openings</a>
   <a href="artha-hospitality-clients.html">Clients</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
-  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
+  <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
 
 <!-- HERO (ANIMATED CAROUSEL) -->
@@ -1683,7 +1832,7 @@ footer {
         <div class="l">Hospitality Segments</div>
       </div>
       <div class="stat-card anim-base anim-fade-up delay-400">
-        <div class="n" data-count="50">0</div>
+        <div class="n" data-count="20">0</div>
         <div class="l">Projects Consulted</div>
       </div>
       <div class="stat-card anim-base anim-fade-up delay-500">
@@ -1934,14 +2083,123 @@ footer {
   </div>
 </section>
 
+<!-- WHO THIS IS FOR -->
+<section class="who-for" id="who-this-is-for">
+  <div class="wrap">
+    <div class="head-center anim-base anim-fade-up">
+      <span class="eyebrow">Who This is For</span>
+      <h2>Built for Hospitality Ventures <em>Ready to Grow Across India.</em></h2>
+      <p>From intimate neighbourhood cafés and high-output cloud kitchens to signature restaurants, hotels, resorts, pubs, resto-bars, and more—we partner with hospitality owners at every stage of growth.</p>
+    </div>
+
+    <div class="who-photo-grid">
+      <!-- 01. Restaurants -->
+      <article class="who-photo-card anim-base anim-fade-up delay-100">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-restruant-img.jpg" alt="Restaurants and fine dining hospitality spaces" loading="lazy">
+            <figcaption class="cr-only">Restaurants and fine dining hospitality spaces</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-utensils"></i></span>
+        <div class="wpc-body">
+          <h3>Restaurants</h3>
+          <p>Fine dining, casual dining, family restaurants, and specialty culinary destinations.</p>
+        </div>
+      </article>
+
+      <!-- 02. Cafés & Bakeries -->
+      <article class="who-photo-card anim-base anim-fade-up delay-200">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-location-selection-overview.jpg" alt="Cafés, bakeries, and neighbourhood lounges" loading="lazy">
+            <figcaption class="cr-only">Cafés, bakeries, and neighbourhood lounges</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-coffee"></i></span>
+        <div class="wpc-body">
+          <h3>Cafés &amp; Bakeries</h3>
+          <p>Artisanal coffee bars, patisseries, bistros, and welcoming neighbourhood lounges.</p>
+        </div>
+      </article>
+
+      <!-- 03. Hotels -->
+      <article class="who-photo-card anim-base anim-fade-up delay-300">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-hotels-img.jpg" alt="Business hotels and boutique stays" loading="lazy">
+            <figcaption class="cr-only">Business hotels and boutique stays</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-hotel"></i></span>
+        <div class="wpc-body">
+          <h3>Hotels</h3>
+          <p>Business hotels, boutique properties, and multi-outlet F&amp;B hospitality venues.</p>
+        </div>
+      </article>
+
+      <!-- 04. Cloud Kitchens -->
+      <article class="who-photo-card anim-base anim-fade-up delay-100">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-kitchen-design-hero.jpg" alt="Cloud kitchens and commercial prep hubs" loading="lazy">
+            <figcaption class="cr-only">Cloud kitchens and commercial prep hubs</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-concierge-bell"></i></span>
+        <div class="wpc-body">
+          <h3>Cloud Kitchens</h3>
+          <p>Workflow-driven delivery kitchens, central prep hubs, and scalable QSR models.</p>
+        </div>
+      </article>
+
+      <!-- 05. Resorts -->
+      <article class="who-photo-card anim-base anim-fade-up delay-200">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/slide-img-2-lgr.jpg" alt="Luxury resorts, retreats, and banquet venues" loading="lazy">
+            <figcaption class="cr-only">Luxury resorts, retreats, and banquet venues</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-umbrella-beach"></i></span>
+        <div class="wpc-body">
+          <h3>Resorts &amp; Banquets</h3>
+          <p>Destination retreats, leisure resorts, banquet spaces, and experiential dining.</p>
+        </div>
+      </article>
+
+      <!-- 06. Resto-Bars & More -->
+      <article class="who-photo-card anim-base anim-fade-up delay-300">
+        <div class="wpc-media">
+          <figure class="cr-figure">
+            <img src="images/artha-hospitality-mangement-pub-and-resto-img.jpg" alt="Pubs, resto-bars, lounges, and more hospitality formats" loading="lazy">
+            <figcaption class="cr-only">Pubs, resto-bars, lounges, and more hospitality formats</figcaption>
+          </figure>
+        </div>
+        <div class="wpc-overlay"></div>
+        <span class="wpc-badge" aria-hidden="true"><i class="fas fa-glass-martini-alt"></i></span>
+        <div class="wpc-body">
+          <h3>Resto-Bars, Pubs &amp; More</h3>
+          <p>Lounges, pubs, QSR chains, catering units, and emerging hospitality concepts.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <div class="wrap cta-inner anim-base anim-zoom-in">
     <span class="eyebrow">Let's Work Together</span>
-    <h2>Have a Hospitality Vision? Let's Bring It to Life.</h2>
-    <p>Whether you're planning a new restaurant, developing a hotel or improving an existing hospitality business, Artha is ready to help you take the next step.</p>
+    <h2>Book a Free Consultation</h2>
+    <p>Speak directly with our hospitality specialists about your concept, capital plan, site selection, outlet design, or everyday operations—and map out the smartest next step for your business.</p>
     <div class="cta-btns">
-      <a href="tel:+918951511234" class="btn btn-light">Start a Conversation <span class="arrow">↗</span></a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-light">Schedule Your Consultation <span class="arrow">↗</span></a>
       <a href="tel:+918951511234" class="btn btn-outline-light">Call Us Today</a>
     </div>
   </div>
@@ -1989,7 +2247,7 @@ footer {
         <div class="links-list">
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
-          <a href="#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>

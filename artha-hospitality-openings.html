@@ -31,7 +31,7 @@
   --sec-pad:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{scroll-behavior:smooth;scroll-padding-top:110px; overflow-x:hidden;}
 body{
   font-family:'DM Sans',system-ui,sans-serif;
   color:var(--espresso);
@@ -39,7 +39,7 @@ body{
   line-height:1.6;
   font-size:16px;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x: clip;
 }
 h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
 h1{letter-spacing:-.02em}
@@ -134,6 +134,19 @@ header.scrolled .brand-logo {
 }
 .nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
 .nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+.nav-links > a.active:not(.btn):not(.nav-cta),
+.nav-item-dropdown > a.active { color: var(--burnt); }
+.nav-links > a.active:not(.btn):not(.nav-cta)::after,
+.nav-item-dropdown > a.active::after { width: 100%; }
+.dropdown-menu a.active {
+  background: var(--cream);
+  color: var(--burnt);
+  font-weight: 600;
+}
+.dropdown-menu a.active i { color: var(--espresso); }
+.mobile-menu > a.active:not(.btn),
+.mobile-dropdown > summary.active,
+.mobile-sub-links a.active { color: var(--burnt); font-weight: 600; }
 
 .nav-item-dropdown { position: relative; }
 .nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
@@ -996,21 +1009,52 @@ footer {
   }
 }
 
+@media(max-width:778.98px){
+  .openings-hero {
+    height: auto;
+    min-height: 75vh;
+    padding: clamp(104px, 13vh, 124px) 0 40px;
+  }
+  .openings-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .openings-hero-copy {
+    padding-right: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-meta-row {
+    justify-content: center;
+  }
+  .openings-hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  .openings-visual-stage {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 480px;
+    height: clamp(330px, 46vh, 420px);
+  }
+}
+
 @media(max-width:640px){
   :root{--sec-pad:48px}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
   .openings-hero {
-    height: 75vh;
-    min-height: 450px;
-    padding: 96px 0 24px;
+    height: auto;
+    min-height: 75vh;
+    padding: 102px 0 36px;
   }
   .openings-hero-grid {
     grid-template-columns: 1fr;
   }
   .openings-visual-stage {
-    display: none;
+    height: clamp(300px, 44vh, 380px);
   }
   .openings-hero-copy {
     text-align: center;
@@ -1058,10 +1102,10 @@ footer {
         </div>
       </div>
 
-      <a href="artha-hospitality-openings.html">Openings</a>
+      <a href="artha-hospitality-openings.html" class="active">Openings</a>
       <a href="artha-hospitality-clients.html">Clients</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
-      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
     
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1095,7 +1139,7 @@ footer {
   <a href="artha-hospitality-openings.html">Openings</a>
   <a href="artha-hospitality-clients.html">Clients</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
-  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
+  <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
 
 <!-- UNIQUE 75VH OPENINGS HERO: ASCENDING CAREER STAIRCASE & TRAJECTORY ARC -->
@@ -1117,7 +1161,7 @@ footer {
       <p>At Artha Hospitality Management, we value passionate hospitality professionals who share our commitment to thoughtful planning, operational excellence, and memorable guest experiences.</p>
 
       <div class="openings-hero-actions">
-        <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch <span class="arrow">↗</span></a>
+        <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch <span class="arrow">↗</span></a>
         <a href="index.html" class="btn btn-ghost">Back to Home</a>
       </div>
     </div>
@@ -1206,7 +1250,7 @@ footer {
         <div class="links-list">
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
-          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>

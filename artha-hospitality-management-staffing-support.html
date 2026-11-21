@@ -31,7 +31,7 @@
   --sec-pad:84px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{scroll-behavior:smooth;scroll-padding-top:110px; overflow-x:hidden;}
 body{
   font-family:'DM Sans',system-ui,sans-serif;
   color:var(--espresso);
@@ -39,7 +39,7 @@ body{
   line-height:1.6;
   font-size:16px;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x: clip;
 }
 h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.1;color:var(--espresso); overflow-wrap: break-word; word-wrap: break-word;}
 h1{letter-spacing:-.02em}
@@ -162,6 +162,19 @@ header.scrolled .brand-logo {
 }
 .nav-links > a:not(.btn):not(.nav-cta):hover, .nav-item-dropdown:hover > a {color:var(--burnt)}
 .nav-links > a:not(.btn):not(.nav-cta):hover::after, .nav-item-dropdown:hover > a::after {width:100%}
+.nav-links > a.active:not(.btn):not(.nav-cta),
+.nav-item-dropdown > a.active { color: var(--burnt); }
+.nav-links > a.active:not(.btn):not(.nav-cta)::after,
+.nav-item-dropdown > a.active::after { width: 100%; }
+.dropdown-menu a.active {
+  background: var(--cream);
+  color: var(--burnt);
+  font-weight: 600;
+}
+.dropdown-menu a.active i { color: var(--espresso); }
+.mobile-menu > a.active:not(.btn),
+.mobile-dropdown > summary.active,
+.mobile-sub-links a.active { color: var(--burnt); font-weight: 600; }
 
 .nav-item-dropdown { position: relative; }
 .nav-item-dropdown .fa-chevron-down { font-size: 0.6rem; transition: transform 0.3s ease; }
@@ -1322,21 +1335,52 @@ footer {
   }
 }
 
+@media(max-width:778.98px){
+  .staff-hero {
+    height: auto;
+    min-height: 75vh;
+    padding: clamp(104px, 13vh, 124px) 0 40px;
+  }
+  .staff-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .staff-hero-copy {
+    padding-right: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .service-meta-row {
+    justify-content: center;
+  }
+  .staff-hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  .staff-visual-stage {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 480px;
+    height: clamp(330px, 46vh, 420px);
+  }
+}
+
 @media(max-width:640px){
   :root{--sec-pad:42px}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
   .staff-hero {
-    height: 75vh;
-    min-height: 450px;
-    padding: 96px 0 24px;
+    height: auto;
+    min-height: 75vh;
+    padding: 102px 0 36px;
   }
   .staff-hero-grid {
     grid-template-columns: 1fr;
   }
   .staff-visual-stage {
-    display: none;
+    height: clamp(300px, 44vh, 380px);
   }
   .staff-hero-copy {
     text-align: center;
@@ -1384,12 +1428,12 @@ footer {
       
       <!-- Dropdown for Services -->
       <div class="nav-item-dropdown">
-        <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
+        <a href="index.html#services" class="active">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-menu">
           <a href="artha-hospitality-management-capital-investment-plan.html"><i class="fas fa-chart-pie"></i> Capital Investment Plan</a>
           <a href="artha-hospitality-management-location-selection.html"><i class="fas fa-map-marked-alt"></i> Location Selection</a>
           <a href="artha-hospitality-management-outlet-kitchen-design.html"><i class="fas fa-utensils"></i> Outlet &amp; Kitchen Design</a>
-          <a href="artha-hospitality-management-staffing-support.html"><i class="fas fa-user-graduate"></i> Staffing Support</a>
+          <a href="artha-hospitality-management-staffing-support.html" class="active"><i class="fas fa-user-graduate"></i> Staffing Support</a>
           <a href="artha-hospitality-management-civil-work.html"><i class="fas fa-hard-hat"></i> Civil Work</a>
           <a href="artha-hospitality-management-interior-work.html"><i class="fas fa-layer-group"></i> Interior Work</a>
           <a href="artha-hospitality-management-marketing-service.html"><i class="fas fa-bullseye"></i> Marketing Service</a>
@@ -1402,7 +1446,7 @@ footer {
       <a href="artha-hospitality-openings.html">Openings</a>
       <a href="artha-hospitality-clients.html">Clients</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
-      <a href="artha-hospitality-contact-us.html" class="nav-cta">Get in Touch</a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
     
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1436,7 +1480,7 @@ footer {
   <a href="artha-hospitality-openings.html">Openings</a>
   <a href="artha-hospitality-clients.html">Clients</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
-  <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Get in Touch</a>
+  <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
 
 <!-- NEW 75VH STAFFING SUPPORT CONSTELLATION ARCH HERO SECTION -->
@@ -1652,7 +1696,7 @@ footer {
     <p>Let Artha Hospitality Management help you develop a capable, confident, and service-oriented workforce.</p>
     <div class="cta-btns">
       <a href="artha-hospitality-contact-us.html" class="btn btn-light">Partner With Artha <span class="arrow">↗</span></a>
-      <a href="artha-hospitality-contact-us.html" class="btn btn-outline-light">Get in Touch</a>
+      <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-outline-light">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -1699,7 +1743,7 @@ footer {
         <div class="links-list">
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
-          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
