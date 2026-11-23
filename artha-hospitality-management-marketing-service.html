@@ -47,7 +47,9 @@ h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-he
 h1{letter-spacing:-.02em}
 h2{font-size:clamp(1.8rem,3.4vw,2.9rem);letter-spacing:-.01em}
 h3{font-size:1.25rem}
-p{max-width:62ch; overflow-wrap: break-word; word-wrap: break-word;}
+p{
+  /* max-width:62ch;  */
+  overflow-wrap: break-word; word-wrap: break-word;}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 button{font-family:inherit;cursor:pointer;border:0;background:none}
@@ -1291,7 +1293,10 @@ footer {
 .anim-fade-up { transform: translateY(40px); }
 .anim-fade-down { transform: translateY(-40px); }
 .anim-fade-left { transform: translateX(40px); }
-.anim-fade-right { transform: translateX(-40px); }
+.anim-fade-right {
+  transform: translateX(-140px);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
 .anim-zoom-in { transform: scale(0.95); }
 
 .anim-is-visible {
@@ -1373,7 +1378,7 @@ footer {
 
   .marketing-hero {
     height: 75vh;
-    min-height: 480px;
+    /* min-height: 480px; */
     padding: clamp(96px, 12vh, 114px) 0 24px;
   }
   .marketing-hero-grid {
@@ -1505,6 +1510,18 @@ footer {
   }
   .mb-row-bottom .mb-cell:last-child {
     border-bottom: none !important;
+  }
+}
+
+@media (max-width: 998.98px) {
+  body {
+    text-align: center;
+  }
+
+  .approach-card {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
@@ -1690,7 +1707,7 @@ footer {
 <!-- SECTION 2: OUR MARKETING FOCUS AREAS (DEEP ARCHITECTURAL NAVY #0D2244 - 5-ZONE BLUEPRINT MATRIX) -->
 <section class="marketing-focus-sec" id="focus-areas">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Strategic Brand Growth</span>
       <h2>Our Marketing Focus Areas.</h2>
       <p>Comprehensive branding, strategic promotion, and customer retention initiatives tailored for hospitality ventures.</p>
@@ -1769,7 +1786,7 @@ footer {
 <!-- SECTION 3: OUR APPROACH TO MARKETING (LIGHT SLATE-BLUE TINT #EDF2F8 - 4 CARDS) -->
 <section class="approach-sec" id="marketing-approach">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Our Process</span>
       <h2>Our Approach to Marketing.</h2>
       <p>A structured four-step framework to position your hospitality brand, reach the right customers, and cultivate lasting loyalty.</p>

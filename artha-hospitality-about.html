@@ -968,6 +968,19 @@ footer {
     }
 }
 
+.anim-base {
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+.anim-fade-right {
+  transform: translateX(-140px);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
+.anim-is-visible {
+  opacity: 1;
+  transform: translate(0) scale(1) !important;
+}
 </style>
 
 </head>
@@ -1342,6 +1355,20 @@ mobileMenu.querySelectorAll('a').forEach(a => {
 
 });
 
+const animElements = document.querySelectorAll('.anim-base');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('anim-is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  animElements.forEach(el => io.observe(el));
+} else {
+  animElements.forEach(el => el.classList.add('anim-is-visible'));
+}
 </script>
 
 </body>

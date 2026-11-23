@@ -174,11 +174,9 @@ section{padding:var(--sec-pad) 0;position:relative}
   transition:transform .2s ease, background .2s ease, color .2s ease;
 }
 .hiring-cta:hover{background:#FAF6F5;color:#15803D;transform:translateY(-1px);}
-@media(max-width:1080px){:root{--strip-h:62px;  --strip-h:42px;
-}}
+@media(max-width:1080px){:root{--strip-h:76px;}}
 @media(max-width:640px){
-  :root{--strip-h:78px;  --strip-h:42px;
-}
+  :root{--strip-h:92px;}
   .hiring-strip{padding:7px 12px;}
   .hiring-strip-inner{font-size:0.74rem;gap:5px 7px;}
   .hiring-badge{font-size:0.66rem;padding:2px 8px;}
@@ -1035,7 +1033,10 @@ footer {
 .anim-fade-up { transform: translateY(40px); }
 .anim-fade-down { transform: translateY(-40px); }
 .anim-fade-left { transform: translateX(40px); }
-.anim-fade-right { transform: translateX(-40px); }
+.anim-fade-right {
+  transform: translateX(-140px);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
 .anim-zoom-in { transform: scale(0.95); }
 
 .anim-is-visible {
@@ -1093,8 +1094,7 @@ footer {
 }
 
 @media(max-width:991.98px){
-  :root{--sec-pad:64px  --strip-h:42px;
-}
+  :root{--sec-pad:64px;}
   .nav-links{display:none}
   .nav-cta{display:none}
   .menu-toggle{display:flex}
@@ -1195,8 +1195,7 @@ footer {
 }
 
 @media(max-width:640px){
-  :root{--sec-pad:48px  --strip-h:42px;
-}
+  :root{--sec-pad:48px;}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
@@ -1373,7 +1372,7 @@ footer {
 <!-- 02 · CLIENT LOGO SHOWCASE (THE MAIN FOCUS OF THE PAGE) -->
 <section class="client-logos-showcase" id="client-logos">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Valued Partnerships</span>
       <h2>Businesses That Have Trusted Us</h2>
       <p>Our clients represent the partnerships we have built through shared goals, industry understanding, and a commitment to hospitality excellence.</p>

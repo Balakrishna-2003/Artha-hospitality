@@ -70,7 +70,9 @@ h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-he
 h1{letter-spacing:-.02em}
 h2{font-size:clamp(1.8rem,3.4vw,2.9rem);letter-spacing:-.01em}
 h3{font-size:1.25rem}
-p{max-width:62ch; overflow-wrap: break-word; word-wrap: break-word;}
+p{
+  /* max-width:62ch;  */
+  overflow-wrap: break-word; word-wrap: break-word;}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 button{font-family:inherit;cursor:pointer;border:0;background:none}
@@ -1953,7 +1955,10 @@ footer {
 .anim-fade-up { transform: translateY(40px); }
 .anim-fade-down { transform: translateY(-40px); }
 .anim-fade-left { transform: translateX(40px); }
-.anim-fade-right { transform: translateX(-40px); }
+.anim-fade-right {
+  transform: translateX(-140px);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
 .anim-zoom-in { transform: scale(0.95); }
 .anim-zoom-out { transform: scale(1.05); }
 
@@ -2128,6 +2133,10 @@ footer {
   }
   .svc-row p {
     max-width: 100%;
+  }
+
+  .svc-actions {
+    justify-content: center;
   }
 
   /* Industries Section */
@@ -2511,7 +2520,7 @@ footer {
 <!-- WHY -->
 <section id="why" class="why">
   <div class="wrap">
-    <div class="why-heading anim-base anim-fade-up">
+    <div class="why-heading anim-base anim-fade-right">
       <span class="eyebrow">Why Choose Artha</span>
       <h2 class="section-title">Experience That Turns Ideas Into Successful Operations.</h2>
       <p class="section-description">Backed by over <em>15 years</em> of experience in hospitality and hotel operations, our team combines industry insight with proven strategies to deliver solutions that work from day one.</p>
@@ -2553,7 +2562,7 @@ footer {
 <!-- SERVICES -->
 <section id="services">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Our Services</span>
       <h2>Everything Your Hospitality Business Needs, Under One Roof.</h2>
       <p>From the first business decision to everyday operations, Artha provides comprehensive hospitality management solutions designed to help businesses operate efficiently and grow sustainably.</p>
@@ -2650,7 +2659,7 @@ footer {
 <!-- JOB OPPORTUNITIES -->
 <section id="job-opportunities" class="jobs-sec">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Job Opportunities</span>
       <h2>We're Hiring — Build Your Career in Hospitality</h2>
       <p>Artha Hospitality is hiring for leading hotels, restaurants, resorts and cafes in Mangalore and across Karnataka. Whether you are a fresher or experienced, we will help you find the right hotel job.</p>
@@ -2745,7 +2754,7 @@ footer {
 <!-- APPLY FOR A HOTEL JOB -->
 <section id="application-form" class="app-form-sec">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Careers Application</span>
       <h2>Apply for a Hotel Job</h2>
       <p>Interested in building your career in hospitality? Submit your details and our recruitment team will get in touch with you.</p>
@@ -2833,7 +2842,7 @@ footer {
 <!-- INDUSTRIES -->
 <section id="industries" class="industries">
   <div class="wrap">
-    <div class="head-split anim-base anim-fade-up">
+    <div class="head-split anim-base anim-fade-right">
       <div class="head-split-title">
         <span class="eyebrow">Industries We Serve</span>
         <h2>Creating Better Experiences Across Hospitality.</h2>
@@ -2893,7 +2902,7 @@ footer {
 <!-- APPROACH -->
 <section id="approach" class="approach">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Our Approach</span>
       <h2>From Vision to a Well-Running Hospitality Business.</h2>
       <p>A clear way of thinking about hospitality development — from the first idea to everyday operations.</p>
@@ -2938,7 +2947,7 @@ footer {
 <!-- WHO THIS IS FOR -->
 <section class="who-for" id="who-this-is-for">
   <div class="wrap">
-    <div class="head-center anim-base anim-fade-up">
+    <div class="head-center anim-base anim-fade-right">
       <span class="eyebrow">Who This is For</span>
       <h2>Built for Hospitality Ventures <em>Ready to Grow Across India.</em></h2>
       <p>From intimate neighbourhood cafés and high-output cloud kitchens to signature restaurants, hotels, resorts, pubs, resto-bars, and more—we partner with hospitality owners at every stage of growth.</p>
