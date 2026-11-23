@@ -18,17 +18,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --burnt:#D4AF37;
-  --terra:#B99428;
-  --cream:#F8F6F1;
-  --espresso:#0A1C3A;
-  --sand:#D4AF37;
+  --burnt:#C4161C;
+  --terra:#960E13;
+  --crimson-light:#F25C61;
+  --cream:#FAF6F5;
+  --espresso:#1A1718;
+  --sand:#C4161C;
   --offwhite:#FFFFFF;
   --max:1200px;
   --radius:20px;
-  --shadow:0 20px 44px -22px rgba(10,28,58,.30);
-  --shadow-soft:0 12px 30px -20px rgba(10,28,58,.35);
+  --shadow:0 20px 44px -22px rgba(26,23,24,.30);
+  --shadow-soft:0 12px 30px -20px rgba(26,23,24,.35);
   --sec-pad:92px;
+  --strip-h:42px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:110px; overflow-x:hidden;}
@@ -111,9 +113,9 @@ section{padding:var(--sec-pad) 0;position:relative}
   transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   white-space:nowrap;
 }
-.btn-primary{background:var(--burnt);color:var(--espresso);box-shadow:0 12px 24px -14px rgba(212,175,55,.9)}
-.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(212,175,55,.95)}
-.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(10,28,58,.28)}
+.btn-primary{background:var(--burnt);color:var(--offwhite);box-shadow:0 12px 24px -14px rgba(196,22,28,.9)}
+.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(196,22,28,.95)}
+.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(26,23,24,.28)}
 .btn-ghost:hover{border-color:var(--burnt);color:var(--burnt);transform:translateY(-2px)}
 .btn-light{background:var(--offwhite);color:var(--espresso); box-shadow: 0 10px 20px -10px rgba(0,0,0,0.3);}
 .btn-light:hover{transform:translateY(-2px); box-shadow: 0 16px 28px -16px rgba(0,0,0,.4)}
@@ -122,21 +124,83 @@ section{padding:var(--sec-pad) 0;position:relative}
 .btn .arrow{transition:transform .25s ease}
 .btn:hover .arrow{transform:translate(3px,-3px)}
 
-/* ============ HEADER & DROPDOWN (EXACT FROM INDEX.HTML) ============ */
+/* ============ TOP HIRING ANNOUNCEMENT STRIP ============ */
+.hiring-strip{
+  position:fixed;top:0;left:0;right:0;z-index:101;
+  min-height:var(--strip-h);
+  background:linear-gradient(90deg, #0F6A38 0%, #15803D 50%, #0F6A38 100%);
+  color:#FFFFFF;
+  border-bottom:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 4px 16px -8px rgba(0,0,0,0.35);
+  display:flex;align-items:center;justify-content:center;
+  padding:7px 16px;
+}
+.hiring-strip-inner{
+  max-width:var(--max);
+  width:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  text-align:center;
+  font-size:0.84rem;
+  font-weight:600;
+  line-height:1.35;
+  color:#FFFFFF;
+}
+.hiring-badge{
+  display:inline-flex;align-items:center;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.45);
+  color:#FFFFFF;
+  font-weight:700;
+  font-size:0.74rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:100px;
+  white-space:nowrap;
+}
+.hiring-text{color:#FFFFFF;font-weight:600;}
+.hiring-cta{
+  display:inline-flex;align-items:center;
+  background:#FFFFFF;
+  color:#0F6A38;
+  font-weight:700;
+  font-size:0.78rem;
+  padding:4px 12px;
+  border-radius:100px;
+  white-space:nowrap;
+  box-shadow:0 4px 10px -4px rgba(0,0,0,0.25);
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+.hiring-cta:hover{background:#FAF6F5;color:#15803D;transform:translateY(-1px);}
+@media(max-width:1080px){:root{--strip-h:62px;  --strip-h:42px;
+}}
+@media(max-width:640px){
+  :root{--strip-h:78px;  --strip-h:42px;
+}
+  .hiring-strip{padding:7px 12px;}
+  .hiring-strip-inner{font-size:0.74rem;gap:5px 7px;}
+  .hiring-badge{font-size:0.66rem;padding:2px 8px;}
+  .hiring-cta{font-size:0.72rem;padding:3px 10px;}
+}
+body{padding-top:var(--strip-h);}
+
+/* ============ HEADER & DROPDOWN ============ */
 header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:var(--strip-h);left:0;right:0;z-index:100;
   transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
   padding:26px 0; 
 }
 header.scrolled{
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(10px);
-  box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
+  box-shadow:0 6px 24px -18px rgba(26,23,24,.55);
   padding:14px 0; 
 }
 header.menu-open {
   background: var(--offwhite);
-  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+  box-shadow: 0 4px 20px -18px rgba(26,23,24,.3);
 }
 
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -187,8 +251,8 @@ header.scrolled .brand-logo {
   transform: translateX(-50%) translateY(15px);
   background: var(--offwhite);
   min-width: 480px;
-  box-shadow: 0 20px 40px -10px rgba(10,28,58,.15);
-  border: 1px solid rgba(10,28,58,.08);
+  box-shadow: 0 20px 40px -10px rgba(26,23,24,.15);
+  border: 1px solid rgba(26,23,24,.08);
   border-top: 3px solid var(--burnt);
   border-radius: 0 0 12px 12px;
   padding: 15px;
@@ -241,12 +305,12 @@ header.scrolled .brand-logo {
   font-weight: 600;
   border-radius: 100px;
   background: var(--burnt);
-  color: var(--espresso) !important;
+  color: var(--offwhite) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1.2;
-  box-shadow: 0 8px 16px -10px rgba(212,175,55,0.6);
+  box-shadow: 0 8px 16px -10px rgba(196,22,28,0.6);
   transition: all 0.3s ease;
   text-transform: none;
   letter-spacing: normal;
@@ -255,7 +319,7 @@ header.scrolled .brand-logo {
 .nav-cta:hover {
   background: var(--terra);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -10px rgba(212,175,55,0.8);
+  box-shadow: 0 12px 20px -10px rgba(196,22,28,0.8);
 }
 
 .menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px}
@@ -267,7 +331,7 @@ header.scrolled .brand-logo {
 /* ============ REFINED MOBILE MENU (EXACT FROM INDEX.HTML) ============ */
 .mobile-menu{
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
-  background:var(--cream);padding:100px 28px 40px;
+  background:var(--cream);padding:calc(100px + var(--strip-h)) 28px 40px;
   flex-direction:column;
   overflow-y: auto;
 }
@@ -278,7 +342,7 @@ header.scrolled .brand-logo {
   font-family:'DM Serif Display',serif;
   font-size:1.35rem;
   padding:16px 0;
-  border-bottom:1px solid rgba(10,28,58,.08);
+  border-bottom:1px solid rgba(26,23,24,.08);
   color: var(--espresso);
   display: flex;
   justify-content: space-between;
@@ -299,7 +363,7 @@ header.scrolled .brand-logo {
 
 .mobile-sub-links {
   padding: 10px 0 15px 15px;
-  border-bottom:1px solid rgba(10,28,58,.08);
+  border-bottom:1px solid rgba(26,23,24,.08);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -338,12 +402,12 @@ header.scrolled .brand-logo {
   min-height: 560px;
   padding: clamp(108px, 12vh, 128px) 0 clamp(24px, 3.5vh, 36px);
   background:
-    radial-gradient(760px 440px at 82% 20%, rgba(212,175,55,0.16), transparent 65%),
-    radial-gradient(640px 380px at 14% 85%, rgba(10,28,58,0.05), transparent 60%),
+    radial-gradient(760px 440px at 82% 20%, rgba(196,22,28,0.16), transparent 65%),
+    radial-gradient(640px 380px at 14% 85%, rgba(26,23,24,0.05), transparent 60%),
     var(--cream);
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(10,28,58,0.08);
+  border-bottom: 1px solid rgba(26,23,24,0.08);
   display: flex;
   align-items: center;
 }
@@ -354,8 +418,8 @@ header.scrolled .brand-logo {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(10,28,58,0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(10,28,58,0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(26,23,24,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26,23,24,0.025) 1px, transparent 1px);
   background-size: 64px 64px;
   pointer-events: none;
   z-index: 0;
@@ -393,7 +457,7 @@ header.scrolled .brand-logo {
   padding: 5px 14px;
   border-radius: 100px;
   background: var(--offwhite);
-  border: 1px solid rgba(10,28,58,0.08);
+  border: 1px solid rgba(26,23,24,0.08);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -489,7 +553,7 @@ header.scrolled .brand-logo {
   border-radius: 24px 120px 120px 24px;
   overflow: hidden;
   border: 6px solid var(--offwhite);
-  box-shadow: 0 24px 48px -18px rgba(10,28,58,0.42);
+  box-shadow: 0 24px 48px -18px rgba(26,23,24,0.42);
   background: var(--espresso);
 }
 
@@ -521,9 +585,9 @@ header.scrolled .brand-logo {
   height: 78px;
   border-radius: 50%;
   background: var(--espresso);
-  color: var(--burnt);
+  color: var(--crimson-light);
   border: 5px solid var(--offwhite);
-  box-shadow: 0 18px 36px -8px rgba(10,28,58,0.5);
+  box-shadow: 0 18px 36px -8px rgba(26,23,24,0.5);
   display: grid;
   place-items: center;
   font-size: 1.5rem;
@@ -554,7 +618,7 @@ header.scrolled .brand-logo {
   padding: 7px 18px;
   border-radius: 100px;
   background: var(--cream);
-  border: 1px solid rgba(212,175,55,0.35);
+  border: 1px solid rgba(196,22,28,0.35);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -578,8 +642,8 @@ header.scrolled .brand-logo {
   height: 195px;
   background: var(--offwhite);
   border-radius: 22px;
-  border: 1.5px solid rgba(10,28,58,0.09);
-  box-shadow: 0 12px 32px -18px rgba(10,28,58,0.12);
+  border: 1.5px solid rgba(26,23,24,0.09);
+  box-shadow: 0 12px 32px -18px rgba(26,23,24,0.12);
   padding: 28px 32px;
   display: flex;
   align-items: center;
@@ -608,8 +672,8 @@ header.scrolled .brand-logo {
 .client-logo-card:hover {
   transform: translateY(-6px);
   background: var(--offwhite);
-  border-color: rgba(212,175,55,0.65);
-  box-shadow: 0 24px 48px -20px rgba(10,28,58,0.20);
+  border-color: rgba(196,22,28,0.65);
+  box-shadow: 0 24px 48px -20px rgba(26,23,24,0.20);
 }
 .client-logo-card:hover::before {
   transform: scaleX(1);
@@ -651,33 +715,68 @@ header.scrolled .brand-logo {
    03 · CLOSING CTA (WARM GOLD CHAMPAGNE #EFE3C6)
    ========================================================================== */
 .cta{
-  background: #EFE3C6;
-  color: var(--espresso);
+  background: radial-gradient(760px 360px at 50% 0%, rgba(255,255,255,0.10), transparent 70%), linear-gradient(135deg, #8A0B10 0%, #B8141A 52%, #6E080C 100%);
+  color: var(--offwhite);
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(212,175,55,0.3);
+  border-top: 1px solid rgba(196,22,28,0.3);
 }
 .cta-inner{position:relative;text-align:center;max-width:780px;margin:0 auto}
-.cta h2{color:var(--espresso);margin-bottom:16px}
-.cta p{color:#707986;margin:0 auto 16px;max-width:64ch;font-size:1.02rem;line-height:1.78}
+.cta h2{color:var(--offwhite);margin-bottom:16px}
+.cta p{color:rgba(255,255,255,0.88);margin:0 auto 16px;max-width:64ch;font-size:1.02rem;line-height:1.78}
 .cta .cta-lead-bold {
   font-family: 'DM Serif Display', serif;
   font-size: 1.32rem;
-  color: var(--espresso);
+  color: var(--offwhite);
   margin-bottom: 28px;
 }
-.cta .eyebrow { color: var(--burnt); justify-content: center; }
-.cta .eyebrow::before { background: var(--burnt); }
+.cta .eyebrow { color: rgba(255,255,255,0.92); justify-content: center; }
+.cta .eyebrow::before { background: rgba(255,255,255,0.85); }
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-.cta .btn-light { background: var(--burnt); color: var(--espresso); box-shadow: 0 10px 20px -10px rgba(212,175,55,0.6); }
-.cta .btn-light:hover { background: var(--terra); transform: translateY(-2px); }
-.cta .btn-outline-light { border-color: var(--espresso); color: var(--espresso); }
-.cta .btn-outline-light:hover { background: rgba(10,28,58,0.05); }
+.cta .btn-light { background: var(--offwhite); color: var(--terra); box-shadow: 0 10px 20px -10px rgba(196,22,28,0.6); }
+.cta .btn-light:hover { background: #FAF6F5; color: var(--burnt); transform: translateY(-2px); }
+.cta .btn-outline-light { border-color: rgba(255,255,255,0.65); color: var(--offwhite); }
+.cta .btn-outline-light:hover { background: rgba(255,255,255,0.12); border-color: var(--offwhite); }
 
 /* ============ NEW PREMIUM FOOTER (EXACT FROM INDEX.HTML) ============ */
+.ql-career-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  transition: all 0.3s ease;
+}
+.ql-career-item:hover {
+  color: var(--crimson-light);
+  border-bottom-color: rgba(242,92,97, 0.35);
+  padding-left: 8px;
+}
+.ql-career-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+.ql-career-top i {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.ql-career-item:hover .ql-career-top i {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+.ql-career-desc {
+  font-size: 0.8rem;
+  color: var(--crimson-light);
+  line-height: 1.4;
+}
 footer {
-  background: var(--espresso);
+  background: #120F10;
+  border-top: 1px solid rgba(196,22,28,0.35);
   color: rgba(255,255,255,.7);
   padding: 80px 0 0;
   position: relative;
@@ -690,7 +789,7 @@ footer {
   right: -100px;
   width: 700px;
   height: 700px;
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(196,22,28, 0.08);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -701,7 +800,7 @@ footer {
   right: -50px;
   width: 600px;
   height: 600px;
-  border: 1px dashed rgba(212, 175, 55, 0.12);
+  border: 1px dashed rgba(196,22,28, 0.12);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -709,29 +808,29 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr;
+  grid-template-columns: 1.1fr 0.85fr 0.9fr 1.15fr;
   gap: 0; 
   position: relative;
   z-index: 2;
 }
 
-.footer-brand, .footer-links-section, .footer-contact-section {
+.footer-brand, .footer-links-section, .footer-quick-links-section, .footer-contact-section {
   position: relative;
-  padding: 0 40px;
+  padding: 0 32px;
 }
 
 .footer-brand {
   padding-left: 0;
 }
 
-.footer-brand::after, .footer-links-section::after {
+.footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after {
   content: '';
   position: absolute;
   right: 0;
   top: 10%;
   height: 80%;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
+  background: linear-gradient(to bottom, rgba(196,22,28,0), rgba(196,22,28,0.25), rgba(196,22,28,0));
 }
 
 .footer-brand {
@@ -761,9 +860,7 @@ footer {
 .footer-tagline .white {
   color: var(--offwhite);
 }
-.footer-tagline .gold {
-  color: var(--burnt);
-}
+.footer-tagline .gold { color: var(--crimson-light); }
 .footer-desc {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.6);
@@ -789,7 +886,7 @@ footer {
 .social-btn:hover {
   background: var(--burnt);
   border-color: var(--burnt);
-  color: var(--espresso);
+  color: var(--offwhite);
   transform: translateY(-3px);
 }
 
@@ -822,8 +919,8 @@ footer {
   transition: all 0.3s ease;
 }
 .link-item:hover {
-  color: var(--burnt);
-  border-bottom-color: rgba(212, 175, 55, 0.3);
+  color: var(--crimson-light);
+  border-bottom-color: rgba(242,92,97, 0.35);
   padding-left: 8px;
 }
 .link-item i {
@@ -856,17 +953,17 @@ footer {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(242,92,97, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--burnt);
+  color: var(--crimson-light);
   font-size: 1.1rem;
   transition: all 0.3s ease;
 }
 .contact-card:hover .contact-icon {
   background: var(--burnt);
-  color: var(--espresso);
+  color: var(--offwhite);
 }
 .contact-details {
   display: flex;
@@ -878,7 +975,7 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--sand);
+  color: var(--crimson-light);
 }
 .contact-value {
   font-size: 0.95rem;
@@ -891,8 +988,8 @@ footer {
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .contact-value a:hover {
-  color: var(--burnt);
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  color: var(--crimson-light);
+  text-shadow: 0 0 12px rgba(196,22,28, 0.6);
 }
 
 .footer-bottom {
@@ -920,12 +1017,12 @@ footer {
   color: rgba(255,255,255,0.4);
 }
 .fb-right a {
-  color: var(--burnt);
+  color: var(--crimson-light);
   font-weight: 600;
   transition: color 0.2s;
 }
 .fb-right a:hover {
-  color: var(--sand);
+  color: var(--offwhite);
   text-decoration: underline;
 }
 
@@ -960,10 +1057,14 @@ footer {
 }
 
 /* ============ RESPONSIVE ============ */
-@media(min-width: 1400px) { :root { --max: 1320px; } }
-@media(min-width: 1600px) { :root { --max: 1440px; } }
-@media(min-width: 1920px) { :root { --max: 1600px; } }
-@media(min-width: 2400px) { :root { --max: 1800px; } }
+@media(min-width: 1400px) { :root { --max: 1320px;   --strip-h:42px;
+} }
+@media(min-width: 1600px) { :root { --max: 1440px;   --strip-h:42px;
+} }
+@media(min-width: 1920px) { :root { --max: 1600px;   --strip-h:42px;
+} }
+@media(min-width: 2400px) { :root { --max: 1800px;   --strip-h:42px;
+} }
 
 @media(max-width:1080px){
   .client-logo-grid {
@@ -975,10 +1076,10 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
-  .footer-brand::after, .footer-links-section::after {
+  .footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after {
     display: none;
   }
-  .footer-brand, .footer-links-section, .footer-contact-section {
+  .footer-brand, .footer-links-section, .footer-quick-links-section, .footer-contact-section {
     padding: 0;
   }
   .footer-brand {
@@ -992,7 +1093,8 @@ footer {
 }
 
 @media(max-width:991.98px){
-  :root{--sec-pad:64px}
+  :root{--sec-pad:64px  --strip-h:42px;
+}
   .nav-links{display:none}
   .nav-cta{display:none}
   .menu-toggle{display:flex}
@@ -1026,6 +1128,9 @@ footer {
     gap: 40px;
   }
   .footer-links-section,
+
+  .footer-quick-links-section,
+
   .footer-contact-section {
     align-items: center;
     text-align: center;
@@ -1090,7 +1195,8 @@ footer {
 }
 
 @media(max-width:640px){
-  :root{--sec-pad:48px}
+  :root{--sec-pad:48px  --strip-h:42px;
+}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
@@ -1128,6 +1234,15 @@ footer {
 </head>
 <body>
 
+<!-- TOP HIRING ANNOUNCEMENT STRIP -->
+<div class="hiring-strip" role="region" aria-label="Hiring announcement">
+  <div class="hiring-strip-inner">
+    <span class="hiring-badge">WE ARE HIRING</span>
+    <span class="hiring-text">— Hotel Jobs in Mangalore &amp; Karnataka | Chefs, Front Office, Housekeeping, F&amp;B Service |</span>
+    <a href="artha-hospitality-openings.html" class="hiring-cta">Apply Now &rarr;</a>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header id="site-header">
   <div class="wrap nav">
@@ -1139,7 +1254,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="artha-hospitality-about-us.html">About us</a>
+      <a href="artha-hospitality-about-us.html">About</a>
       
       <!-- Dropdown for Services -->
       <div class="nav-item-dropdown">
@@ -1158,8 +1273,8 @@ footer {
         </div>
       </div>
 
-      <a href="artha-hospitality-openings.html">Openings</a>
-      <a href="artha-hospitality-clients.html" class="active">Clients</a>
+      <a href="artha-hospitality-management-industries.html">Industries</a>
+      <a href="artha-hospitality-openings.html">Careers</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
       <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
@@ -1173,7 +1288,7 @@ footer {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
-  <a href="artha-hospitality-about-us.html">About us</a>
+  <a href="artha-hospitality-about-us.html">About</a>
   
   <!-- Mobile Dropdown for Services -->
   <details class="mobile-dropdown">
@@ -1192,8 +1307,8 @@ footer {
     </div>
   </details>
 
-  <a href="artha-hospitality-openings.html">Openings</a>
-  <a href="artha-hospitality-clients.html">Clients</a>
+  <a href="artha-hospitality-management-industries.html">Industries</a>
+      <a href="artha-hospitality-openings.html">Careers</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
   <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
@@ -1225,7 +1340,7 @@ footer {
 
     <!-- Right Column: Interlocking Dual-Arch Partnership Stage (No Text Overlays) -->
     <div class="partnership-emblem-stage anim-base anim-fade-left delay-100" aria-hidden="true">
-      <svg class="pes-rings-svg" viewBox="0 0 560 480" fill="none" stroke="#D4AF37" stroke-width="1.3">
+      <svg class="pes-rings-svg" viewBox="0 0 560 480" fill="none" stroke="#C4161C" stroke-width="1.3">
         <circle cx="205" cy="240" r="175" stroke-dasharray="6 6" opacity="0.55" />
         <circle cx="355" cy="240" r="175" opacity="0.5" />
       </svg>
@@ -1367,7 +1482,7 @@ footer {
 </section>
 
 <!-- NEW PREMIUM FOOTER -->
-<footer id="footer" class="anim-base anim-fade-up">
+<footer id="footer">
   <div class="footer-bg-circle"></div>
   <div class="footer-bg-circle-2"></div>
   
@@ -1409,9 +1524,22 @@ footer {
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
-          <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="footer-quick-links-section">
+        <div class="footer-header">
+          <span class="title">Quick Links</span>
+        </div>
+
+        <div class="links-list">
+          <a href="index.html#application-form" class="ql-career-item">
+            <span class="ql-career-top">Careers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            <span class="ql-career-desc">We Are Hiring — Apply Now</span>
+          </a>
         </div>
       </div>
 
@@ -1427,7 +1555,7 @@ footer {
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="contact-details">
               <span class="contact-label">Visit Us</span>
-              <span class="contact-value">T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore – 575004.</span>
+              <span class="contact-value"><strong style="display:block;font-size:1.06rem;font-weight:700;color:var(--offwhite);margin-bottom:2px;">Artha Hospitality</strong>T-14, 3rd Floor<br>Meridian Guru Plaza<br>Bijai, Mangalore – 575004</span>
             </div>
           </div>
           

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Openings | Artha Hospitality Management</title>
+<title>Careers | Artha Hospitality Management</title>
 <meta name="description" content="Explore upcoming career openings and opportunities with Artha Hospitality Management." />
 <meta property="og:title" content="Openings | Artha Hospitality Management" />
 <meta property="og:description" content="Careers and opportunities at Artha Hospitality Management. This page will be updated soon." />
@@ -18,17 +18,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --burnt:#D4AF37;
-  --terra:#B99428;
-  --cream:#F8F6F1;
-  --espresso:#0A1C3A;
-  --sand:#D4AF37;
+  --burnt:#C4161C;
+  --terra:#960E13;
+  --crimson-light:#F25C61;
+  --cream:#FAF6F5;
+  --espresso:#1A1718;
+  --sand:#C4161C;
   --offwhite:#FFFFFF;
   --max:1200px;
   --radius:20px;
-  --shadow:0 20px 44px -22px rgba(10,28,58,.30);
-  --shadow-soft:0 12px 30px -20px rgba(10,28,58,.35);
+  --shadow:0 20px 44px -22px rgba(26,23,24,.30);
+  --shadow-soft:0 12px 30px -20px rgba(26,23,24,.35);
   --sec-pad:96px;
+  --strip-h:42px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:110px; overflow-x:hidden;}
@@ -87,28 +89,90 @@ section{padding:var(--sec-pad) 0;position:relative}
   transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   white-space:nowrap;
 }
-.btn-primary{background:var(--burnt);color:var(--espresso);box-shadow:0 12px 24px -14px rgba(212,175,55,.9)}
-.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(212,175,55,.95)}
-.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(10,28,58,.28)}
+.btn-primary{background:var(--burnt);color:var(--offwhite);box-shadow:0 12px 24px -14px rgba(196,22,28,.9)}
+.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(196,22,28,.95)}
+.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(26,23,24,.28)}
 .btn-ghost:hover{border-color:var(--burnt);color:var(--burnt);transform:translateY(-2px)}
 .btn .arrow{transition:transform .25s ease}
 .btn:hover .arrow{transform:translate(3px,-3px)}
 
-/* ============ HEADER & DROPDOWN (EXACT FROM INDEX.HTML) ============ */
+/* ============ TOP HIRING ANNOUNCEMENT STRIP ============ */
+.hiring-strip{
+  position:fixed;top:0;left:0;right:0;z-index:101;
+  min-height:var(--strip-h);
+  background:linear-gradient(90deg, #0F6A38 0%, #15803D 50%, #0F6A38 100%);
+  color:#FFFFFF;
+  border-bottom:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 4px 16px -8px rgba(0,0,0,0.35);
+  display:flex;align-items:center;justify-content:center;
+  padding:7px 16px;
+}
+.hiring-strip-inner{
+  max-width:var(--max);
+  width:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  text-align:center;
+  font-size:0.84rem;
+  font-weight:600;
+  line-height:1.35;
+  color:#FFFFFF;
+}
+.hiring-badge{
+  display:inline-flex;align-items:center;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.45);
+  color:#FFFFFF;
+  font-weight:700;
+  font-size:0.74rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:100px;
+  white-space:nowrap;
+}
+.hiring-text{color:#FFFFFF;font-weight:600;}
+.hiring-cta{
+  display:inline-flex;align-items:center;
+  background:#FFFFFF;
+  color:#0F6A38;
+  font-weight:700;
+  font-size:0.78rem;
+  padding:4px 12px;
+  border-radius:100px;
+  white-space:nowrap;
+  box-shadow:0 4px 10px -4px rgba(0,0,0,0.25);
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+.hiring-cta:hover{background:#FAF6F5;color:#15803D;transform:translateY(-1px);}
+@media(max-width:1080px){:root{--strip-h:62px;  --strip-h:42px;
+}}
+@media(max-width:640px){
+  :root{--strip-h:78px;  --strip-h:42px;
+}
+  .hiring-strip{padding:7px 12px;}
+  .hiring-strip-inner{font-size:0.74rem;gap:5px 7px;}
+  .hiring-badge{font-size:0.66rem;padding:2px 8px;}
+  .hiring-cta{font-size:0.72rem;padding:3px 10px;}
+}
+body{padding-top:var(--strip-h);}
+
+/* ============ HEADER & DROPDOWN ============ */
 header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:var(--strip-h);left:0;right:0;z-index:100;
   transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
   padding:26px 0; 
 }
 header.scrolled{
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(10px);
-  box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
+  box-shadow:0 6px 24px -18px rgba(26,23,24,.55);
   padding:14px 0; 
 }
 header.menu-open {
   background: var(--offwhite);
-  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+  box-shadow: 0 4px 20px -18px rgba(26,23,24,.3);
 }
 
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -159,8 +223,8 @@ header.scrolled .brand-logo {
   transform: translateX(-50%) translateY(15px);
   background: var(--offwhite);
   min-width: 480px;
-  box-shadow: 0 20px 40px -10px rgba(10,28,58,.15);
-  border: 1px solid rgba(10,28,58,.08);
+  box-shadow: 0 20px 40px -10px rgba(26,23,24,.15);
+  border: 1px solid rgba(26,23,24,.08);
   border-top: 3px solid var(--burnt);
   border-radius: 0 0 12px 12px;
   padding: 15px;
@@ -213,12 +277,12 @@ header.scrolled .brand-logo {
   font-weight: 600;
   border-radius: 100px;
   background: var(--burnt);
-  color: var(--espresso) !important;
+  color: var(--offwhite) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1.2;
-  box-shadow: 0 8px 16px -10px rgba(212,175,55,0.6);
+  box-shadow: 0 8px 16px -10px rgba(196,22,28,0.6);
   transition: all 0.3s ease;
   text-transform: none;
   letter-spacing: normal;
@@ -227,7 +291,7 @@ header.scrolled .brand-logo {
 .nav-cta:hover {
   background: var(--terra);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -10px rgba(212,175,55,0.8);
+  box-shadow: 0 12px 20px -10px rgba(196,22,28,0.8);
 }
 
 .menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px}
@@ -239,7 +303,7 @@ header.scrolled .brand-logo {
 /* ============ REFINED MOBILE MENU (EXACT FROM INDEX.HTML) ============ */
 .mobile-menu{
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
-  background:var(--cream);padding:100px 28px 40px;
+  background:var(--cream);padding:calc(100px + var(--strip-h)) 28px 40px;
   flex-direction:column;
   overflow-y: auto;
 }
@@ -250,7 +314,7 @@ header.scrolled .brand-logo {
   font-family:'DM Serif Display',serif;
   font-size:1.35rem;
   padding:16px 0;
-  border-bottom:1px solid rgba(10,28,58,.08);
+  border-bottom:1px solid rgba(26,23,24,.08);
   color: var(--espresso);
   display: flex;
   justify-content: space-between;
@@ -271,7 +335,7 @@ header.scrolled .brand-logo {
 
 .mobile-sub-links {
   padding: 10px 0 15px 15px;
-  border-bottom:1px solid rgba(10,28,58,.08);
+  border-bottom:1px solid rgba(26,23,24,.08);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -314,8 +378,8 @@ header.scrolled .brand-logo {
   50%      { transform: translateY(-7px); }
 }
 @keyframes starGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.5); }
-  65%      { box-shadow: 0 0 0 15px rgba(212,175,55,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,22,28,0.5); }
+  65%      { box-shadow: 0 0 0 15px rgba(196,22,28,0); }
 }
 
 .openings-hero {
@@ -323,11 +387,11 @@ header.scrolled .brand-logo {
   min-height: 560px;
   padding: clamp(110px, 12.5vh, 128px) 0 clamp(24px, 3.5vh, 36px);
   background:
-    radial-gradient(700px 440px at 88% 18%, rgba(212,175,55,0.17), transparent 65%),
+    radial-gradient(700px 440px at 88% 18%, rgba(196,22,28,0.17), transparent 65%),
     var(--cream);
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(10,28,58,0.08);
+  border-bottom: 1px solid rgba(26,23,24,0.08);
   display: flex;
   align-items: center;
 }
@@ -339,8 +403,8 @@ header.scrolled .brand-logo {
   inset: 0;
   background-image: repeating-linear-gradient(
     -35deg,
-    rgba(212,175,55,0.05) 0px,
-    rgba(212,175,55,0.05) 1px,
+    rgba(196,22,28,0.05) 0px,
+    rgba(196,22,28,0.05) 1px,
     transparent 1px,
     transparent 44px
   );
@@ -380,7 +444,7 @@ header.scrolled .brand-logo {
   padding: 5px 14px;
   border-radius: 100px;
   background: var(--offwhite);
-  border: 1px solid rgba(10,28,58,0.08);
+  border: 1px solid rgba(26,23,24,0.08);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -454,7 +518,7 @@ header.scrolled .brand-logo {
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(212,175,55,0.45);
+  border: 1.5px dashed rgba(196,22,28,0.45);
   animation: ringRotate 48s linear infinite;
   pointer-events: none;
   z-index: 0;
@@ -478,7 +542,7 @@ header.scrolled .brand-logo {
   position: absolute;
   inset: 12px;
   border-radius: 18px 136px 18px 136px;
-  border: 1px dashed rgba(212,175,55,0.35);
+  border: 1px dashed rgba(196,22,28,0.35);
 }
 
 /* Shape 3: Offset Gold Wireframe Outline */
@@ -525,10 +589,10 @@ header.scrolled .brand-logo {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #E5C453 0%, #D4AF37 55%, #A6821C 100%);
-  color: var(--espresso);
+  background: linear-gradient(145deg, #F25C61 0%, #C4161C 55%, #7A0B0F 100%);
+  color: var(--offwhite);
   border: 4px solid var(--offwhite);
-  box-shadow: 0 16px 32px -10px rgba(10,28,58,0.42);
+  box-shadow: 0 16px 32px -10px rgba(26,23,24,0.42);
   display: grid;
   place-items: center;
   font-size: 1.4rem;
@@ -547,7 +611,7 @@ header.scrolled .brand-logo {
   padding: 10px 16px;
   border-radius: 100px;
   background: var(--espresso);
-  border: 1.5px solid rgba(212,175,55,0.6);
+  border: 1.5px solid rgba(196,22,28,0.6);
   box-shadow: var(--shadow);
   animation: crestFloat 5.5s ease-in-out infinite;
 }
@@ -555,9 +619,9 @@ header.scrolled .brand-logo {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(212,175,55,0.14);
-  border: 1px solid rgba(212,175,55,0.4);
-  color: var(--burnt);
+  background: rgba(242,92,97,0.18);
+  border: 1px solid rgba(255,123,127,0.5);
+  color: #FF7B7F;
   display: grid;
   place-items: center;
   font-size: 0.85rem;
@@ -565,7 +629,7 @@ header.scrolled .brand-logo {
 }
 .ov-dock-bottom span:hover {
   background: var(--burnt);
-  color: var(--espresso);
+  color: var(--offwhite);
   transform: translateY(-2px);
 }
 
@@ -583,59 +647,434 @@ header.scrolled .brand-logo {
   pointer-events: none;
 }
 
-/* ==========================================================================
-   BELOW CONTENT: CLEAN "THIS PAGE WILL BE UPDATED SOON!" SECTION (#FFFFFF)
-   ========================================================================== */
-.openings-notice-sec {
+/* ============ SECTION 1: JOB OPPORTUNITIES ============ */
+.jobs-sec {
   padding: var(--sec-pad) 0;
-  background: var(--offwhite);
-  position: relative;
-}
-
-.notice-card {
-  max-width: 720px;
-  margin: 0 auto;
   background: var(--cream);
-  border-radius: 28px;
-  padding: clamp(42px, 6vw, 68px) clamp(28px, 4vw, 52px);
+  border-top: 1px solid rgba(26,23,24,0.06);
+}
+.head-center {
   text-align: center;
-  border: 1.5px solid rgba(212,175,55,0.35);
+  max-width: 850px;
+  margin: 0 auto 56px;
+}
+.head-center .eyebrow { justify-content: center; }
+.head-center p {
+  margin: 16px auto 0;
+  color: #707986;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.job-card {
+  background: var(--offwhite);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  border: 1px solid rgba(26,23,24,0.08);
+  border-top: 3px solid rgba(196,22,28,0.28);
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
-
-.notice-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: var(--espresso);
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: rgba(196,22,28,0.35);
+  border-top-color: var(--burnt);
+}
+.job-ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(196,22,28,0.08);
+  border: 1px solid rgba(196,22,28,0.22);
   color: var(--burnt);
   display: grid;
   place-items: center;
-  font-size: 1.5rem;
-  margin-bottom: 24px;
-  border: 3px solid var(--offwhite);
-  box-shadow: var(--shadow-soft);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
 }
-
-.notice-card h2 {
-  font-size: clamp(1.8rem, 3vw, 2.55rem);
+.job-card:hover .job-ic {
+  background: var(--burnt);
+  color: var(--offwhite);
+  border-color: var(--burnt);
+}
+.job-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
   color: var(--espresso);
-  margin-bottom: 26px;
+  margin-bottom: 12px;
 }
-
-.notice-actions {
+.job-roles {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.job-roles li {
+  font-size: 0.84rem;
+  color: #4A4446;
+  background: var(--cream);
+  border: 1px solid rgba(26,23,24,0.08);
+  padding: 5px 11px;
+  border-radius: 8px;
+  line-height: 1.35;
+}
+.job-card-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(26,23,24,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
+}
+.job-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #5C5557;
+}
+.job-loc i { color: var(--burnt); }
+.job-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--burnt);
+  color: var(--offwhite);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: background .25s ease, transform .25s ease;
+  white-space: nowrap;
+}
+.job-apply-btn:hover {
+  background: var(--terra);
+  transform: translateY(-2px);
+}
+
+/* ============ SECTION 2: HOTEL JOB APPLICATION FORM ============ */
+.app-form-sec {
+  padding: var(--sec-pad) 0;
+  background: var(--offwhite);
+  border-top: 1px solid rgba(26,23,24,0.06);
+}
+.app-form-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.app-form-card {
+  background: var(--cream);
+  border: 1px solid rgba(26,23,24,0.08);
+  border-top: 3px solid var(--burnt);
+  border-radius: var(--radius);
+  padding: 38px 34px;
+  box-shadow: var(--shadow-soft);
+}
+.app-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.app-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.app-field.full { grid-column: 1 / -1; }
+.app-field label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--espresso);
+}
+.app-field label span { color: var(--burnt); }
+.app-field input[type="text"],
+.app-field input[type="tel"],
+.app-field select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(26,23,24,0.16);
+  background: var(--offwhite);
+  color: var(--espresso);
+  font-family: inherit;
+  font-size: 0.94rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.app-field input:focus,
+.app-field select:focus {
+  outline: none;
+  border-color: var(--burnt);
+  box-shadow: 0 0 0 3px rgba(196,22,28,0.12);
+}
+.app-upload-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(26,23,24,0.24);
+  background: var(--offwhite);
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+}
+.app-upload-box:hover {
+  border-color: var(--burnt);
+  background: #FFF9F8;
+}
+.app-upload-box input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.app-upload-ic {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(196,22,28,0.10);
+  color: var(--burnt);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  flex: none;
+}
+.app-upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.app-upload-text strong {
+  font-size: 0.9rem;
+  color: var(--espresso);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-upload-text small {
+  font-size: 0.78rem;
+  color: #6B6567;
+}
+.app-submit-row {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+}
+.app-submit-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: var(--burnt);
+  color: var(--offwhite);
+  font-size: 0.96rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
+  box-shadow: 0 12px 24px -14px rgba(196,22,28,.75);
+  transition: background .25s ease, transform .25s ease;
+}
+.app-submit-btn:hover {
+  background: var(--terra);
+  transform: translateY(-2px);
+}
+.app-form-status {
+  grid-column: 1 / -1;
+  display: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.app-form-status.error {
+  display: block;
+  background: #FEF2F2;
+  border: 1px solid rgba(196,22,28,0.35);
+  color: #960E13;
+}
+.app-form-status.info {
+  display: block;
+  background: #F0FDF4;
+  border: 1px solid rgba(21,128,61,0.35);
+  color: #14532D;
+}
+.wa-apply-box {
+  margin-top: 22px;
+  background: #F4FBF6;
+  border: 1px solid rgba(21,128,61,0.28);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.wa-apply-copy strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--espresso);
+  margin-bottom: 4px;
+}
+.wa-apply-copy p {
+  font-size: 0.88rem;
+  color: #4A4446;
+  margin: 0;
+}
+.wa-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #15803D;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: background .25s ease, transform .25s ease;
+}
+.wa-apply-btn:hover {
+  background: #0F6A38;
+  transform: translateY(-2px);
+}
+
+/* ============ SECTION 3: CTA (DUAL AUDIENCE CARDS) ============ */
+.cta {
+  padding: var(--sec-pad) 0;
+  background:
+    radial-gradient(760px 360px at 50% 0%, rgba(255,255,255,0.10), transparent 70%),
+    linear-gradient(135deg, #8A0B10 0%, #B8141A 52%, #6E080C 100%);
+  color: var(--offwhite);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.cta-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.cta-box {
+  background: rgba(18, 12, 13, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--radius);
+  padding: 38px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  box-shadow: 0 20px 44px -22px rgba(0,0,0,0.45);
+  transition: transform .3s ease, background .3s ease, border-color .3s ease;
+}
+.cta-box:hover {
+  transform: translateY(-6px);
+  background: rgba(18, 12, 13, 0.52);
+  border-color: rgba(255,255,255,0.45);
+}
+.cta-box-ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: var(--offwhite);
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+.cta-box .eyebrow { color: rgba(255,255,255,0.92); margin-bottom: 10px; }
+.cta-box .eyebrow::before { background: rgba(255,255,255,0.85); }
+.cta-box h2 { color: var(--offwhite); font-size: clamp(1.55rem, 2.4vw, 2.05rem); margin-bottom: 12px; }
+.cta-box p { color: rgba(255,255,255,0.88); font-size: 0.98rem; line-height: 1.65; margin: 0 0 26px; }
+.cta-box .btn {
+  margin-top: auto;
+  background: var(--offwhite);
+  color: var(--terra);
+  box-shadow: 0 12px 26px -10px rgba(0,0,0,0.4);
+}
+.cta-box .btn:hover { background: #FAF6F5; color: var(--burnt); transform: translateY(-2px); }
+
+@media (max-width: 991.98px) {
+  .jobs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .app-form-card { padding: 28px 20px; }
+  .app-form-grid { grid-template-columns: 1fr; }
+  .wa-apply-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 22px 20px;
+  }
+  .wa-apply-btn { width: 100%; }
+  .cta-split-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 30px 24px; }
+  .cta-box .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 640px) {
+  .jobs-grid { grid-template-columns: 1fr; }
 }
 
 /* ============ NEW PREMIUM FOOTER (EXACT FROM INDEX.HTML) ============ */
+.ql-career-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  transition: all 0.3s ease;
+}
+.ql-career-item:hover {
+  color: var(--crimson-light);
+  border-bottom-color: rgba(242,92,97, 0.35);
+  padding-left: 8px;
+}
+.ql-career-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+.ql-career-top i {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.ql-career-item:hover .ql-career-top i {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+.ql-career-desc {
+  font-size: 0.8rem;
+  color: var(--crimson-light);
+  line-height: 1.4;
+}
 footer {
-  background: var(--espresso);
+  background: #120F10;
+  border-top: 1px solid rgba(196,22,28,0.35);
   color: rgba(255,255,255,.7);
   padding: 80px 0 0;
   position: relative;
@@ -648,7 +1087,7 @@ footer {
   right: -100px;
   width: 700px;
   height: 700px;
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(196,22,28, 0.08);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -659,7 +1098,7 @@ footer {
   right: -50px;
   width: 600px;
   height: 600px;
-  border: 1px dashed rgba(212, 175, 55, 0.12);
+  border: 1px dashed rgba(196,22,28, 0.12);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -667,29 +1106,29 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr;
+  grid-template-columns: 1.1fr 0.85fr 0.9fr 1.15fr;
   gap: 0; 
   position: relative;
   z-index: 2;
 }
 
-.footer-brand, .footer-links-section, .footer-contact-section {
+.footer-brand, .footer-links-section, .footer-quick-links-section, .footer-contact-section {
   position: relative;
-  padding: 0 40px;
+  padding: 0 32px;
 }
 
 .footer-brand {
   padding-left: 0;
 }
 
-.footer-brand::after, .footer-links-section::after {
+.footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after {
   content: '';
   position: absolute;
   right: 0;
   top: 10%;
   height: 80%;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
+  background: linear-gradient(to bottom, rgba(196,22,28,0), rgba(196,22,28,0.25), rgba(196,22,28,0));
 }
 
 .footer-brand {
@@ -719,9 +1158,7 @@ footer {
 .footer-tagline .white {
   color: var(--offwhite);
 }
-.footer-tagline .gold {
-  color: var(--burnt);
-}
+.footer-tagline .gold { color: var(--crimson-light); }
 .footer-desc {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.6);
@@ -747,7 +1184,7 @@ footer {
 .social-btn:hover {
   background: var(--burnt);
   border-color: var(--burnt);
-  color: var(--espresso);
+  color: var(--offwhite);
   transform: translateY(-3px);
 }
 
@@ -780,8 +1217,8 @@ footer {
   transition: all 0.3s ease;
 }
 .link-item:hover {
-  color: var(--burnt);
-  border-bottom-color: rgba(212, 175, 55, 0.3);
+  color: var(--crimson-light);
+  border-bottom-color: rgba(242,92,97, 0.35);
   padding-left: 8px;
 }
 .link-item i {
@@ -814,17 +1251,17 @@ footer {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(242,92,97, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--burnt);
+  color: var(--crimson-light);
   font-size: 1.1rem;
   transition: all 0.3s ease;
 }
 .contact-card:hover .contact-icon {
   background: var(--burnt);
-  color: var(--espresso);
+  color: var(--offwhite);
 }
 .contact-details {
   display: flex;
@@ -836,7 +1273,7 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--sand);
+  color: var(--crimson-light);
 }
 .contact-value {
   font-size: 0.95rem;
@@ -849,8 +1286,8 @@ footer {
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .contact-value a:hover {
-  color: var(--burnt);
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  color: var(--crimson-light);
+  text-shadow: 0 0 12px rgba(196,22,28, 0.6);
 }
 
 .footer-bottom {
@@ -878,12 +1315,12 @@ footer {
   color: rgba(255,255,255,0.4);
 }
 .fb-right a {
-  color: var(--burnt);
+  color: var(--crimson-light);
   font-weight: 600;
   transition: color 0.2s;
 }
 .fb-right a:hover {
-  color: var(--sand);
+  color: var(--offwhite);
   text-decoration: underline;
 }
 
@@ -916,20 +1353,24 @@ footer {
 }
 
 /* ============ RESPONSIVE ============ */
-@media(min-width: 1400px) { :root { --max: 1320px; } }
-@media(min-width: 1600px) { :root { --max: 1440px; } }
-@media(min-width: 1920px) { :root { --max: 1600px; } }
-@media(min-width: 2400px) { :root { --max: 1800px; } }
+@media(min-width: 1400px) { :root { --max: 1320px;   --strip-h:42px;
+} }
+@media(min-width: 1600px) { :root { --max: 1440px;   --strip-h:42px;
+} }
+@media(min-width: 1920px) { :root { --max: 1600px;   --strip-h:42px;
+} }
+@media(min-width: 2400px) { :root { --max: 1800px;   --strip-h:42px;
+} }
 
 @media(max-width:1080px){
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
-  .footer-brand::after, .footer-links-section::after {
+  .footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after {
     display: none;
   }
-  .footer-brand, .footer-links-section, .footer-contact-section {
+  .footer-brand, .footer-links-section, .footer-quick-links-section, .footer-contact-section {
     padding: 0;
   }
   .footer-brand {
@@ -943,7 +1384,8 @@ footer {
 }
 
 @media(max-width:991.98px){
-  :root{--sec-pad:64px}
+  :root{--sec-pad:64px  --strip-h:42px;
+}
   .nav-links{display:none}
   .nav-cta{display:none}
   .menu-toggle{display:flex}
@@ -977,6 +1419,9 @@ footer {
     gap: 40px;
   }
   .footer-links-section,
+
+  .footer-quick-links-section,
+
   .footer-contact-section {
     align-items: center;
     text-align: center;
@@ -1041,7 +1486,8 @@ footer {
 }
 
 @media(max-width:640px){
-  :root{--sec-pad:48px}
+  :root{--sec-pad:48px  --strip-h:42px;
+}
   .wrap{padding:0 20px}
   .brand-logo{height:50px;}
   header.scrolled .brand-logo{height:40px;}
@@ -1072,6 +1518,15 @@ footer {
 </head>
 <body>
 
+<!-- TOP HIRING ANNOUNCEMENT STRIP -->
+<div class="hiring-strip" role="region" aria-label="Hiring announcement">
+  <div class="hiring-strip-inner">
+    <span class="hiring-badge">WE ARE HIRING</span>
+    <span class="hiring-text">— Hotel Jobs in Mangalore &amp; Karnataka | Chefs, Front Office, Housekeeping, F&amp;B Service |</span>
+    <a href="artha-hospitality-openings.html" class="hiring-cta">Apply Now &rarr;</a>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header id="site-header">
   <div class="wrap nav">
@@ -1083,7 +1538,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="artha-hospitality-about-us.html">About us</a>
+      <a href="artha-hospitality-about-us.html">About</a>
       
       <!-- Dropdown for Services -->
       <div class="nav-item-dropdown">
@@ -1102,8 +1557,8 @@ footer {
         </div>
       </div>
 
-      <a href="artha-hospitality-openings.html" class="active">Openings</a>
-      <a href="artha-hospitality-clients.html">Clients</a>
+      <a href="artha-hospitality-management-industries.html">Industries</a>
+      <a href="artha-hospitality-openings.html" class="active">Careers</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
       <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
@@ -1117,7 +1572,7 @@ footer {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
-  <a href="artha-hospitality-about-us.html">About us</a>
+  <a href="artha-hospitality-about-us.html">About</a>
   
   <!-- Mobile Dropdown for Services -->
   <details class="mobile-dropdown">
@@ -1136,8 +1591,8 @@ footer {
     </div>
   </details>
 
-  <a href="artha-hospitality-openings.html">Openings</a>
-  <a href="artha-hospitality-clients.html">Clients</a>
+  <a href="artha-hospitality-management-industries.html">Industries</a>
+      <a href="artha-hospitality-openings.html">Careers</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
   <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
@@ -1152,7 +1607,7 @@ footer {
         <nav class="crumb-badge" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
           <span class="sep"><i class="fas fa-chevron-right"></i></span>
-          <span class="curr">Openings</span>
+          <span class="curr">Careers</span>
         </nav>
         <span class="eyebrow">Careers &amp; Opportunities</span>
       </div>
@@ -1194,22 +1649,214 @@ footer {
   </div>
 </section>
 
-<!-- BELOW CONTENT: THIS PAGE WILL BE UPDATED SOON! -->
-<section class="openings-notice-sec" id="openings-status">
+<!-- SECTION 1: JOB OPPORTUNITIES -->
+<section id="job-opportunities" class="jobs-sec">
   <div class="wrap">
-    <div class="notice-card anim-base anim-zoom-in">
-      <span class="notice-icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
-      <h2>This page will be updated soon!</h2>
-      <div class="notice-actions">
-        <a href="artha-hospitality-contact-us.html" class="btn btn-primary">Contact Us <span class="arrow">↗</span></a>
-        <a href="index.html" class="btn btn-ghost">Return to Home</a>
+    <div class="head-center anim-base anim-fade-up">
+      <span class="eyebrow">Job Opportunities</span>
+      <h2>We're Hiring — Build Your Career in Hospitality</h2>
+      <p>Artha Hospitality is hiring for leading hotels, restaurants, resorts and cafes in Mangalore and across Karnataka. Whether you are a fresher or experienced, we will help you find the right hotel job.</p>
+    </div>
+
+    <div class="jobs-grid">
+      <article class="job-card anim-base anim-fade-up delay-100">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-utensils"></i></span>
+        <h3>Chef / Cook</h3>
+        <ul class="job-roles">
+          <li>Commis</li>
+          <li>CDP</li>
+          <li>Sous Chef</li>
+          <li>South Indian / North Indian / Continental</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="Chef / Cook">Apply Now &rarr;</a>
+        </div>
+      </article>
+
+      <article class="job-card anim-base anim-fade-up delay-200">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-concierge-bell"></i></span>
+        <h3>Front Office Executive</h3>
+        <ul class="job-roles">
+          <li>Reception</li>
+          <li>Reservation</li>
+          <li>Guest Relations</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="Front Office Executive">Apply Now &rarr;</a>
+        </div>
+      </article>
+
+      <article class="job-card anim-base anim-fade-up delay-300">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-bed"></i></span>
+        <h3>Housekeeping Staff</h3>
+        <ul class="job-roles">
+          <li>Room Attendant</li>
+          <li>Housekeeping Supervisor</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="Housekeeping Staff">Apply Now &rarr;</a>
+        </div>
+      </article>
+
+      <article class="job-card anim-base anim-fade-up delay-100">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-wine-glass"></i></span>
+        <h3>F&amp;B Service — Steward / Waiter</h3>
+        <ul class="job-roles">
+          <li>Restaurant</li>
+          <li>Banquet</li>
+          <li>Room Service</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="F&amp;B Service — Steward / Waiter">Apply Now &rarr;</a>
+        </div>
+      </article>
+
+      <article class="job-card anim-base anim-fade-up delay-200">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-martini-glass-citrus"></i></span>
+        <h3>Barista / Bartender</h3>
+        <ul class="job-roles">
+          <li>Cafe</li>
+          <li>Pub &amp; Resto Bar</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="Barista / Bartender">Apply Now &rarr;</a>
+        </div>
+      </article>
+
+      <article class="job-card anim-base anim-fade-up delay-300">
+        <span class="job-ic" aria-hidden="true"><i class="fas fa-user-graduate"></i></span>
+        <h3>Hotel Management Trainee</h3>
+        <ul class="job-roles">
+          <li>For Freshers</li>
+          <li>Hotel Management Students</li>
+        </ul>
+        <div class="job-card-footer">
+          <span class="job-loc"><i class="fas fa-location-dot" aria-hidden="true"></i> Location: Mangalore</span>
+          <a href="#application-form" class="job-apply-btn" data-job-role="Hotel Management Trainee">Apply Now &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: APPLY FOR A HOTEL JOB -->
+<section id="application-form" class="app-form-sec">
+  <div class="wrap">
+    <div class="head-center anim-base anim-fade-up">
+      <span class="eyebrow">Careers Application</span>
+      <h2>Apply for a Hotel Job</h2>
+      <p>Interested in building your career in hospitality? Submit your details and our recruitment team will get in touch with you.</p>
+    </div>
+
+    <div class="app-form-wrap">
+      <form id="hotelJobApplicationForm" class="app-form-card anim-base anim-fade-up" novalidate>
+        <div class="app-form-grid">
+          <div class="app-field">
+            <label for="app-name">Full Name <span>*</span></label>
+            <input type="text" id="app-name" name="fullName" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="app-field">
+            <label for="app-phone">Phone / WhatsApp Number <span>*</span></label>
+            <input type="tel" id="app-phone" name="phone" placeholder="Enter your mobile number" required>
+          </div>
+
+          <div class="app-field">
+            <label for="app-city">City <span>*</span></label>
+            <select id="app-city" name="city" required>
+              <option value="">Select city</option>
+              <option value="Mangalore">Mangalore</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="app-field">
+            <label for="app-role">Job Role Interested In <span>*</span></label>
+            <select id="app-role" name="jobRole" required>
+              <option value="">Select job role</option>
+              <option value="Chef">Chef</option>
+              <option value="Front Office">Front Office</option>
+              <option value="Housekeeping">Housekeeping</option>
+              <option value="F&amp;B Service">F&amp;B Service</option>
+              <option value="Barista / Bartender">Barista / Bartender</option>
+              <option value="Management Trainee">Management Trainee</option>
+            </select>
+          </div>
+
+          <div class="app-field full">
+            <label for="app-exp">Experience <span>*</span></label>
+            <select id="app-exp" name="experience" required>
+              <option value="">Select experience</option>
+              <option value="Fresher">Fresher</option>
+              <option value="0–1 Year">0–1 Year</option>
+              <option value="1–3 Years">1–3 Years</option>
+              <option value="3+ Years">3+ Years</option>
+            </select>
+          </div>
+
+          <div class="app-field full">
+            <label for="app-cv">Upload CV / Resume <small style="font-weight:400;color:#6B6567;">(Optional)</small></label>
+            <div class="app-upload-box">
+              <span class="app-upload-ic" aria-hidden="true"><i class="fas fa-cloud-arrow-up"></i></span>
+              <div class="app-upload-text">
+                <strong id="app-cv-filename">Choose a file to upload</strong>
+                <small>Accepted formats: PDF, DOC, DOCX</small>
+              </div>
+              <input type="file" id="app-cv" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            </div>
+          </div>
+
+          <div class="app-submit-row">
+            <button type="submit" class="app-submit-btn">Submit Application</button>
+          </div>
+
+          <div id="app-form-status" class="app-form-status" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+
+      <div class="wa-apply-box anim-base anim-fade-up delay-100">
+        <div class="wa-apply-copy">
+          <strong>Or Apply Directly on WhatsApp: +91 89515 11234</strong>
+          <p>Send: Name, City, Role, Experience</p>
+        </div>
+        <a href="https://wa.me/918951511234?text=Hello%20Artha%20Hospitality%2C%20I%20would%20like%20to%20apply%20for%20a%20hotel%20job.%0AName%3A%20%0ACity%3A%20%0ARole%3A%20%0AExperience%3A%20" target="_blank" rel="noopener noreferrer" class="wa-apply-btn">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Apply via WhatsApp
+        </a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SECTION 3: CTA -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-split-grid">
+      <article class="cta-box anim-base anim-fade-up delay-100">
+        <span class="cta-box-ic" aria-hidden="true"><i class="fas fa-hotel"></i></span>
+        <span class="eyebrow">FOR HOTEL OWNERS</span>
+        <h2>Need Staff for Your Hotel?</h2>
+        <p>Hire trained, verified staff with Artha.</p>
+        <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn">Hire Staff Now <span class="arrow">&rarr;</span></a>
+      </article>
+
+      <article class="cta-box anim-base anim-fade-up delay-200">
+        <span class="cta-box-ic" aria-hidden="true"><i class="fas fa-briefcase"></i></span>
+        <span class="eyebrow">FOR JOB SEEKERS</span>
+        <h2>Looking for a Hotel Job?</h2>
+        <p>Apply for Chef, Front Office, Housekeeping &amp; F&amp;B jobs.</p>
+        <a href="#job-opportunities" class="btn">Apply for Jobs <span class="arrow">&rarr;</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- NEW PREMIUM FOOTER -->
-<footer id="footer" class="anim-base anim-fade-up">
+<footer id="footer">
   <div class="footer-bg-circle"></div>
   <div class="footer-bg-circle-2"></div>
   
@@ -1251,9 +1898,22 @@ footer {
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
-          <a href="artha-hospitality-openings.html" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="footer-quick-links-section">
+        <div class="footer-header">
+          <span class="title">Quick Links</span>
+        </div>
+
+        <div class="links-list">
+          <a href="index.html#application-form" class="ql-career-item">
+            <span class="ql-career-top">Careers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            <span class="ql-career-desc">We Are Hiring — Apply Now</span>
+          </a>
         </div>
       </div>
 
@@ -1269,7 +1929,7 @@ footer {
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="contact-details">
               <span class="contact-label">Visit Us</span>
-              <span class="contact-value">T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore – 575004.</span>
+              <span class="contact-value"><strong style="display:block;font-size:1.06rem;font-weight:700;color:var(--offwhite);margin-bottom:2px;">Artha Hospitality</strong>T-14, 3rd Floor<br>Meridian Guru Plaza<br>Bijai, Mangalore – 575004</span>
             </div>
           </div>
           
@@ -1352,6 +2012,82 @@ if ('IntersectionObserver' in window) {
 } else {
   animElements.forEach(el => el.classList.add('anim-is-visible'));
 }
+/* ============ HOTEL JOB APPLICATION FORM ============ */
+(function () {
+  const form = document.getElementById('hotelJobApplicationForm');
+  const cvInput = document.getElementById('app-cv');
+  const cvFilename = document.getElementById('app-cv-filename');
+  const roleSelect = document.getElementById('app-role');
+  const statusEl = document.getElementById('app-form-status');
+  const allowedExt = /\.(pdf|doc|docx)$/i;
+
+  const roleMap = {
+    'Chef / Cook': 'Chef',
+    'Front Office Executive': 'Front Office',
+    'Housekeeping Staff': 'Housekeeping',
+    'F&B Service — Steward / Waiter': 'F&B Service',
+    'Barista / Bartender': 'Barista / Bartender',
+    'Hotel Management Trainee': 'Management Trainee'
+  };
+
+  document.querySelectorAll('.job-apply-btn[data-job-role]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mapped = roleMap[btn.dataset.jobRole] || btn.dataset.jobRole;
+      if (roleSelect && mapped) roleSelect.value = mapped;
+    });
+  });
+
+  if (cvInput && cvFilename) {
+    cvInput.addEventListener('change', () => {
+      const file = cvInput.files && cvInput.files[0];
+      if (!file) {
+        cvFilename.textContent = 'Choose a file to upload';
+        return;
+      }
+      if (!allowedExt.test(file.name)) {
+        cvInput.value = '';
+        cvFilename.textContent = 'Choose a file to upload';
+        statusEl.className = 'app-form-status error';
+        statusEl.textContent = 'Please upload a valid CV/Resume file (.pdf, .doc, or .docx).';
+        return;
+      }
+      statusEl.className = 'app-form-status';
+      statusEl.textContent = '';
+      cvFilename.textContent = file.name;
+    });
+  }
+
+  if (form && statusEl) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('app-name').value.trim();
+      const phone = document.getElementById('app-phone').value.trim();
+      const city = document.getElementById('app-city').value;
+      const role = roleSelect ? roleSelect.value : '';
+      const exp = document.getElementById('app-exp').value;
+      const file = cvInput && cvInput.files && cvInput.files[0];
+
+      if (!name || !phone || !city || !role || !exp) {
+        statusEl.className = 'app-form-status error';
+        statusEl.textContent = 'Please fill in all required fields (Full Name, Phone / WhatsApp Number, City, Job Role, and Experience).';
+        return;
+      }
+      if (!/^[0-9+\-\s()]{7,20}$/.test(phone)) {
+        statusEl.className = 'app-form-status error';
+        statusEl.textContent = 'Please enter a valid Phone / WhatsApp Number.';
+        return;
+      }
+      if (file && !allowedExt.test(file.name)) {
+        statusEl.className = 'app-form-status error';
+        statusEl.textContent = 'Please upload a valid CV/Resume file (.pdf, .doc, or .docx).';
+        return;
+      }
+
+      statusEl.className = 'app-form-status info';
+      statusEl.textContent = 'Details validated and ready. Connect a backend form endpoint to receive submissions, or click "Apply via WhatsApp" below to send your details directly.';
+    });
+  }
+})();
 </script>
 </body>
 </html>

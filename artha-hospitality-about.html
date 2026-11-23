@@ -30,15 +30,15 @@
 
 :root{
 
-  --burnt:#D4AF37;
+  --burnt:#C4161C;
 
-  --terra:#B99428;
+  --terra:#960E13;
+  --crimson-light:#F25C61;
+  --cream:#FAF6F5;
 
-  --cream:#F8F6F1;
+  --espresso:#1A1718;
 
-  --espresso:#0A1C3A;
-
-  --sand:#D4AF37;
+  --sand:#C4161C;
 
   --offwhite:#FFFFFF;
 
@@ -46,12 +46,12 @@
 
   --radius:20px;
 
-  --shadow:0 20px 44px -22px rgba(10,28,58,.30);
+  --shadow:0 20px 44px -22px rgba(26,23,24,.30);
 
-  --shadow-soft:0 12px 30px -20px rgba(10,28,58,.35);
+  --shadow-soft:0 12px 30px -20px rgba(26,23,24,.35);
 
   --sec-pad:84px;
-
+  --strip-h:42px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -134,11 +134,11 @@ ul{list-style:none}
 
 }
 
-.btn-primary{background:var(--burnt);color:var(--espresso);box-shadow:0 12px 24px -14px rgba(212,175,55,.9)}
+.btn-primary{background:var(--burnt);color:var(--offwhite);box-shadow:0 12px 24px -14px rgba(196,22,28,.9)}
 
-.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(212,175,55,.95)}
+.btn-primary:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 18px 28px -14px rgba(196,22,28,.95)}
 
-.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(10,28,58,.28)}
+.btn-ghost{background:transparent;color:var(--espresso);border:1.5px solid rgba(26,23,24,.28)}
 
 .btn-ghost:hover{border-color:var(--burnt);color:var(--burnt);transform:translateY(-2px)}
 
@@ -148,7 +148,7 @@ ul{list-style:none}
 
 header{
 
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:var(--strip-h);left:0;right:0;z-index:100;
 
   transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
 
@@ -156,17 +156,17 @@ header{
 
   /* ADDED REQUESTED BACKGROUND */
 
-  background: radial-gradient(900px 500px at 96% -8%, rgba(212,175,55,.18), transparent 65%), #F8F6F1;
+  background: radial-gradient(900px 500px at 96% -8%, rgba(196,22,28,.18), transparent 65%), #FAF6F5;
 
 }
 
 header.scrolled{
 
-  background: radial-gradient(900px 500px at 96% -8%, rgba(212,175,55,.18), transparent 65%), rgba(248, 246, 241, 0.98);
+  background: radial-gradient(900px 500px at 96% -8%, rgba(196,22,28,.18), transparent 65%), rgba(248, 246, 241, 0.98);
 
   backdrop-filter:blur(10px);
 
-  box-shadow:0 6px 24px -18px rgba(10,28,58,.55);
+  box-shadow:0 6px 24px -18px rgba(26,23,24,.55);
 
   padding:14px 0; 
 
@@ -176,7 +176,7 @@ header.menu-open {
 
   background: var(--offwhite);
 
-  box-shadow: 0 4px 20px -18px rgba(10,28,58,.3);
+  box-shadow: 0 4px 20px -18px rgba(26,23,24,.3);
 
 }
 
@@ -246,9 +246,9 @@ header.scrolled .brand-logo {
 
   min-width: 480px;
 
-  box-shadow: 0 20px 40px -10px rgba(10,28,58,.15);
+  box-shadow: 0 20px 40px -10px rgba(26,23,24,.15);
 
-  border: 1px solid rgba(10,28,58,.08);
+  border: 1px solid rgba(26,23,24,.08);
 
   border-top: 3px solid var(--burnt);
 
@@ -308,11 +308,11 @@ header.scrolled .brand-logo {
 
   margin-left: 12px; padding: 12px 24px; font-size: 0.9rem; font-weight: 600; border-radius: 100px;
 
-  background: var(--burnt); color: var(--espresso) !important;
+  background: var(--burnt); color: var(--offwhite) !important;
 
   display: inline-flex; align-items: center; justify-content: center; line-height: 1.2;
 
-  box-shadow: 0 8px 16px -10px rgba(212,175,55,0.6); transition: all 0.3s ease;
+  box-shadow: 0 8px 16px -10px rgba(196,22,28,0.6); transition: all 0.3s ease;
 
   text-transform: none; letter-spacing: normal;
 
@@ -320,7 +320,7 @@ header.scrolled .brand-logo {
 
 .nav-cta::after { display: none !important; }
 
-.nav-cta:hover { background: var(--terra); transform: translateY(-2px); box-shadow: 0 12px 20px -10px rgba(212,175,55,0.8); }
+.nav-cta:hover { background: var(--terra); transform: translateY(-2px); box-shadow: 0 12px 20px -10px rgba(196,22,28,0.8); }
 
 
 
@@ -342,7 +342,7 @@ header.scrolled .brand-logo {
 
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
 
-  background:var(--cream);padding:100px 28px 40px;
+  background:var(--cream);padding:calc(100px + var(--strip-h)) 28px 40px;
 
   flex-direction:column; overflow-y: auto;
 
@@ -354,7 +354,7 @@ header.scrolled .brand-logo {
 
   font-family:'DM Serif Display',serif; font-size:1.35rem; padding:16px 0;
 
-  border-bottom:1px solid rgba(10,28,58,.08); color: var(--espresso);
+  border-bottom:1px solid rgba(26,23,24,.08); color: var(--espresso);
 
   display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none;
 
@@ -366,7 +366,7 @@ header.scrolled .brand-logo {
 
 .mobile-dropdown[open] summary::after { content: "-"; }
 
-.mobile-sub-links { padding: 10px 0 15px 15px; border-bottom:1px solid rgba(10,28,58,.08); display: flex; flex-direction: column; gap: 12px; }
+.mobile-sub-links { padding: 10px 0 15px 15px; border-bottom:1px solid rgba(26,23,24,.08); display: flex; flex-direction: column; gap: 12px; }
 
 .mobile-sub-links a { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #707986; display: flex; align-items: center; gap: 12px; transition: color 0.2s; }
 
@@ -396,7 +396,7 @@ header.scrolled .brand-logo {
     height: 520px;
     right: -260px;
     top: -250px;
-    border: 1px solid rgba(212, 175, 55, .14);
+    border: 1px solid rgba(196,22,28, .14);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -549,9 +549,44 @@ header.scrolled .brand-logo {
 
 /* ============ EXACT FOOTER FROM INDEX ============ */
 
+.ql-career-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  transition: all 0.3s ease;
+}
+.ql-career-item:hover {
+  color: var(--crimson-light);
+  border-bottom-color: rgba(242,92,97, 0.35);
+  padding-left: 8px;
+}
+.ql-career-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+.ql-career-top i {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.ql-career-item:hover .ql-career-top i {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+.ql-career-desc {
+  font-size: 0.8rem;
+  color: var(--crimson-light);
+  line-height: 1.4;
+}
 footer {
 
-  background: var(--espresso);
+  background: #120F10;
+  border-top: 1px solid rgba(196,22,28,0.35);
 
   color: rgba(255,255,255,.7);
 
@@ -567,7 +602,7 @@ footer {
 
   position: absolute; bottom: -250px; right: -100px; width: 700px; height: 700px;
 
-  border: 1px solid rgba(212, 175, 55, 0.08); border-radius: 50%; pointer-events: none; z-index: 0;
+  border: 1px solid rgba(196,22,28, 0.08); border-radius: 50%; pointer-events: none; z-index: 0;
 
 }
 
@@ -575,21 +610,21 @@ footer {
 
   position: absolute; bottom: -200px; right: -50px; width: 600px; height: 600px;
 
-  border: 1px dashed rgba(212, 175, 55, 0.12); border-radius: 50%; pointer-events: none; z-index: 0;
+  border: 1px dashed rgba(196,22,28, 0.12); border-radius: 50%; pointer-events: none; z-index: 0;
 
 }
 
-.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 0; position: relative; z-index: 2; }
+.footer-grid { display: grid; grid-template-columns: 1.1fr 0.85fr 0.9fr 1.15fr; gap: 0; position: relative; z-index: 2; }
 
-.footer-brand, .footer-links-section, .footer-contact-section { position: relative; padding: 0 40px; }
+.footer-brand, .footer-links-section, .footer-quick-links-section, .footer-contact-section { position: relative; padding: 0 32px; }
 
 .footer-brand { padding-left: 0; }
 
-.footer-brand::after, .footer-links-section::after {
+.footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after {
 
   content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px;
 
-  background: linear-gradient(to bottom, rgba(212,175,55,0), rgba(212,175,55,0.25), rgba(212,175,55,0));
+  background: linear-gradient(to bottom, rgba(196,22,28,0), rgba(196,22,28,0.25), rgba(196,22,28,0));
 
 }
 
@@ -605,7 +640,7 @@ footer {
 
 .footer-tagline .white { color: var(--offwhite); }
 
-.footer-tagline .gold { color: var(--burnt); }
+.footer-tagline .gold { color: var(--crimson-light); }
 
 .footer-desc { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; max-width: 32ch; }
 
@@ -619,7 +654,7 @@ footer {
 
 }
 
-.social-btn:hover { background: var(--burnt); border-color: var(--burnt); color: var(--espresso); transform: translateY(-3px); }
+.social-btn:hover { background: var(--burnt); border-color: var(--burnt); color: var(--offwhite); transform: translateY(-3px); }
 
 
 
@@ -639,7 +674,7 @@ footer {
 
 }
 
-.link-item:hover { color: var(--burnt); border-bottom-color: rgba(212, 175, 55, 0.3); padding-left: 8px; }
+.link-item:hover { color: var(--burnt); border-bottom-color: rgba(196,22,28, 0.3); padding-left: 8px; }
 
 .link-item i { font-size: 0.75rem; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
 
@@ -655,23 +690,23 @@ footer {
 
 .contact-icon {
 
-  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.3);
+  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(242,92,97, 0.35);
 
-  display: flex; align-items: center; justify-content: center; color: var(--burnt); font-size: 1.1rem; transition: all 0.3s ease;
+  display: flex; align-items: center; justify-content: center; color: var(--crimson-light); font-size: 1.1rem; transition: all 0.3s ease;
 
 }
 
-.contact-card:hover .contact-icon { background: var(--burnt); color: var(--espresso); }
+.contact-card:hover .contact-icon { background: var(--burnt); color: var(--offwhite); }
 
 .contact-details { display: flex; flex-direction: column; gap: 4px; }
 
-.contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--sand); }
+.contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--crimson-light); }
 
 .contact-value { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
 
 .contact-value a { display: inline-block; color: inherit; transition: color 0.3s ease, text-shadow 0.3s ease; }
 
-.contact-value a:hover { color: var(--burnt); text-shadow: 0 0 12px rgba(212, 175, 55, 0.6); }
+.contact-value a:hover { color: var(--burnt); text-shadow: 0 0 12px rgba(196,22,28, 0.6); }
 
 
 
@@ -699,7 +734,7 @@ footer {
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 
-  .footer-brand::after, .footer-links-section::after { display: none; }
+  .footer-brand::after, .footer-links-section::after, .footer-quick-links-section::after { display: none; }
 
   .footer-brand, .footer-links-section, .footer-contact-section { padding: 0; }
 
@@ -737,7 +772,7 @@ footer {
 
   .hero-overlay {
 
-    background: linear-gradient(180deg, rgba(10, 28, 58, 0.8) 0%, rgba(10, 28, 58, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(26,23,24, 0.8) 0%, rgba(26,23,24, 0.95) 100%);
 
   }
 
@@ -939,6 +974,15 @@ footer {
 
 <body>
 
+<!-- TOP HIRING ANNOUNCEMENT STRIP -->
+<div class="hiring-strip" role="region" aria-label="Hiring announcement">
+  <div class="hiring-strip-inner">
+    <span class="hiring-badge">WE ARE HIRING</span>
+    <span class="hiring-text">— Hotel Jobs in Mangalore &amp; Karnataka | Chefs, Front Office, Housekeeping, F&amp;B Service |</span>
+    <a href="artha-hospitality-openings.html" class="hiring-cta">Apply Now &rarr;</a>
+  </div>
+</div>
+
 
 
 <!-- HEADER -->
@@ -1001,7 +1045,7 @@ footer {
 
 
 
-      <a href="index.html#industries">Openings</a>
+      <a href="artha-hospitality-openings.html">Careers</a>
 
       <a href="index.html#why">Clients</a>
 
@@ -1069,7 +1113,7 @@ footer {
 
 
 
-  <a href="index.html#industries">Openings</a>
+  <a href="artha-hospitality-openings.html">Careers</a>
 
   <a href="index.html#why">Clients</a>
 
@@ -1138,205 +1182,118 @@ footer {
 <!-- FOOTER -->
 
 <footer id="footer">
-
   <div class="footer-bg-circle"></div>
-
   <div class="footer-bg-circle-2"></div>
-
-
-
+  
   <div class="wrap">
-
     <div class="footer-grid">
-
-
-
+      
       <!-- Brand Column -->
-
       <div class="footer-brand">
-
         <a href="index.html" class="footer-logo" aria-label="Artha Hospitality Management">
-
           <figure class="cr-figure">
-
             <img src="images/artha-hospitality-management-footer-logo.png" alt="Artha Hospitality Management Logo">
-
             <figcaption class="cr-only">Artha Hospitality Management Logo</figcaption>
-
           </figure>
-
         </a>
-
-
-
+        
         <div class="footer-tagline">
-
           <span class="white">Strategic Hospitality.</span>
-
           <span class="gold">Exceptional Operations.</span>
-
         </div>
-
-
-
+        
         <p class="footer-desc">
-
           Helping hospitality businesses build stronger foundations, improve operations and create better guest experiences.
-
         </p>
-
-
-
+        
         <div class="footer-socials">
-
           <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-
           <a href="https://www.instagram.com/arthahospitalitymanagement?rpxt=MTg1bDd3eG9tMmhlMw==" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-
           <a href="https://www.facebook.com/profile.php?id=61596645240447" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-
         </div>
-
       </div>
-
-
 
       <!-- Links Column -->
-
       <div class="footer-links-section">
-
         <div class="footer-header">
-
           <span class="title">Explore</span>
-
         </div>
+        
+        <div class="links-list">
+          <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
 
-
+      <!-- Quick Links Column -->
+      <div class="footer-quick-links-section">
+        <div class="footer-header">
+          <span class="title">Quick Links</span>
+        </div>
 
         <div class="links-list">
-
-          <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
-
-          <a href="about.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
-
-          <a href="index.html#services" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
-
-          <a href="index.html#industries" class="link-item">Openings <i class="fas fa-arrow-right"></i></a>
-
-          <a href="index.html#why" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
-
-          <a href="index.html#footer" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
-
+          <a href="index.html#application-form" class="ql-career-item">
+            <span class="ql-career-top">Careers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            <span class="ql-career-desc">We Are Hiring — Apply Now</span>
+          </a>
         </div>
-
       </div>
-
-
 
       <!-- Contact Column -->
-
       <div class="footer-contact-section">
-
         <div class="footer-header">
-
           <span class="title">Contact</span>
-
         </div>
-
-
-
+        
         <div class="contact-list">
-
           <!-- Address -->
-
           <div class="contact-card">
-
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-
             <div class="contact-details">
-
               <span class="contact-label">Visit Us</span>
-
-              <span class="contact-value">T-14, 3rd Floor, Meridian Guru Plaza,<br>Bijai, Mangalore – 575004.</span>
-
+              <span class="contact-value"><strong style="display:block;font-size:1.06rem;font-weight:700;color:var(--offwhite);margin-bottom:2px;">Artha Hospitality</strong>T-14, 3rd Floor<br>Meridian Guru Plaza<br>Bijai, Mangalore – 575004</span>
             </div>
-
           </div>
-
-
-
+          
           <!-- Phone -->
-
           <div class="contact-card">
-
             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-
             <div class="contact-details">
-
               <span class="contact-label">Call Us</span>
-
               <span class="contact-value">
-
                 <a href="tel:+918951511234">+91 89515 11234</a><br>
-
                 <a href="tel:+919980447824">+91 99804 47824</a><br>
-
                 <a href="tel:+9108242148889">+91  0824-214-8889</a>
-
               </span>
-
             </div>
-
           </div>
-
-
-
+          
           <!-- Email -->
-
           <div class="contact-card">
-
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-
             <div class="contact-details">
-
               <span class="contact-label">Email Us</span>
-
               <span class="contact-value">Artha.hm26@gmail.com</span>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
-
-
     </div>
-
-
-
+    
     <!-- Footer Bottom -->
-
     <div class="footer-bottom">
-
       <div class="fb-left">
-
         <span>© 2026 Artha Hospitality Management. All Rights Reserved.</span>
-
       </div>
-
       <div class="fb-right">
-
         <span>Powered by <a href="https://bluelinecomputers.com/" target="_blank" rel="noopener noreferrer">Blueline Computers</a></span>
-
       </div>
-
     </div>
-
   </div>
-
 </footer>
 
 
