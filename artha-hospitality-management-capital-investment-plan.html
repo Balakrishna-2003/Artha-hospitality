@@ -1701,6 +1701,38 @@ footer {
     align-items: center;
   }
 }
+/* ============ FLOATING WHATSAPP BUTTON ============ */
+.wa-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 95;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  font-size: 1.75rem;
+  box-shadow: 0 12px 28px -8px rgba(21, 128, 61, 0.55);
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.wa-float:hover {
+  background: #1EBE57;
+  color: #FFFFFF;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 18px 34px -8px rgba(21, 128, 61, 0.7);
+}
+@media (max-width: 640px) {
+  .wa-float {
+    right: 16px;
+    bottom: 16px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.55rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -2266,5 +2298,8 @@ if ('IntersectionObserver' in window) {
   animElements.forEach(el => el.classList.add('anim-is-visible'));
 }
 </script>
+<a href="https://wa.me/918951511234?text=Hello%20Artha%20Hospitality%2C%20I%20would%20like%20to%20enquire%20about%20your%20hospitality%20services%20or%20job%20openings." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Artha Hospitality on WhatsApp">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
 </body>
 </html>
