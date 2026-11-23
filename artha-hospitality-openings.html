@@ -1032,7 +1032,16 @@ header.scrolled .brand-logo {
   .cta-box .btn { width: 100%; justify-content: center; }
 }
 @media (max-width: 640px) {
-  .jobs-grid { grid-template-columns: 1fr; }
+  .jobs-grid { 
+    /* grid-template-columns: 1fr; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+  }
+  .job-card {
+    width: 100%;
+    min-width: 320px;
+  }
 }
 
 /* ============ NEW PREMIUM FOOTER (EXACT FROM INDEX.HTML) ============ */
