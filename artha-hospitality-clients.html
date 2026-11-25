@@ -629,10 +629,13 @@ header.scrolled .brand-logo {
 
 /* Clean Grid of Company Logos with Generous Spacing, Consistent Size & Subtle Hover */
 .client-logo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr); */
   gap: 28px;
   margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .client-logo-card {
@@ -701,7 +704,7 @@ header.scrolled .brand-logo {
 }
 
 .client-logo-frame img {
-  max-height: 118px;
+  /* max-height: 118px; */
   max-width: 195px;
   width: auto;
   height: auto;
@@ -858,7 +861,7 @@ footer {
 .footer-tagline .white {
   color: var(--offwhite);
 }
-.footer-tagline .gold { color: var(--crimson-light); }
+.footer-tagline .gold { color: var(--burnt); }
 .footer-desc {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.6);
@@ -1306,6 +1309,7 @@ footer {
 
       <a href="artha-hospitality-management-industries.html">Industries</a>
       <a href="artha-hospitality-openings.html">Careers</a>
+      <a href="artha-hospitality-clients.html" class="active">Clients</a>
       <a href="artha-hospitality-contact-us.html">Contact</a>
       <a href="artha-hospitality-contact-us.html#contact-form-section" class="nav-cta">Get in Touch</a>
     </nav>
@@ -1340,6 +1344,7 @@ footer {
 
   <a href="artha-hospitality-management-industries.html">Industries</a>
       <a href="artha-hospitality-openings.html">Careers</a>
+      <a href="artha-hospitality-clients.html" class="active">Clients</a>
   <a href="artha-hospitality-contact-us.html">Contact</a>
   <a href="artha-hospitality-contact-us.html#contact-form-section" class="btn btn-primary">Get in Touch</a>
 </div>
@@ -1414,85 +1419,85 @@ footer {
     <!-- Clean 8-Slot Grid of Client Company Logos (Consistent Size, Generous Spacing, Subtle Hover) -->
     <div class="client-logo-grid">
 
-      <!-- Client Logo 01: Alphax Solutions -->
-      <div class="client-logo-card anim-base anim-fade-up delay-100">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client1.jpg" alt="Alphax Solutions Logo" loading="lazy">
-            <figcaption class="cr-only">Alphax Solutions</figcaption>
-          </figure>
-        </div>
-      </div>
+      <!-- Client Logo 01: Spindrift -->
+<div class="client-logo-card anim-base anim-fade-up delay-100">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/spindrift-logo.jpg" alt="Spindrift Logo" loading="lazy">
+      <figcaption class="cr-only">Spindrift</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 02: Vista Enterprises -->
-      <div class="client-logo-card anim-base anim-fade-up delay-200">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client2.jpg" alt="Vista Enterprises Logo" loading="lazy">
-            <figcaption class="cr-only">Vista Enterprises</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 02: Shiv Sagar -->
+<div class="client-logo-card anim-base anim-fade-up delay-200">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/shiv-sagar-logo.jpg" alt="Shiv Sagar Logo" loading="lazy">
+      <figcaption class="cr-only">Shiv Sagar</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 03: Nexora Technologies -->
-      <div class="client-logo-card anim-base anim-fade-up delay-300">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client3.jpg" alt="Nexora Technologies Logo" loading="lazy">
-            <figcaption class="cr-only">Nexora Technologies</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 03: Mayapuri Veg Treats -->
+<div class="client-logo-card anim-base anim-fade-up delay-300">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/mayapuri-veg-treats-logo.jpg" alt="Mayapuri Veg Treats Logo" loading="lazy">
+      <figcaption class="cr-only">Mayapuri Veg Treats</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 04: Urbania Spaces -->
-      <div class="client-logo-card anim-base anim-fade-up delay-100">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client4.jpg" alt="Urbania Spaces Logo" loading="lazy">
-            <figcaption class="cr-only">Urbania Spaces</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 04: Andhra House -->
+<div class="client-logo-card anim-base anim-fade-up delay-100">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/andhra-house-logo.jpg" alt="Andhra House Logo" loading="lazy">
+      <figcaption class="cr-only">Andhra House</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 05: Prime Industries -->
-      <div class="client-logo-card anim-base anim-fade-up delay-200">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client5.jpg" alt="Prime Industries Logo" loading="lazy">
-            <figcaption class="cr-only">Prime Industries</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 05: Coverse Cafe -->
+<div class="client-logo-card anim-base anim-fade-up delay-200">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/coverse-cafe-logo.jpg" alt="Coverse Cafe Logo" loading="lazy">
+      <figcaption class="cr-only">Coverse Cafe</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 06: Zenith Corporation -->
-      <div class="client-logo-card anim-base anim-fade-up delay-300">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client6.jpg" alt="Zenith Corporation Logo" loading="lazy">
-            <figcaption class="cr-only">Zenith Corporation</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 06: Punjabi Dhaba -->
+<div class="client-logo-card anim-base anim-fade-up delay-300">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/punjabi-dhaba-logo.jpg" alt="Punjabi Dhaba Logo" loading="lazy">
+      <figcaption class="cr-only">Punjabi Dhaba</figcaption>
+    </figure>
+  </div>
+</div>
 
-      <!-- Client Logo 07: Orbita Solutions -->
-      <div class="client-logo-card anim-base anim-fade-up delay-100">
-        <div class="client-logo-frame">
-          <figure class="cr-figure">
-            <img src="images/clients/sk-traders-client7.jpg" alt="Orbita Solutions Logo" loading="lazy">
-            <figcaption class="cr-only">Orbita Solutions</figcaption>
-          </figure>
-        </div>
-      </div>
+<!-- Client Logo 07: The Narayan Cafe -->
+<div class="client-logo-card anim-base anim-fade-up delay-100">
+  <div class="client-logo-frame">
+    <figure class="cr-figure">
+      <img src="images/clients/the-narayan-cafe-logo.jpg" alt="The Narayan Cafe Logo" loading="lazy">
+      <figcaption class="cr-only">The Narayan Cafe</figcaption>
+    </figure>
+  </div>
+</div>
 
       <!-- Client Logo 08: Elite Group -->
-      <div class="client-logo-card anim-base anim-fade-up delay-200">
+      <!-- <div class="client-logo-card anim-base anim-fade-up delay-200">
         <div class="client-logo-frame">
           <figure class="cr-figure">
             <img src="images/clients/sk-traders-client8.jpg" alt="Elite Group Logo" loading="lazy">
             <figcaption class="cr-only">Elite Group</figcaption>
           </figure>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -1555,6 +1560,7 @@ footer {
           <a href="index.html" class="link-item">Home <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-about-us.html" class="link-item">About us <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-management-capital-investment-plan.html" class="link-item">Services <i class="fas fa-arrow-right"></i></a>
+          <a href="artha-hospitality-management-industries.html" class="link-item">Industries<i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-clients.html" class="link-item">Clients <i class="fas fa-arrow-right"></i></a>
           <a href="artha-hospitality-contact-us.html" class="link-item">Contact <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -1567,7 +1573,7 @@ footer {
         </div>
 
         <div class="links-list">
-          <a href="index.html#application-form" class="ql-career-item">
+          <a href="artha-hospitality-openings.html#job-opportunities" class="ql-career-item">
             <span class="ql-career-top">Careers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             <span class="ql-career-desc">We Are Hiring — Apply Now</span>
           </a>
