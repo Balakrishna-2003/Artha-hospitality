@@ -220,6 +220,7 @@
       >
     </div>
 
+    <article>
     <!-- HERO (ANIMATED CAROUSEL) -->
     <section class="hero" id="home">
       <div class="wrap hero-grid">
@@ -1044,12 +1045,8 @@
           </p>
         </div>
 
-        <div class="app-form-wrap">
-          <form
-            id="hotelJobApplicationForm"
-            class="app-form-card anim-base anim-fade-up"
-            novalidate
-          >
+        <div class="app-form-wrap anim-base anim-fade-up">
+          <form id="hotelJobApplicationForm" novalidate>
             <div class="app-form-grid">
               <div class="app-field">
                 <label for="app-name">Full Name <span>*</span></label>
@@ -1076,6 +1073,17 @@
               </div>
 
               <div class="app-field">
+                <label for="app-email">Email Address <span>*</span></label>
+                <input
+                  type="email"
+                  id="app-email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <div class="app-field">
                 <label for="app-city">City <span>*</span></label>
                 <select id="app-city" name="city" required>
                   <option value="">Select city</option>
@@ -1085,65 +1093,19 @@
               </div>
 
               <div class="app-field">
-                <label for="app-role-search"
+                <label for="app-role"
                   >Job Role Interested In <span>*</span></label
                 >
-                <div class="searchable-select" id="appRoleDropdown">
-                  <div class="searchable-select-control">
-                    <!-- <i
-                      class="fas fa-magnifying-glass searchable-select-search-ic"
-                      aria-hidden="true"
-                    ></i> -->
-                    <input
-                      type="text"
-                      id="app-role-search"
-                      class="searchable-select-input"
-                      placeholder="Search or select job role..."
-                      autocomplete="off"
-                      role="combobox"
-                      aria-expanded="false"
-                      aria-autocomplete="list"
-                      aria-controls="app-role-list"
-                    />
-                    <button
-                      type="button"
-                      class="searchable-select-toggle"
-                      aria-label="Toggle job role options"
-                      tabindex="-1"
-                    >
-                      <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  <ul
-                    id="app-role-list"
-                    class="searchable-select-list"
-                    role="listbox"
-                    hidden
-                  ></ul>
-                  <select
-                    id="app-role"
-                    name="jobRole"
-                    class="searchable-select-native"
-                    required
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <option value="">Select job role</option>
-                    <option value="Chef">Chef</option>
-                    <option value="Front Office">Front Office</option>
-                    <option value="Housekeeping">Housekeeping</option>
-                    <option value="F&amp;B Service">F&amp;B Service</option>
-                    <option value="Barista / Bartender">
-                      Barista / Bartender
-                    </option>
-                    <option value="Management Trainee">
-                      Management Trainee
-                    </option>
-                  </select>
-                </div>
+                <input
+                  type="text"
+                  id="app-role"
+                  name="jobRole"
+                  placeholder="Enter job role (e.g. Chef, Front Office)"
+                  required
+                />
               </div>
 
-              <div class="app-field full">
+              <div class="app-field">
                 <label for="app-exp">Experience <span>*</span></label>
                 <select id="app-exp" name="experience" required>
                   <option value="">Select experience</option>
@@ -1176,6 +1138,16 @@
                     accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                   />
                 </div>
+              </div>
+
+              <div class="app-field full">
+                <label for="app-message">Message <small>(Optional)</small></label>
+                <textarea
+                  id="app-message"
+                  name="message"
+                  rows="4"
+                  placeholder="Tell us briefly about your experience, skills, or availability..."
+                ></textarea>
               </div>
 
               <div class="app-submit-row">
@@ -1584,6 +1556,7 @@
         </div>
       </div>
     </section>
+    </article>
 
     <!-- NEW PREMIUM FOOTER -->
     <footer id="footer" class="anim-base anim-fade-up">
@@ -1757,6 +1730,8 @@
         </div>
       </div>
     </footer>
+
+    
 
     <script>
       /* ============ STICKY HEADER ============ */
@@ -1983,218 +1958,21 @@
         const form = document.getElementById("hotelJobApplicationForm");
         const cvInput = document.getElementById("app-cv");
         const cvFilename = document.getElementById("app-cv-filename");
-        const roleSelect = document.getElementById("app-role");
-        const roleDropdown = document.getElementById("appRoleDropdown");
-        const roleSearchInput = document.getElementById("app-role-search");
-        const roleList = document.getElementById("app-role-list");
+        const uploadBox = cvInput ? cvInput.closest(".app-upload-box") : null;
+        const uploadIcon = uploadBox
+          ? uploadBox.querySelector(".app-upload-ic i")
+          : null;
+        const roleInput = document.getElementById("app-role");
         const statusEl = document.getElementById("app-form-status");
         const allowedExt = /\.(pdf|doc|docx)$/i;
-
-        const roleMap = {
-          "Chef / Cook": "Chef",
-          "Front Office Executive": "Front Office",
-          "Housekeeping Staff": "Housekeeping",
-          "F&B Service — Steward / Waiter": "F&B Service",
-          "Barista / Bartender": "Barista / Bartender",
-          "Hotel Management Trainee": "Management Trainee",
-        };
-
-        function getRoleOptions() {
-          if (!roleSelect) return [];
-          return Array.from(roleSelect.options)
-            .filter((opt) => opt.value.trim() !== "")
-            .map((opt) => ({
-              value: opt.value,
-              label: opt.textContent.trim(),
-            }));
-        }
-
-        function setRoleValue(val) {
-          if (!roleSelect) return;
-          roleSelect.value = val || "";
-          const matched = getRoleOptions().find((o) => o.value === val);
-          if (roleSearchInput) {
-            roleSearchInput.value = matched ? matched.label : val || "";
-          }
-        }
-
-        if (roleDropdown && roleSearchInput && roleList && roleSelect) {
-          const toggleBtn = roleDropdown.querySelector(
-            ".searchable-select-toggle",
-          );
-          let activeIndex = -1;
-          let currentFiltered = [];
-
-          function renderRoleList(filterText) {
-            const query = (filterText || "").trim().toLowerCase();
-            const allOptions = getRoleOptions();
-            currentFiltered = query
-              ? allOptions.filter((opt) =>
-                  opt.label.toLowerCase().includes(query),
-                )
-              : allOptions;
-
-            roleList.innerHTML = "";
-            activeIndex = -1;
-
-            if (currentFiltered.length === 0) {
-              const emptyLi = document.createElement("li");
-              emptyLi.className = "searchable-select-empty";
-              emptyLi.textContent = "No matching job roles found";
-              roleList.appendChild(emptyLi);
-              return;
-            }
-
-            currentFiltered.forEach((opt, idx) => {
-              const li = document.createElement("li");
-              li.className =
-                "searchable-select-option" +
-                (opt.value === roleSelect.value ? " is-selected" : "");
-              li.setAttribute("role", "option");
-              li.setAttribute(
-                "aria-selected",
-                opt.value === roleSelect.value ? "true" : "false",
-              );
-              li.dataset.value = opt.value;
-              li.textContent = opt.label;
-              li.addEventListener("mousedown", (e) => {
-                e.preventDefault();
-                setRoleValue(opt.value);
-                closeDropdown();
-              });
-              li.addEventListener("mouseenter", () => {
-                setActiveOption(idx);
-              });
-              roleList.appendChild(li);
-            });
-          }
-
-          function setActiveOption(index) {
-            const items = roleList.querySelectorAll(
-              ".searchable-select-option",
-            );
-            if (!items.length) return;
-            activeIndex = Math.max(0, Math.min(index, items.length - 1));
-            items.forEach((el, i) => {
-              el.classList.toggle("is-active", i === activeIndex);
-              if (i === activeIndex) {
-                el.scrollIntoView({ block: "nearest" });
-              }
-            });
-          }
-
-          function openDropdown(filterText) {
-            renderRoleList(filterText);
-            roleList.hidden = false;
-            roleDropdown.classList.add("is-open");
-            roleSearchInput.setAttribute("aria-expanded", "true");
-          }
-
-          function closeDropdown() {
-            roleList.hidden = true;
-            roleDropdown.classList.remove("is-open");
-            roleSearchInput.setAttribute("aria-expanded", "false");
-            activeIndex = -1;
-          }
-
-          roleSearchInput.addEventListener("focus", () => {
-            openDropdown("");
-          });
-
-          roleSearchInput.addEventListener("click", () => {
-            if (roleList.hidden) {
-              openDropdown("");
-            }
-          });
-
-          roleSearchInput.addEventListener("input", () => {
-            const val = roleSearchInput.value;
-            openDropdown(val);
-            const exact = getRoleOptions().find(
-              (o) => o.label.toLowerCase() === val.trim().toLowerCase(),
-            );
-            roleSelect.value = exact ? exact.value : "";
-          });
-
-          roleSearchInput.addEventListener("keydown", (e) => {
-            const items = roleList.querySelectorAll(
-              ".searchable-select-option",
-            );
-            if (e.key === "ArrowDown") {
-              e.preventDefault();
-              if (roleList.hidden) {
-                openDropdown(roleSearchInput.value);
-              } else if (items.length) {
-                setActiveOption(activeIndex + 1);
-              }
-            } else if (e.key === "ArrowUp") {
-              e.preventDefault();
-              if (!roleList.hidden && items.length) {
-                setActiveOption(activeIndex > 0 ? activeIndex - 1 : 0);
-              }
-            } else if (e.key === "Enter") {
-              if (!roleList.hidden) {
-                e.preventDefault();
-                if (activeIndex >= 0 && currentFiltered[activeIndex]) {
-                  setRoleValue(currentFiltered[activeIndex].value);
-                  closeDropdown();
-                } else if (currentFiltered.length === 1) {
-                  setRoleValue(currentFiltered[0].value);
-                  closeDropdown();
-                }
-              }
-            } else if (e.key === "Escape") {
-              closeDropdown();
-            }
-          });
-
-          roleSearchInput.addEventListener("blur", () => {
-            setTimeout(() => {
-              closeDropdown();
-              const typed = roleSearchInput.value.trim();
-              if (!typed) {
-                setRoleValue("");
-                return;
-              }
-              const match = getRoleOptions().find(
-                (o) => o.label.toLowerCase() === typed.toLowerCase(),
-              );
-              if (match) {
-                setRoleValue(match.value);
-              } else if (roleSelect.value) {
-                setRoleValue(roleSelect.value);
-              } else {
-                setRoleValue("");
-              }
-            }, 150);
-          });
-
-          if (toggleBtn) {
-            toggleBtn.addEventListener("mousedown", (e) => {
-              e.preventDefault();
-              if (roleList.hidden) {
-                roleSearchInput.focus();
-                openDropdown("");
-              } else {
-                closeDropdown();
-              }
-            });
-          }
-
-          document.addEventListener("click", (e) => {
-            if (!roleDropdown.contains(e.target)) {
-              closeDropdown();
-            }
-          });
-        }
 
         document
           .querySelectorAll(".job-apply-btn[data-job-role]")
           .forEach((btn) => {
             btn.addEventListener("click", () => {
-              const mapped =
-                roleMap[btn.dataset.jobRole] || btn.dataset.jobRole;
-              if (mapped) setRoleValue(mapped);
+              if (roleInput && btn.dataset.jobRole) {
+                roleInput.value = btn.dataset.jobRole;
+              }
             });
           });
 
@@ -2203,19 +1981,26 @@
             const file = cvInput.files && cvInput.files[0];
             if (!file) {
               cvFilename.textContent = "Choose a file to upload";
+              if (uploadIcon) uploadIcon.className = "fas fa-cloud-arrow-up";
               return;
             }
             if (!allowedExt.test(file.name)) {
               cvInput.value = "";
               cvFilename.textContent = "Choose a file to upload";
-              statusEl.className = "app-form-status error";
-              statusEl.textContent =
-                "Please upload a valid CV/Resume file (.pdf, .doc, or .docx).";
+              if (uploadIcon) uploadIcon.className = "fas fa-cloud-arrow-up";
+              if (statusEl) {
+                statusEl.className = "app-form-status error";
+                statusEl.textContent =
+                  "Please upload a valid CV/Resume file (.pdf, .doc, or .docx).";
+              }
               return;
             }
-            statusEl.className = "app-form-status";
-            statusEl.textContent = "";
-            cvFilename.textContent = file.name;
+            if (statusEl) {
+              statusEl.className = "app-form-status";
+              statusEl.textContent = "";
+            }
+            cvFilename.textContent = "Chosen file: " + file.name;
+            if (uploadIcon) uploadIcon.className = "fas fa-file-circle-check";
           });
         }
 
@@ -2224,21 +2009,28 @@
             e.preventDefault();
             const name = document.getElementById("app-name").value.trim();
             const phone = document.getElementById("app-phone").value.trim();
+            const emailEl = document.getElementById("app-email");
+            const email = emailEl ? emailEl.value.trim() : "";
             const city = document.getElementById("app-city").value;
-            const role = roleSelect ? roleSelect.value : "";
+            const role = roleInput ? roleInput.value.trim() : "";
             const exp = document.getElementById("app-exp").value;
             const file = cvInput && cvInput.files && cvInput.files[0];
 
-            if (!name || !phone || !city || !role || !exp) {
+            if (!name || !phone || !email || !city || !role || !exp) {
               statusEl.className = "app-form-status error";
               statusEl.textContent =
-                "Please fill in all required fields (Full Name, Phone / WhatsApp Number, City, Job Role, and Experience).";
+                "Please fill in all required fields (Full Name, Phone / WhatsApp Number, Email Address, City, Job Role, and Experience).";
               return;
             }
             if (!/^[0-9+\-\s()]{7,20}$/.test(phone)) {
               statusEl.className = "app-form-status error";
               statusEl.textContent =
                 "Please enter a valid Phone / WhatsApp Number.";
+              return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              statusEl.className = "app-form-status error";
+              statusEl.textContent = "Please enter a valid Email Address.";
               return;
             }
             if (file && !allowedExt.test(file.name)) {
