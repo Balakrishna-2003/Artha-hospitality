@@ -260,8 +260,8 @@
       <p>Interested in building your career in hospitality? Submit your details and our recruitment team will get in touch with you.</p>
     </div>
 
-    <div class="app-form-wrap">
-      <form id="hotelJobApplicationForm" class="app-form-card anim-base anim-fade-up" novalidate>
+    <div class="app-form-wrap anim-base anim-fade-up">
+      <form id="hotelJobApplicationForm" novalidate>
         <div class="app-form-grid">
           <div class="app-field">
             <label for="app-name">Full Name <span>*</span></label>
@@ -274,6 +274,11 @@
           </div>
 
           <div class="app-field">
+            <label for="app-email">Email Address <span>*</span></label>
+            <input type="email" id="app-email" name="email" placeholder="Enter your email address" required>
+          </div>
+
+          <div class="app-field">
             <label for="app-city">City <span>*</span></label>
             <select id="app-city" name="city" required>
               <option value="">Select city</option>
@@ -283,39 +288,11 @@
           </div>
 
           <div class="app-field">
-            <label for="app-role-search">Job Role Interested In <span>*</span></label>
-            <div class="searchable-select" id="appRoleDropdown">
-              <div class="searchable-select-control">
-                <i class="fas fa-magnifying-glass searchable-select-search-ic" aria-hidden="true"></i>
-                <input
-                  type="text"
-                  id="app-role-search"
-                  class="searchable-select-input"
-                  placeholder="Search or select job role..."
-                  autocomplete="off"
-                  role="combobox"
-                  aria-expanded="false"
-                  aria-autocomplete="list"
-                  aria-controls="app-role-list"
-                />
-                <button type="button" class="searchable-select-toggle" aria-label="Toggle job role options" tabindex="-1">
-                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                </button>
-              </div>
-              <ul id="app-role-list" class="searchable-select-list" role="listbox" hidden></ul>
-              <select id="app-role" name="jobRole" class="searchable-select-native" required tabindex="-1" aria-hidden="true">
-                <option value="">Select job role</option>
-                <option value="Chef">Chef</option>
-                <option value="Front Office">Front Office</option>
-                <option value="Housekeeping">Housekeeping</option>
-                <option value="F&amp;B Service">F&amp;B Service</option>
-                <option value="Barista / Bartender">Barista / Bartender</option>
-                <option value="Management Trainee">Management Trainee</option>
-              </select>
-            </div>
+            <label for="app-role">Job Role Interested In <span>*</span></label>
+            <input type="text" id="app-role" name="jobRole" placeholder="Enter job role (e.g. Chef, Front Office)" required>
           </div>
 
-          <div class="app-field full">
+          <div class="app-field">
             <label for="app-exp">Experience <span>*</span></label>
             <select id="app-exp" name="experience" required>
               <option value="">Select experience</option>
@@ -336,6 +313,11 @@
               </div>
               <input type="file" id="app-cv" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
             </div>
+          </div>
+
+          <div class="app-field full">
+            <label for="app-message">Message <small>(Optional)</small></label>
+            <textarea id="app-message" name="message" rows="4" placeholder="Tell us briefly about your experience, skills, or availability..."></textarea>
           </div>
 
           <div class="app-submit-row">
@@ -546,10 +528,7 @@ if ('IntersectionObserver' in window) {
   const form = document.getElementById('hotelJobApplicationForm');
   const cvInput = document.getElementById('app-cv');
   const cvFilename = document.getElementById('app-cv-filename');
-  const roleSelect = document.getElementById('app-role');
-  const roleDropdown = document.getElementById('appRoleDropdown');
-  const roleSearchInput = document.getElementById('app-role-search');
-  const roleList = document.getElementById('app-role-list');
+  const roleInput = document.getElementById('app-role');
   const statusEl = document.getElementById('app-form-status');
   const allowedExt = /\.(pdf|doc|docx)$/i;
 
@@ -736,8 +715,9 @@ if ('IntersectionObserver' in window) {
 
   document.querySelectorAll('.job-apply-btn[data-job-role]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const mapped = roleMap[btn.dataset.jobRole] || btn.dataset.jobRole;
-      if (mapped) setRoleValue(mapped);
+      if (roleInput && btn.dataset.jobRole) {
+        roleInput.value = btn.dataset.jobRole;
+      }
     });
   });
 
@@ -766,19 +746,26 @@ if ('IntersectionObserver' in window) {
       e.preventDefault();
       const name = document.getElementById('app-name').value.trim();
       const phone = document.getElementById('app-phone').value.trim();
+      const emailEl = document.getElementById('app-email');
+      const email = emailEl ? emailEl.value.trim() : '';
       const city = document.getElementById('app-city').value;
-      const role = roleSelect ? roleSelect.value : '';
+      const role = roleInput ? roleInput.value.trim() : '';
       const exp = document.getElementById('app-exp').value;
       const file = cvInput && cvInput.files && cvInput.files[0];
 
-      if (!name || !phone || !city || !role || !exp) {
+      if (!name || !phone || !email || !city || !role || !exp) {
         statusEl.className = 'app-form-status error';
-        statusEl.textContent = 'Please fill in all required fields (Full Name, Phone / WhatsApp Number, City, Job Role, and Experience).';
+        statusEl.textContent = 'Please fill in all required fields (Full Name, Phone / WhatsApp Number, Email Address, City, Job Role, and Experience).';
         return;
       }
       if (!/^[0-9+\-\s()]{7,20}$/.test(phone)) {
         statusEl.className = 'app-form-status error';
         statusEl.textContent = 'Please enter a valid Phone / WhatsApp Number.';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        statusEl.className = 'app-form-status error';
+        statusEl.textContent = 'Please enter a valid Email Address.';
         return;
       }
       if (file && !allowedExt.test(file.name)) {
